@@ -1,0 +1,22 @@
+{
+  "link.title.Docs": {
+    "message": "Docs",
+    "description": "The title of the footer links column with title=Docs in the footer"
+  },
+  "link.title.More": {
+    "message": "More",
+    "description": "The title of the footer links column with title=More in the footer"
+  },
+  "link.item.label.Documents": {
+    "message": "Documents",
+    "description": "The label of footer link with label=Documents linking to /docs/introduction/overview"
+  },
+  "link.item.label.GitHub": {
+    "message": "GitHub",
+    "description": "The label of footer link with label=GitHub linking to https://github.com/rooch-network"
+  },
+  "copyright": {
+    "message": "Copyright © 2022 Rooch Network. Built with Docusaurus.",
+    "description": "The footer copyright"
+  }
+}
