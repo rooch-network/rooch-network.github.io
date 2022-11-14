@@ -43,9 +43,9 @@ const config = {
           editUrl: ({ locale, versionDocsDirPath, docPath }) => {
             let link
             if (locale === 'en') {
-              link = `https://github.com/starcoinorg/starcoin-cookbook/edit/main/${versionDocsDirPath}/${docPath}`
+              link = `https://github.com/rooch-network/rooch-network.github.io/edit/main/${versionDocsDirPath}/${docPath}`
             } else {
-              link = `https://github.com/starcoinorg/starcoin-cookbook/edit/main/i18n/${locale}/docusaurus-plugin-content-docs/current/${docPath}`
+              link = `https://github.com/rooch-network/rooch-network.github.io/edit/main/i18n/${locale}/docusaurus-plugin-content-docs/current/${docPath}`
             }
             return link
           },
@@ -54,7 +54,7 @@ const config = {
           showReadingTime: true,
           // Please change this to your repo.
           editUrl:
-            'https://github.com/starcoinorg/starcoin-cookbook/edit/main/',
+            'https://github.com/rooch-network/rooch-network.github.io/edit/main/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
