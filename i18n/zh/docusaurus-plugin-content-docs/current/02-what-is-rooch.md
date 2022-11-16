@@ -1,6 +1,6 @@
 # 什么是 Rooch？
 
-根据[为什么需要 Rooch?](./01-why-rooch.md) 的结论，我们需要一个新的 Layer2 方案，所以我们设计了 Rooch。
+根据[为什么需要 Rooch?](./why-rooch) 的结论，我们需要一个新的 Layer2 方案，所以我们设计了 Rooch。
 
 Rooch 是一个支持多链结算的执行层，用 Move 作为智能合约语言。它目标是连接多链生态与 Web3 DApp，为 Layer1 提供执行与状态的扩容能力，为 DApp 提供 Move 的执行环境与结算协议。
 
@@ -18,7 +18,7 @@ Rooch 通过模块化区块链的架构，充分利用当前多链生态的优�
 * 结算层（Settlement）：实现 Layer1 和执行层之间的资产结算。结算周期取决于仲裁层的最终确定性周期。
 * 仲裁层（Arbitration）：执行欺诈证明，并做出裁决。在乐观主义（Optimistic）方案中，仲裁层等待挑战期过后，就认为执行层的交易达到了最终确定，并通知接算层进行结算。
 
-每一层都可以根据不同 Layer1 的特性以及拥堵状态进行选择和调整，详细的技术方案请参看：[模块化区块链架构](../02-technology/01-modular-blockchain-architecture/)和[多链结算协议](../02-technology/02-multi-chain-settlement-protocol.md)。
+每一层都可以根据不同 Layer1 的特性以及拥堵状态进行选择和调整，详细的技术方案请参看：[模块化区块链架构](./technology/modular-blockchain-architecture/)和[多链结算协议](./technology/multi-chain-settlement-protocol)。
 
 而我们有了这样一个多链接算的执行层，就可以安全的将多链资产聚合起来，为 DApp 提供丰富的资产以及统一的结算协议。
 
@@ -34,7 +34,7 @@ Move 通过线性类型实现的面相资源的编程模式，可以实现状态
 
 而如果 Layer1 是非 Move 智能合约链，比如 EVM，我们可以在 Solidity 合约内部模拟 Move 自由状态，将状态从合约内部删除，然后在执行层构造出来，从而实现状态扩容。
 
-关于状态扩容的具体技术方案请参看：[状态扩容](./../02-technology/08-state-scaling.md)。
+关于状态扩容的具体技术方案请参看：[状态扩容](./technology/state-scaling)。
 
 ### 无缝跨层调用（Seamless CrossLayer Invoke）
 
