@@ -9,7 +9,7 @@
   },
   "link.item.label.Documents": {
     "message": "Documents",
-    "description": "The label of footer link with label=Documents linking to /docs/introduction/overview"
+    "description": "The label of footer link with label=Documents linking to /docs/"
   },
   "link.item.label.GitHub": {
     "message": "GitHub",
