@@ -50,6 +50,6 @@ Layer2 的方案中并不需要依赖异步的共识机制，确认交易执行�
 
 但因为当前的状态通道都是架设在 Layer1 之上，创建通道的 Gas 成本和时间成本都很高，无法直接用在 P2P 网络中。而 Rooch 提供了安全以及实时的确认交易的能力，以及低廉的 Gas 费用，使得 P2P 网络中的节点可以在创建网络连接的同时，把这个升级成为一个可执行智能合约的网络连接。
 
-有了这样一个[状态通道](./04-technology/08-state-channel/index.md)，可以在 P2P 网络中实现高频流式支付，也让设计 P2P 网络上的 DApp 协议简化许多。
+有了这样一个[状态通道](./04-technology/08-state-channel/index.md)，可以在 P2P 网络中实现[高频流式支付](./04-technology/08-state-channel/01-streaming-payment.md)，也让设计 P2P 网络上的 DApp 协议简化许多。
 
 
