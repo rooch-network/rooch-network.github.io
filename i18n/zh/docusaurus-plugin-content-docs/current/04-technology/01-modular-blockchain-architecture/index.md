@@ -18,6 +18,8 @@
 
 在 Rooch 的模块化架构中，不同的层的职能划分：
 
+![modular](/diagram/rooch-modular.svg)
+
 * 执行层（Execution）：执行智能合约交易，并保存执行的状态。应用主要和执行层提供的协议和服务交互。
 * 应用仓库层（Application Repository）：在 Rooch 中，应用的代码并不部署在执行层，而是部署在 Move Layer1 公链上，运行在执行层，这样可以保证应用之间的依赖和组合的延续性。可选 Move 公链，[Starcoin](https://github.com/starcoinorg/starcoin)，[Aptos](https://github.com/aptos-labs/aptos-core)，[Sui](https://github.com/MystenLabs/sui)。
 * 数据可用层（Data Availability）：保证执行层的交易数据可以通过公开的方式获取，从而保证欺诈证明所依赖的数据可用。
@@ -26,10 +28,6 @@
 * 仲裁层（Arbitration）：执行欺诈证明，并做出裁决。在乐观主义（Optimistic）方案中，仲裁层等待挑战期过后，如果未发生挑战，就认为执行层的交易达到了最终确定，并通知接算层进行结算。任意图灵完备的智能合约链都可以承担这个角色。
 * 链间通信层（CrossChain Message Layer）：由于以上不同的层会在不同的 Layer1 上，所以需要一个 Layer1 之间的链间通信机制来协同完成结算以及仲裁。
 
-:::note
 
-TODO 需要一张图来表达不同层之间的关系
-
-:::
 
 

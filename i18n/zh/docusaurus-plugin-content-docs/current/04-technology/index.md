@@ -2,6 +2,8 @@
 
 通过前一个章节，读者大约理解了 Rooch 是什么，以及要做什么。本章节主要用来解答“Rooch 是如何做到的”这个问题。
 
+![overview](/diagram/rooch-overview.svg)
+
 ### 多链结算的执行层
 
 1. [模块化区块链架构](./01-modular-blockchain-architecture/01-multi-chain-settlement-protocol.md) : Rooch 作为执行层，在模块化区块链中扮演什么角色，和其他模块层是如何交互的，以及不同的模块层之间的技术选型设计。

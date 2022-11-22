@@ -2,9 +2,20 @@
 
 根据[为什么需要 Rooch?](01-why-rooch.md) 的结论，我们需要一个新的 Layer2 方案，所以我们设计了 Rooch。
 
-Rooch 是一个支持多链结算的执行层，用 Move 作为智能合约语言。它目标是连接多链生态与 Web3 DApp，为 Layer1 提供执行与状态的扩容能力，为 DApp 提供 Move 的执行环境与结算协议。
+Rooch 是一个支持多链结算的执行层，用 Move 作为智能合约语言。它目标是连接多链生态与 Web3 DApp，为 Layer1 提供交易与状态的扩容，为 DApp 提供 Move 的执行环境与结算协议。
 
-它具有以下关键特性：
+## 为 Layer1
+
+* 交易扩容：提供更快的交易执行和确认速度，以及更高的交易吞吐（更高的TPS）。
+* 状态扩容：将 Layer1 的状态迁移到执行层，释放 Layer1 的智能合约占用的状态空间。
+
+## 为 DApp
+
+* 聚合多链资产
+* 提供安全以及即时确认的高速执行环境
+* 提供 P2P 网络上的基于状态通道的结算协议
+
+## 关键特性
 
 ### 多链结算的执行层（Multi-chain settlement Execution Layer）
 
@@ -14,19 +25,14 @@ Rooch 通过模块化区块链的架构，充分利用当前多链生态的优�
 
 而我们有了这样一个多链接算的执行层，就可以安全的将多链资产聚合起来，为 DApp 提供丰富的资产以及统一的结算协议。
 
-### 为 Layer1 状态扩容（State Scaling for Layer1)
+### 为 Layer1 实现交易和状态扩容（Transaction & State Scaling for Layer1)
 
-当前主要的分层扩容方案中，主要关注对 Layer1 交易执行的扩容，并没有关注到 Layer1 的状态扩容问题。而我们认为状态爆炸问题未来一定会成为 Layer1 的瓶颈之一，而将状态从 Layer1 迁移到执行层是一个值得探索到方向。
+当前主要的分层扩容方案中，主要关注对 Layer1 交易执行的扩容，并没有关注到 Layer1 的状态扩容问题。而我们认为状态爆炸问题未来一定会成为 Layer1 的瓶颈之一，Rooch 同时为 Layer1 提供交易和状态扩容。
 
-Rooch 利用 Move 提供的特性可以将智能合约的状态，从 Layer1 迁移到执行层，从而为 Layer1 实现[状态扩容](04-technology/06-state-scaling.md)。
+* 交易扩容：通过交易的[并行执行](./04-technology/05-parallel-transaction-execution.md)提供更高的吞吐量。
+* 状态扩容：Rooch 利用 Move 提供的特性可以将智能合约的状态，从 Layer1 迁移到执行层，从而为 Layer1 实现[状态扩容](04-technology/06-state-scaling.md)。
 
-Move 通过线性类型实现的面相资源的编程模式，可以实现状态在合约之间移动，我们称这种状态为“自由状态”，而最常见的“自由状态”主要是资产类型的状态，Token 或者 NFT。
-
-同理，如果 Layer1 是 Move 智能合约链，我们也可以利用这个特性，实现跨层的“自由状态”迁移，并且保证资产类型在不同的层中的类型是一致的。
-
-而如果 Layer1 是非 Move 智能合约链，比如 EVM，我们可以在 Solidity 合约内部模拟 Move 自由状态，将状态从合约内部删除，然后在执行层构造出来，从而实现状态扩容。
-
-### 无缝跨层互操作性（Seamless CrossLayer Invoke）
+### 无缝跨层互操作性（Seamless CrossLayer Interoperability）
 
 当前的分层方案中，跨层的交互基本只实现了消息的通信。而我们认为跨层的合约调用对开发者更友好，也更有利于建设多层共享的智能合约生态。
 
@@ -44,7 +50,7 @@ Layer2 的方案中并不需要依赖异步的共识机制，确认交易执行�
 同时，Rooch 也设计了随机轮换的[排序服务器的去中心化方案](./04-technology/04-decentralized-validator-network.md)，保证执行层的高可用，同时多个排序服务器之间可以相互约束，保证作弊行为可以及时得到挑战。
 
 
-### 可执行智能合约的状态通道（SmartContract State Channel）
+### 可执行智能合约的状态通道（SmartContract on State Channel）
 
 状态通道（State Channel） ，或者叫支付通道（Payment Channel），以闪电网络（Lightning Network ）为代表，是一种比较成熟的扩容方案。它的思路是双方各自抵押一部分资产在链上，然后在链下维护一个两个参与方（理论上也可以扩展到多个参与方）的局部共识状态，每次交易只需要双方确认。
 
