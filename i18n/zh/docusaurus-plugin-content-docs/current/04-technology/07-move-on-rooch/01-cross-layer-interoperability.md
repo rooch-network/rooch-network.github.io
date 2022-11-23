@@ -8,17 +8,15 @@
 
 ## 跨层合约依赖
 
-由于应用合约实际上是部署在 Move Layer1，所以 Rooch 上的应用可以直接复用已经部署在 Layer1 上的合约。而 [Rooch Framework](03-rooch-framework.md) 会同时部署在 Layer1 以及 Rooch 中，并且实现上有差异，屏蔽应用在 Layer1 和 Rooch 中的差异。
+由于应用合约实际上是部署在 Move Layer1，我们叫做[应用仓库层](../01-modular-blockchain-architecture/index.md)。
+
+因此，Rooch 上的应用可以直接依赖已经部署在 Layer1 上的合约。而 [Rooch Framework](03-rooch-framework.md) 会同时部署在 Layer1 以及 Rooch 中，并且实现上有差异，屏蔽应用在 Layer1 和 Rooch 中的差异。
 
 ## 跨层方法调用
 
 既然我们实现了跨层的合约依赖，当应用运行在执行层或者状态通道的时候，可以直接调用 Layer1 的方法。
 
-:::note
-
-这里需要一张图
-
-:::
+![cross layer invoke](/diagram/rooch-cross-layer-invoke.svg)
 
 * 如果该方法中没有读取链上状态，则相当于在链下虚拟机中运行链上合约的字节码，返回结果只取决于输出参数。
 * 如果该方法中读取了链上状态，则相当于以 Layer1 的某个高度做状态快照，在状态快照之上运行该方法。
