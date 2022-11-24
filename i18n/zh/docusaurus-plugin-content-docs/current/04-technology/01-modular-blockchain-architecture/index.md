@@ -21,7 +21,7 @@
 ![modular](/diagram/rooch-modular.svg)
 
 * 执行层（Execution）：执行智能合约交易，并保存执行的状态。应用主要和执行层提供的协议和服务交互。
-* 应用仓库层（Application Repository）：在 Rooch 中，应用的代码并不部署在执行层，而是部署在 Move Layer1 公链上，运行在执行层，这样可以保证应用之间的依赖和组合的延续性。可选 Move 公链，[Starcoin](https://github.com/starcoinorg/starcoin)，[Aptos](https://github.com/aptos-labs/aptos-core)，[Sui](https://github.com/MystenLabs/sui)。
+* 模块仓库层（Module Repository）：在 Rooch 中，应用的合约可以依赖部署在 Move Layer1 上的 Move 合约模块，Move Layer1 可以作为 Move 模块仓库层，这样可以保证应用之间的依赖和组合的延续性。当前 Move Layer1，[Starcoin](https://github.com/starcoinorg/starcoin)，[Aptos](https://github.com/aptos-labs/aptos-core)，[Sui](https://github.com/MystenLabs/sui)。
 * 数据可用层（Data Availability）：保证执行层的交易数据可以通过公开的方式获取，从而保证欺诈证明所依赖的数据可用。
 * 共识层（Consensus）：保证执行层的交易顺序是确定的，不可篡改的，通过合约维护一个 Rollup Chain。在 Rooch 中，Rollup Chain 只包含 Rooch 的区块头，原始交易在数据可用层，另外还包括交易累加器的生成以及验证。任意图灵完备的智能合约链都可以承担这个角色。
 * 结算层（Settlement）：实现 Layer1 和执行层之间的状态迁移以及资产结算。结算周期取决于仲裁层的最终确定性周期。可以同时支持多个 Layer1 作为结算层，包括前面提到的 Move 公链以及 Ethereum，BSC 等 EVM 公链。

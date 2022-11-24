@@ -1,6 +1,6 @@
 # 跨层的互操作性（Cross Layer Interoperability）
 
-在 Rooch 中，应用的智能合约并不需要部署在执行层，而是在执行层直接运行部署在 Move Layer1 中的合约，Move Layer1 是 Rooch 的应用仓库层。这给跨层的互操作性带来了改进的可能，同时也有利于构建统一的 Move 应用生态。
+在 Rooch 中，应用的智能合约可以依赖部署在 Move Layer1 中的合约，Move Layer1 是 Rooch 的模块仓库层。这给跨层的互操作性带来了改进的可能，同时也有利于构建统一的 Move 应用生态。
 
 ## 跨层消息通信
 
@@ -8,7 +8,7 @@
 
 ## 跨层合约依赖
 
-由于应用合约实际上是部署在 Move Layer1，我们叫做[应用仓库层](../01-modular-blockchain-architecture/index.md)。
+由于应用合约实际上是部署在 Move Layer1，我们叫做[模块仓库层](../01-modular-blockchain-architecture/index.md)。
 
 因此，Rooch 上的应用可以直接依赖已经部署在 Layer1 上的合约。而 [Rooch Framework](03-rooch-framework.md) 会同时部署在 Layer1 以及 Rooch 中，并且实现上有差异，屏蔽应用在 Layer1 和 Rooch 中的差异。
 

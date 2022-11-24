@@ -14,7 +14,6 @@ Rooch 中使用的累加器是默克尔累加器（MerkleAccumulator），一种
 
 累加器的根会记录在 Rollup Chain 的区块头中，如果用户发现最后共识层记录的交易顺序和自己提交时到交易顺序不一致，可以通过交易位置证明向仲裁层发起仲裁。
 
-:::note
-这里需要补充一个交互流程图
-:::
 
+
+![secure txn confirmation](/diagram/rooch-secure-txn-confirmation.svg)

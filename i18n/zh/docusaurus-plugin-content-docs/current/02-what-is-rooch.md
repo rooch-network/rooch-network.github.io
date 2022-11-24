@@ -36,18 +36,18 @@ Rooch 通过模块化区块链的架构，充分利用当前多链生态的优�
 
 当前的分层方案中，跨层的交互基本只实现了消息的通信。而我们认为跨层的合约调用对开发者更友好，也更有利于建设多层共享的智能合约生态。
 
-在 Rooch 中，应用的智能合约并不需要部署在执行层，而是执行层直接运行部署在 Move Layer1 中的合约。Move Layer1 是 Rooch 的应用仓库层。
+在 Rooch 中，应用的智能合约可以依赖部署在 Move Layer1 中的合约。Move Layer1 是 Rooch 的模块仓库层。
 
 这样可以保证应用之间的依赖和组合的延续性，可以将 DeFi 时代摸索出来的智能合约的可组合性，延伸到跨层的可组合，实现无缝[跨层互操作性](04-technology/07-move-on-rooch/01-cross-layer-interoperability.md)。
 
 
-### 安全以及即时的交易确认（Safety and Instant transaction confirmation)
+### 安全以及即时的交易确认（Secure and Instant transaction confirmation)
 
 Layer2 的方案中并不需要依赖异步的共识机制，确认交易执行结果，所以它可以做到即时的交易确认。但当前的 Layer2 方案中，在交易提交到数据可用层之前，用户需要信任排序服务器的执行结果，而排序服务器可以通过调整用户的交易顺序达到牟利的目的。
 
 而 Rooch 通过提供[交易累加器证明](04-technology/03-transaction-accumulator-proofs.md)机制，保证如果排序服务器一旦改变交易顺序，最终会受到仲裁服务的惩罚，从而保证安全。
 
-同时，Rooch 也设计了随机轮换的[排序服务器的去中心化方案](./04-technology/04-decentralized-validator-network.md)，保证执行层的高可用，同时多个排序服务器之间可以相互约束，保证作弊行为可以及时得到挑战。
+同时，Rooch 也设计了随机轮换的[排序服务器的去中心化方案](./04-technology/04-decentralized-validator-network.md)，保证执行层的高可用，同时多个排序服务器之间可以相互制约，保证作弊行为可以及时得到挑战。
 
 
 ### 可执行智能合约的状态通道（SmartContract on State Channel）
