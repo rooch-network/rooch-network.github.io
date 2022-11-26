@@ -31,14 +31,19 @@ const config = {
       },
     },
   },
-  plugins: [require.resolve("@cmfcmf/docusaurus-search-local")],
+  plugins: [
+    '@cmfcmf/docusaurus-search-local',
+    '@docusaurus/plugin-ideal-image'
+  ],
   presets: [
     [
       'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
+        sitemap: {},
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
+          sidebarCollapsible: true, 
           // Please change this to your repo.
           editUrl: ({ locale, versionDocsDirPath, docPath }) => {
             let link
@@ -67,10 +72,10 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'Rooch network',
         logo: {
           alt: 'Rooch network',
-          src: '/img/logo.svg',
+          src: '/img/logo-original2.svg',
+          srcDark: '/img/logo-white2.svg',
         },
         items: [
           {
@@ -115,8 +120,24 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} Rooch Network. Built with Docusaurus.`,
       },
       prism: {
-        theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+        theme: (() => {
+          var theme = require('prism-react-renderer/themes/nightOwl');
+          // Add additional rule to nightowl theme in order to change
+          // the color of YAML keys (to be different than values).
+          // There weren't many Prism themes that differentiated
+          // YAML keys and values. See link:
+          // https://github.com/FormidableLabs/prism-react-renderer/tree/master/src/themes
+          theme.styles.push({
+            types: ["atrule"],
+            style: {
+              // color chosen from the nightowl theme palette
+              // https://github.com/FormidableLabs/prism-react-renderer/blob/master/src/themes/nightOwl.js#L83
+              color: "rgb(255, 203, 139)"
+            }
+          });
+          return theme
+        })(),
       },
     }),
 };
