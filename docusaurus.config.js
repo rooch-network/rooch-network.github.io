@@ -71,6 +71,11 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      docs: {
+        sidebar: {
+          hideable: true,
+        }
+      },
       navbar: {
         logo: {
           alt: 'Rooch network',
@@ -90,13 +95,19 @@ const config = {
           },
           {
             href: 'https://github.com/rooch-network/',
-            label: 'GitHub',
             position: 'right',
-          },
+            className: 'header-github-link',
+            'aria-label': 'GitHub repository',
+          },   
         ],
       },
       footer: {
         style: 'dark',
+        logo: {
+          alt: 'Rooch network',
+          src: '/img/logo-original2.svg',
+          srcDark: '/img/logo-white2.svg',
+        },
         links: [
           {
             title: 'Docs',
