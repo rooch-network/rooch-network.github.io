@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://rooch-network.github.io/blog</id>
+    <title>Rooch Network Blog</title>
+    <updated>2022-11-27T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://rooch-network.github.io/blog"/>
+    <subtitle>Rooch Network Blog</subtitle>
+    <icon>https://rooch-network.github.io/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Hello Rooch]]></title>
+        <id>/2022/11/27/hello-rooch</id>
+        <link href="https://rooch-network.github.io/blog/2022/11/27/hello-rooch"/>
+        <updated>2022-11-27T00:00:00.000Z</updated>
+    </entry>
+</feed>

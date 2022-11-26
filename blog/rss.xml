@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Rooch Network Blog</title>
+        <link>https://rooch-network.github.io/blog</link>
+        <description>Rooch Network Blog</description>
+        <lastBuildDate>Sun, 27 Nov 2022 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <item>
+            <title><![CDATA[Hello Rooch]]></title>
+            <link>https://rooch-network.github.io/blog/2022/11/27/hello-rooch</link>
+            <guid>/2022/11/27/hello-rooch</guid>
+            <pubDate>Sun, 27 Nov 2022 00:00:00 GMT</pubDate>
+        </item>
+    </channel>
+</rss>
