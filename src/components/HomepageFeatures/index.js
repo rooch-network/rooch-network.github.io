@@ -29,7 +29,7 @@ const FeatureList = [
     link: './docs/technology',
     description: (
       <>
-        Manage complete life cycle of cloud and SaaS assets from deployment to termination, including seamlessly handling existing cloud stacks and SaaS applications.
+        Learn how Rooch implements multi-chain settlement, how to ensures decentralization and security, how to supports applications on P2P networks, and more.
       </>
     ),
   },
