@@ -4,52 +4,49 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Focus on the execution layer',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'Why Rooch',
+    icon: 'fas fa-angle-double-right',
+    link: './docs/why-rooch',
     description: (
       <>
-         Focus on the execution layer
+        The multi-chain ecosystem needs an intermediate layer to connect the blockchains and web3 applications.
       </>
     ),
   },
   {
-    title: 'Multi-chain interconnection',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'What is Rooch',
+    icon: 'fas fa-code',
+    link: './docs/what-is-rooch',
     description: (
       <>
-         Multi-chain interconnection
+      Rooch is a Move Execution layer that connects Multi-Chains to Web3. It provides scalability for public chains, Move execution environment and settlement protocol for Web3 applications.
       </>
     ),
   },
   {
-    title: 'Based on Move',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'How it works',
+    icon: 'fas fa-layer-group',
+    link: './docs/technology',
     description: (
       <>
-        Multi-chain interconnection
-      </>
-    ),
-  },
-  {
-    title: 'Native for Web3',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
-    description: (
-      <>
-        Native for Web3
+        Manage complete life cycle of cloud and SaaS assets from deployment to termination, including seamlessly handling existing cloud stacks and SaaS applications.
       </>
     ),
   },
 ];
 
-function Feature({Svg, title, description}) {
+
+function Feature({icon, link, title, description}) {
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <h3>{title}</h3>
+    <div className={clsx('col', 'col--4', styles.featureDiv)}>
+      <div className={clsx('padding-horiz--md')}>
+        <h3><span className={clsx(icon, styles.featureIcon)}></span>{' '}{title}</h3>
         <p>{description}</p>
+      </div>
+      <div className={clsx('padding-horiz--md', styles.learnMore)}>
+        <a href={link} className={clsx(styles.learnMoreLink)}>
+          <span>Learn more <i class="fas fa-angle-double-right"></i></span> 
+        </a>
       </div>
     </div>
   );

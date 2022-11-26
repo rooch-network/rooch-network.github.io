@@ -50,7 +50,7 @@ We believe that the Web3 application will be built out as Option 3, and there ar
 
 ### Solution
 
-Based on the above discussion, we found that there is a need for such a protocol:
+Based on the above discussion, we found that the market requires such a protocol:
 
 1. It is a layered modular scaling solution.
 2. It can connect multiple Layer1 to take full benefit of the multi-chain ecosystem and provide scaling capacity for multiple Layer1. 
