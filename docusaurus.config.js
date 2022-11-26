@@ -77,8 +77,8 @@ const config = {
       navbar: {
         logo: {
           alt: 'Rooch network',
-          src: '/img/logo-original2.svg',
-          srcDark: '/img/logo-white2.svg',
+          src: '/img/logo-original.svg',
+          srcDark: '/img/logo-white.svg',
         },
         items: [
           {
@@ -103,8 +103,8 @@ const config = {
         style: 'dark',
         logo: {
           alt: 'Rooch network',
-          src: '/img/logo-original2.svg',
-          srcDark: '/img/logo-white2.svg',
+          src: '/img/logo-original.svg',
+          srcDark: '/img/logo-white.svg',
         },
         links: [
           {
