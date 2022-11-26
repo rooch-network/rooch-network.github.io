@@ -6,6 +6,11 @@
 }
 
 .featureSvg {
-  height: 200px;
-  width: 200px;
+  width: 700px;
+  background: rgb(255, 255, 255);
+}
+
+.featureBlock {
+  display: inline-block;
+  vertical-align: middle;
 }

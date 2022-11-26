@@ -7,7 +7,7 @@ const baseUrl = process.env.BASE_URL || '/';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Rooch Network',
-  tagline: 'Rooch Network',
+  tagline: 'a Move Execution layer that connects Multi-Chains to Web3.',
   url: 'https://rooch-network.github.io',
   baseUrl: baseUrl,
   onBrokenLinks: 'throw',
@@ -76,7 +76,8 @@ const config = {
       },
       navbar: {
         logo: {
-          alt: 'Rooch network',
+          alt: 'Rooch Network',
+          href: '/',
           src: '/img/logo-original.svg',
           srcDark: '/img/logo-white.svg',
         },
@@ -87,6 +88,7 @@ const config = {
             position: 'left',
             label: 'Documents',
           },
+          {to: 'blog', label: 'Blog', position: 'left'},
           {
             type: 'localeDropdown',
             position: 'right',
@@ -101,15 +103,18 @@ const config = {
       },
       footer: {
         style: 'dark',
-        logo: {
-          alt: 'Rooch network',
-          src: '/img/logo-original.svg',
-          srcDark: '/img/logo-white.svg',
-        },
         links: [
           {
-            title: 'Docs',
+            title: 'Rooch Network',
             items: [
+              {
+                label: 'Home',
+                to: '/',
+              },
+              {
+                label: 'What is Rooch?',
+                to: '/docs/what-is-rooch',
+              },
               {
                 label: 'Documents',
                 to: '/docs/',
@@ -122,6 +127,14 @@ const config = {
               {
                 label: 'GitHub',
                 href: 'https://github.com/rooch-network',
+              },
+              {
+                label: 'Blog',
+                to: '/blog/',
+              },
+              {
+                label: 'Contact Us',
+                to: '/contact-us/',
               },
             ],
           },

@@ -3,7 +3,7 @@ slug: /
 ---
 # Overview 
 
-Rooch is a multi-chain **execution layer** with the goal of connecting **multiple public chains** with **Web3**, providing **scalability** for public chains, **Move execution environment** and **settlement protocol** for Web3 applications.
+Rooch is a **Move Execution layer** that connects Multi-Chains to Web3. It provides **scalability** for public chains, **Move execution environment** and **settlement protocol** for Web3 applications.
 
 ![overview](/diagram/rooch-overview.svg)
 

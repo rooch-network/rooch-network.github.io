@@ -604,3 +604,7 @@ html[data-theme='dark'] .contactFormHeading {
  margin: 0;
  padding: 0;
 }
+
+article img {
+  background-color: white;
+}
