@@ -920,7 +920,7 @@
                         <mxPoint x="481" y="591" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="FCjUuwAnBqdYi5_U5490-13" value="5. Batch Publish Txns&lt;br&gt;but remove Txn1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="FCjUuwAnBqdYi5_U5490-12" vertex="1" connectable="0">
+                <mxCell id="FCjUuwAnBqdYi5_U5490-13" value="4. Batch Publish Txns&lt;br&gt;but remove Txn1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="FCjUuwAnBqdYi5_U5490-12" vertex="1" connectable="0">
                     <mxGeometry x="-0.1833" relative="1" as="geometry">
                         <mxPoint as="offset"/>
                     </mxGeometry>
@@ -931,7 +931,7 @@
                         <mxPoint x="330" y="450" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="FCjUuwAnBqdYi5_U5490-15" value="4. Broadcast to other validators" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="FCjUuwAnBqdYi5_U5490-14" vertex="1" connectable="0">
+                <mxCell id="FCjUuwAnBqdYi5_U5490-15" value="3. Broadcast to other validators" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="FCjUuwAnBqdYi5_U5490-14" vertex="1" connectable="0">
                     <mxGeometry x="-0.0667" y="1" relative="1" as="geometry">
                         <mxPoint as="offset"/>
                     </mxGeometry>
@@ -948,7 +948,7 @@
                         <mxPoint x="637" y="589" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="FCjUuwAnBqdYi5_U5490-22" value="&lt;font color=&quot;#000000&quot;&gt;7. Finality&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#FF0000;" parent="FCjUuwAnBqdYi5_U5490-21" vertex="1" connectable="0">
+                <mxCell id="FCjUuwAnBqdYi5_U5490-22" value="&lt;font color=&quot;#000000&quot;&gt;6. Finality&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#FF0000;" parent="FCjUuwAnBqdYi5_U5490-21" vertex="1" connectable="0">
                     <mxGeometry x="0.0435" relative="1" as="geometry">
                         <mxPoint as="offset"/>
                     </mxGeometry>
@@ -966,7 +966,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="FCjUuwAnBqdYi5_U5490-32" value="6. Submit Txn Accumulator Proof" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#000000;" parent="FCjUuwAnBqdYi5_U5490-29" vertex="1" connectable="0">
+                <mxCell id="FCjUuwAnBqdYi5_U5490-32" value="5. Submit Txn Accumulator Proof" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#000000;" parent="FCjUuwAnBqdYi5_U5490-29" vertex="1" connectable="0">
                     <mxGeometry x="0.2982" relative="1" as="geometry">
                         <mxPoint as="offset"/>
                     </mxGeometry>
