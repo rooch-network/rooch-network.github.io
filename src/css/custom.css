@@ -90,6 +90,7 @@
 }
 :root .footer .container {
   background-color: var(--grey-1);
+  margin: 0px auto 30px auto;
 }
 :root a code {
   color: var(--ifm-code-color);
@@ -379,7 +380,7 @@ color: 'rgba(255,255,255,.6)';
 
 /* left align hamburger menu, override default style */
 .navbar--fixed-top {
- padding: 0 0 0.5rem 2rem;
+ padding: 0 2rem 0.5rem 2rem;
 }
 
 /* documentation headings override default style */
