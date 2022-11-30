@@ -60,4 +60,4 @@ Layer2 的方案中并不需要依赖异步的共识机制来确认交易执行�
 
 而 Rooch 提供了安全以及即时的确认交易的能力，以及低廉的交易费用，使得 P2P 网络中的节点可以在创建网络连接的同时，把它升级成为一个[状态通道](./04-technology/08-state-channel/index.md)，从而在 P2P 网络中实现[高频流式支付](./04-technology/08-state-channel/01-streaming-payment.md)。
 
-同时，Rooch 通过 Move 的状态的特性，支持在[状态通道中执行智能合约](./04-technology/08-state-channel/02-channel-contract.md)，简化 P2P 网络上的游戏以及 DApp 协议的设计。
+同时，Rooch 通过 Move 的状态特性，支持在[状态通道中执行智能合约](./04-technology/08-state-channel/02-channel-contract.md)，简化 P2P 网络上的游戏以及 DApp 协议的设计。
