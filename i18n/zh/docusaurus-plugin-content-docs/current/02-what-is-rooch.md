@@ -1,12 +1,12 @@
 # 什么是 Rooch？
 
-根据[为什么需要 Rooch?](01-why-rooch.md) 的结论，我们需要一个新的分层模块化方案，所以我们设计了 Rooch。
+根据[为什么需要 Rooch？](./01-why-rooch.md)的结论，我们需要一个新的分层模块化方案，所以我们设计了 Rooch。
 
 Rooch 是一个支持多链结算的执行层，用 Move 作为智能合约语言。它目标是连接多链生态与 Web3 DApp，为 Layer1 提供交易与状态的扩容，为 DApp 提供 Move 的执行环境与结算协议。
 
 ## 为 Layer1
 
-* 交易扩容：提供更快的交易执行和确认速度，以及更高的交易吞吐（更高的TPS）。
+* 交易扩容：提供更快的交易执行和确认速度，以及更高的交易吞吐（更高的 TPS）。
 * 状态扩容：将 Layer1 的状态迁移到执行层，释放智能合约占用的状态空间。
 
 ## 为 DApp
@@ -23,16 +23,16 @@ Rooch 通过模块化区块链的架构，充分利用当前多链生态的优�
 
 通常的模块化区块链的设计方案中，结算层和仲裁层由同一个 Layer1 承担，而 Rooch 将二者分开，从而实现了多链结算。
 
-每一层都可以根据不同 Layer1 的特性以及成本进行选择和调整，详细的技术方案请参看：[模块化区块链架构](04-technology/01-modular-blockchain-architecture/index.md)和[多链结算协议](./04-technology/01-modular-blockchain-architecture/01-multi-chain-settlement-protocol.md)。
+每一层都可以根据不同 Layer1 的特性以及成本进行选择和调整，详细的技术方案请参看：[模块化区块链架构](./04-technology/01-modular-blockchain-architecture/index.md)和[多链结算协议](./04-technology/01-modular-blockchain-architecture/01-multi-chain-settlement-protocol.md)。
 
-而我们有了这样一个多链结算的执行层，就可以安全的将多链资产聚合起来，为 DApp 提供丰富的资产以及统一的结算协议。
+而我们有了这样一个多链结算的执行层，就可以安全地将多链资产聚合起来，为 DApp 提供丰富的资产以及统一的结算协议。
 
 ### 为 Layer1 实现交易和状态扩容（Transaction and State Scaling for Layer1)
 
 当前主要的分层扩容方案中，主要关注对 Layer1 交易执行的扩容，并没有关注到 Layer1 的状态扩容问题。而我们认为状态爆炸问题未来一定会成为 Layer1 的瓶颈之一，Rooch 同时为 Layer1 提供交易和状态扩容。
 
 * 交易扩容：通过交易的[并行执行](./04-technology/05-parallel-transaction-execution.md)提供更高的吞吐量。
-* 状态扩容：Rooch 利用 Move 提供的特性可以将智能合约的状态，从 Layer1 迁移到执行层，从而为 Layer1 实现[状态扩容](04-technology/06-state-scaling.md)。
+* 状态扩容：Rooch 利用 Move 提供的特性可以将智能合约的状态，从 Layer1 迁移到执行层，从而为 Layer1 实现[状态扩容](./04-technology/06-state-scaling.md)。
 
 ### 无缝跨层互操作性（Seamless CrossLayer Interoperability）
 
@@ -40,25 +40,24 @@ Rooch 通过模块化区块链的架构，充分利用当前多链生态的优�
 
 在 Rooch 中，应用的智能合约可以依赖并调用部署在 Move Layer1 中的合约。Move Layer1 是 Rooch 的模块仓库层。
 
-这样可以将 DeFi 时代摸索出来的智能合约的可组合性，延伸到跨层的可组合性，保证[无缝跨层互操作性](04-technology/07-move-on-rooch/01-cross-layer-interoperability.md)。
+这样可以将 DeFi 时代摸索出来的智能合约的可组合性，延伸到跨层的可组合性，保证[无缝跨层互操作性](./04-technology/07-move-on-rooch/01-cross-layer-interoperability.md)。
 
 
 ### 安全以及即时的交易确认（Secure and Instant transaction confirmation)
 
-Layer2 的方案中并不需要依赖异步的共识机制，确认交易执行结果，所以它可以做到即时的交易确认。但在交易提交到共识以及数据可用层之前，用户需要信任排序服务器的执行结果，因为排序服务器可以通过丢弃用户的交易或者调整用户的交易顺序作弊而牟利。
+Layer2 的方案中并不需要依赖异步的共识机制来确认交易执行结果，所以它可以做到即时的交易确认。但在交易提交到共识以及数据可用层之前，用户需要信任排序服务器的执行结果，因为排序服务器可以通过丢弃用户的交易或者调整用户的交易顺序作弊而牟利。
 
-而 Rooch 通过提供[交易累加器证明](04-technology/03-transaction-accumulator-proofs.md)机制，保证如果排序服务器一旦改变交易顺序，最终会受到仲裁服务的惩罚，从而保证安全。
+而 Rooch 通过提供[交易累加器证明](./04-technology/03-transaction-accumulator-proofs.md)机制，保证如果排序服务器一旦改变交易顺序，最终会受到仲裁服务的惩罚，从而保证安全。
 
 同时，Rooch 也设计了随机轮换的[排序服务器的去中心化方案](./04-technology/04-decentralized-validator-network.md)，保证执行层的高可用，同时多个验证节点之间可以相互制约，保证欺诈行为可以及时得到挑战。
 
 
 ### 可执行智能合约的状态通道（SmartContract on State Channel）
 
-状态通道（State Channel） ，或者叫支付通道（Payment Channel），以闪电网络（Lightning Network ）为代表，是一种比较成熟的扩容方案。它的思路是双方各自抵押一定额度的资产在链上，然后在链下维护一个只包含参与方的局部共识状态，每次交易只需要参与方一起确认，所以可以支持通道中的高频交易。
+状态通道（State Channel），或者叫支付通道（Payment Channel），以闪电网络（Lightning Network）为代表，是一种比较成熟的扩容方案。它的思路是双方各自抵押一定额度的资产在链上，然后在链下维护一个只包含参与方的局部共识状态，每次交易只需要参与方一起确认，所以可以支持通道中的高频交易。
 
 但因为当前的状态通道都是架设在 Layer1 之上，创建通道的费用和时间成本都很高，无法直接用在 P2P 网络中。
 
 而 Rooch 提供了安全以及即时的确认交易的能力，以及低廉的交易费用，使得 P2P 网络中的节点可以在创建网络连接的同时，把它升级成为一个[状态通道](./04-technology/08-state-channel/index.md)，从而在 P2P 网络中实现[高频流式支付](./04-technology/08-state-channel/01-streaming-payment.md)。
 
 同时，Rooch 通过 Move 的状态的特性，支持在[状态通道中执行智能合约](./04-technology/08-state-channel/02-channel-contract.md)，简化 P2P 网络上的游戏以及 DApp 协议的设计。
-
