@@ -8,7 +8,7 @@ With the Layer2 Rollup experiment, we migrate the execution of transactions from
 
 The industry is still figuring out how to split the module layer in the modular blockchain. As shown in the figure below, it is split into an execution layer, a settlement layer, a consensus and a data availability layer. Where the settlement layer also takes on the role of arbitration.
 
-! [](https://docs.celestia.org/assets/images/monolithic-modular-d2ebbbc814c3338adf1cdd8b91eef221.png)
+![](https://docs.celestia.org/assets/images/monolithic-modular-d2ebbbc814c3338adf1cdd8b91eef221.png)
 > (https://docs.celestia.org/concepts/how-celestia-works/monolithic-vs-modular)
 
 Rooch improves on this by splitting the arbitration role from the settlement layer, thus can supporting multiple settlement layers. For the settlement protocol, please refer to:[Multi-chain settlement protocol](01-multi-chain-settlement-protocol.md)
@@ -17,7 +17,7 @@ Rooch improves on this by splitting the arbitration role from the settlement lay
 
 In the modular architecture of Rooch, the roles of the different layers are split as follows
 
-! [modular](/diagram/rooch-modular.svg)
+![modular](/diagram/rooch-modular.svg)
 
 * **Execution Layer**: executes smart contract transactions and keeps the state of the execution. The application mainly interoperates with the protocols and services provided by the execution layer.
 * **Module Repository Layer**: In Rooch, the application's contracts can depend on the Move contract modules deployed on Move Layer1. The Move Layer1 can be used as a Move module repository layer, thus ensuring the continuation of dependencies and combinations between applications. Current Move Layer1s, [Starcoin](https://github.com/starcoinorg/starcoin), [0L](https://github.com/OLSF/libra), [Aptos](https://github.com/aptos-labs/aptos-core), [Sui](https://github.com/MystenLabs/sui).
