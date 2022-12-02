@@ -27,7 +27,7 @@ Rooch 通过模块化区块链的架构，充分利用当前多链生态的优�
 
 而我们有了这样一个多链结算的执行层，就可以安全地将多链资产聚合起来，为 DApp 提供丰富的资产以及统一的结算协议。
 
-### 为 Layer1 实现交易和状态扩容（Transaction and State Scaling for Layer1)
+### 为 Layer1 实现交易和状态扩容（Transaction and State Scaling for Layer1）
 
 当前主要的分层扩容方案中，主要关注对 Layer1 交易执行的扩容，并没有关注到 Layer1 的状态扩容问题。而我们认为状态爆炸问题未来一定会成为 Layer1 的瓶颈之一，Rooch 同时为 Layer1 提供交易和状态扩容。
 
@@ -43,7 +43,7 @@ Rooch 通过模块化区块链的架构，充分利用当前多链生态的优�
 这样可以将 DeFi 时代摸索出来的智能合约的可组合性，延伸到跨层的可组合性，保证[无缝跨层互操作性](./04-technology/07-move-on-rooch/01-cross-layer-interoperability.md)。
 
 
-### 安全以及即时的交易确认（Secure and Instant transaction confirmation)
+### 安全以及即时的交易确认（Secure and Instant transaction confirmation）
 
 Layer2 的方案中并不需要依赖异步的共识机制来确认交易执行结果，所以它可以做到即时的交易确认。但在交易提交到共识以及数据可用层之前，用户需要信任排序服务器的执行结果，因为排序服务器可以通过丢弃用户的交易或者调整用户的交易顺序作弊而牟利。
 
