@@ -12,7 +12,7 @@ Also, Rooch supports [smart contract in state channel](./02-channel-contract.md)
 
 ## Representation of a state channel
 
-Each state channel is actually an RST maintained at the execution level by the participants of the channel, so it can also use the [state migration](./06-state-scaling.md) pattern to migrate state from the execution layer to the state channel.
+Each state channel is actually an RST maintained at the execution level by the participants of the channel, so it can also use the [state migration](../06-state-scaling.md) pattern to migrate state from the execution layer to the state channel.
 
 :::note
 
