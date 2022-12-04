@@ -1,4 +1,4 @@
-# Transaction Accumulation Proofs
+# Transaction Accumulator Proofs
 
 Transaction accumulator proofs provide proof that a transaction is in a certain position. Suppose the sequencer tampered with the order of a transaction or dropped a transaction. In that case, the user or verifier can initiate arbitration with the arbitration layer contract via the transaction accumulator proof.
 

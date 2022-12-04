@@ -1,4 +1,4 @@
-# 交易类累加器证明（Transaction Accumulation Proofs）
+# 交易类累加器证明（Transaction Accumulator Proofs）
 
 交易累加器证明可以提供交易在某个位置的证明，如果排序器篡改交易的顺序或者丢弃交易，用户或验证者可以通过交易累加器证明向仲裁层合约发起仲裁。
 
@@ -13,7 +13,5 @@ Rooch 中使用的累加器是默克尔累加器（MerkleAccumulator），一种
 当用户给排序器提交交易后，排序器返回给用户执行结果的同时，也返回该交易增加到累加器后，累加器的根以及该交易的位置证明，并带上自己的签名。
 
 累加器的根会记录在共识层，并通过共识层的校验。如果用户发现最后共识层记录的交易顺序和自己提交时到交易顺序不一致，可以通过交易累加器证明向仲裁层发起仲裁。
-
-
 
 ![secure txn confirmation](/diagram/rooch-secure-txn-confirmation.svg)

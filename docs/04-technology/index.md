@@ -12,7 +12,7 @@ The previous chapter gave the reader an overview of what Rooch is and what it do
 ## Decentralization and Security
 
 1. [fraud-proofs](02-fraud-proofs.md)
-2. [Transaction Accumulation Proofs](03-transaction-accumulator-proofs.md)
+2. [Transaction Accumulator Proofs](03-transaction-accumulator-proofs.md)
 3. [decentralized-validator-network](04-decentralized-validator-network.md)
 
 ## Scaling for Layer1

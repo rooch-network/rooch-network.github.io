@@ -12,7 +12,7 @@
 ### 去中心化与安全
 
 1. [欺诈证明](02-fraud-proofs.md)
-2. [交易累加证明](03-transaction-accumulator-proofs.md)
+2. [交易累加器证明](03-transaction-accumulator-proofs.md)
 3. [去中心化的验证者网络](04-decentralized-validator-network.md)
 
 ### 为 Layer1 扩容
