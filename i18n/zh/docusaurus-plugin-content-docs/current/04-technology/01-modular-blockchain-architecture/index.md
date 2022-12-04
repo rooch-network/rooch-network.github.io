@@ -1,6 +1,5 @@
 # 模块化区块链架构
 
-
 ## 为什么是模块化区块链？
 
 模块化区块链是 Layer2 Rollup 方案的自然演进结果。
@@ -10,9 +9,9 @@
 模块化区块链中的模块层如何拆分，业界尚在摸索中。如下图所示，拆分为执行层，结算层，共识和数据可用层。其中结算层也承担仲裁的职责。
 
 ![](https://docs.celestia.org/assets/images/monolithic-modular-d2ebbbc814c3338adf1cdd8b91eef221.png)
->（上图来自 https://docs.celestia.org/concepts/how-celestia-works/monolithic-vs-modular）
+> （上图来自 https://docs.celestia.org/concepts/how-celestia-works/monolithic-vs-modular）
 
-而 Rooch 在这个基础上进行改进，将仲裁职能从结算层拆分出来，从而支持多个结算层。关于结算协议请参看:[多链结算协议](01-multi-chain-settlement-protocol.md)
+而 Rooch 在这个基础上进行改进，将仲裁职能从结算层拆分出来，从而支持多个结算层。关于结算协议请参看：[多链结算协议](01-multi-chain-settlement-protocol.md)
 
 ## Rooch 的模块化分层
 
