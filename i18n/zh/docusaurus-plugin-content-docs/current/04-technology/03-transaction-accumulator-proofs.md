@@ -1,4 +1,4 @@
-# 交易类累加器证明（Transaction Accumulator Proofs）
+# 交易类累加器证明（Transaction Accumulation Proofs）
 
 交易累加器证明可以提供交易在某个位置的证明，如果排序器篡改交易的顺序或者丢弃交易，用户或验证者可以通过交易累加器证明向仲裁层合约发起仲裁。
 

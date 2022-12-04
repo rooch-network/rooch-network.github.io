@@ -23,7 +23,7 @@ Rooch takes benefit of the current multi-chain ecosystem through a modular block
 
 Normally, the modular blockchain solution has the settlement layer and arbitration layer in the same Layer1, but Rooch separates the two, thus enabling multi-chain settlement.
 
-Each layer can be selected and adapted according to the features and cost of different Layer1. For detailed technical solutions, please refer to: [modular blockchain architecture](04-technology/01-modular-blockchain-architecture/index.md) and [multi-chain settlement protocol](./04-technology/01-modular-blockchain-architecture/01-multi-chain-settlement-protocol.md).
+Each layer can be selected and adapted according to the features and cost of different Layer1. For detailed technical solutions, please refer to: [modular blockchain architecture](04-technology/01-modular-blockchain-architecture/index.md) and [multi-chain settlement protocol](04-technology/01-modular-blockchain-architecture/01-multi-chain-settlement-protocol.md).
 
 And with such an implementation layer for multi-chain computing, we can securely aggregate multi-chain assets to provide DApps with rich assets as well as a unified settlement protocol.
 
@@ -33,7 +33,7 @@ And with such an execution layer for multi-chain settlement, we can securely agg
 
 The current major layered scaling solutions mainly focus on scaling Layer1 transaction execution, but not on Layer1 state scaling. We believe that the state explosion problem will become one of the bottlenecks of Layer1 in the future, and Rooch provides both transaction and state scaling for Layer1.
 
-* Transaction scaling: through the [parallel transaction execution](./04-technology/05-parallel-transaction-execution.md) to provide higher throughput.
+* Transaction scaling: through the [parallel transaction execution](04-technology/05-parallel-transaction-execution.md) to provide higher throughput.
 * State Scaling: Rooch uses the features provided by Move to migrate the state of smart contract, from Layer1 to the execution layer, thus enabling [state scaling](04-technology/06-state-scaling.md) for Layer1.
 
 ### Seamless CrossLayer Interoperability
@@ -56,7 +56,7 @@ However, before the transaction is submitted to the consensus and data availabil
 
 And Rooch ensures security by providing [transaction accumulator proofs](04-technology/03-transaction-accumulator-proofs.md) mechanism to guarantee that if the sequencer ever changes the order of transactions, it will eventually be punished by the arbitration service.
 
-At the same time, Rooch also designed a randomly [rotating sequencer solution](./04-technology/04-decentralized-validator-network.md) to ensure high availability of the execution layer, while multiple validators can constrain each other to ensure that fraud can be challenged just in time.
+At the same time, Rooch also designed a randomly [rotating sequencer solution](04-technology/04-decentralized-validator-network.md) to ensure high availability of the execution layer, while multiple validators can constrain each other to ensure that fraud can be challenged just in time.
 
 
 ### SmartContract on State Channel
@@ -65,6 +65,6 @@ The State Channel, or Payment Channel, represented by the Lightning Network, is 
 
 However, current state channels are built on Layer1, the costs of Gas and time to create a channel is high and cannot be directly used in P2P networks. 
 
-Rooch provides secure and instant transaction confirmation and low transaction costs, allowing nodes in a P2P network to create a network connection and upgrade it to a [state channel](./04-technology/08-state-channel/index.md), thus enabling [high-frequency streaming payment](./04-technology/08-state-channel/01-streaming-payment.md) in P2P networks.
+Rooch provides secure and instant transaction confirmation and low transaction costs, allowing nodes in a P2P network to create a network connection and upgrade it to a [state channel](04-technology/08-state-channel/index.md), thus enabling [high-frequency streaming payment](04-technology/08-state-channel/01-streaming-payment.md) in P2P networks.
 
-Also, Rooch supports [smart contract in state channel](./04-technology/08-state-channel/02-channel-contract.md) through the feature of Move, simplifying the design of game and DApp protocol on P2P networks.
+Also, Rooch supports [smart contract in state channel](04-technology/08-state-channel/02-channel-contract.md) through the feature of Move, simplifying the design of game and DApp protocol on P2P networks.
