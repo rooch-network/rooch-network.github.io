@@ -6,8 +6,8 @@ The previous chapter gave the reader an overview of what Rooch is and what it do
 
 ## Multi-chain settlement Execution layer
 
-1. [modular blockchain architecture](./01-multi-chain-settlement-execution-layer/01-modular-blockchain-architecture.md): What is the role of Rooch as an execution layer in the modular blockchain, how it interacts with other modular layers, and the design of the technology options between different modular layers.
-2. [Multi-chain settlement protocol](./01-multi-chain-settlement-execution-layer/02-multi-chain-settlement-protocol.md): Multi-chain settlement as a key feature of Rooch, how its settlement protocol works, and the difference between multi-chain settlement protocol and cross-chain.
+1. [modular blockchain architecture](./01-modular-blockchain-architecture/index.md): What is the role of Rooch as an execution layer in the modular blockchain, how it interacts with other modular layers, and the design of the technology options between different modular layers.
+2. [Multi-chain settlement protocol](./01-modular-blockchain-architecture/01-multi-chain-settlement-protocol.md): Multi-chain settlement as a key feature of Rooch, how its settlement protocol works, and the difference between multi-chain settlement protocol and cross-chain.
 
 ## Decentralization and Security
 

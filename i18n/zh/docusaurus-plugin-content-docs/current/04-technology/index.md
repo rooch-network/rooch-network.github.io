@@ -6,8 +6,8 @@
 
 ### 多链结算的执行层
 
-1. [模块化区块链架构](./01-multi-chain-settlement-execution-layer/01-modular-blockchain-architecture.md)：Rooch 作为执行层，在模块化区块链中扮演什么角色，和其他模块层是如何交互的，以及不同的模块层之间的技术选型设计。
-2. [多链结算协议](./01-multi-chain-settlement-execution-layer/02-multi-chain-settlement-protocol.md)：多链结算作为 Rooch 的一个关键特性，它的结算协议是如何工作的，以及多链结算协议和跨链的区别。
+1. [模块化区块链架构](./01-modular-blockchain-architecture/index.md)：Rooch 作为执行层，在模块化区块链中扮演什么角色，和其他模块层是如何交互的，以及不同的模块层之间的技术选型设计。
+2. [多链结算协议](./01-modular-blockchain-architecture/01-multi-chain-settlement-protocol.md)：多链结算作为 Rooch 的一个关键特性，它的结算协议是如何工作的，以及多链结算协议和跨链的区别。
 
 ### 去中心化与安全
 
