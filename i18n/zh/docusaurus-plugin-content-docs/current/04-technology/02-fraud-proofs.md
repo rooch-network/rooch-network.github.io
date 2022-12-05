@@ -4,8 +4,12 @@
 
 ![modular](/diagram/rooch-omo.svg)
 
-:::note
+## OMO
 
-TODO OMO 的文档
-https://github.com/starcoinorg/omo
-:::
+OMO 是一个拥有单步状态证明能力的通用字节码模拟器：
+
+1. 为多链执行环境设计：拥有丰富的指令与系统调用实现。
+2. 多平台支持：对 CPU 与操作系统进行了抽象。
+3. 清晰准确的单步状态证明通用方案：拥有进程指令级别的运行状态。
+
+[文档](https://github.com/starcoinorg/omo/blob/main/docs/guidelines.md)
