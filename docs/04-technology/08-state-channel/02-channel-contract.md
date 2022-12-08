@@ -9,7 +9,14 @@ Thanks to Move's state model, we can execute application contracts deployed in L
 
 For example, if there is a game written in Move, two users can create a dedicated state channel for this game and play on the state channel. The state of the game is actually only stored in the state channel, and when the game is over, both players clear out and the state of the game is discarded (or backed up in the user's device, of course), while the game's smart contract is still in Layer1 or the Rooch execution layer.
 
-Related explores for applications on the state channel.
+### Our explorations of state channel application
 
-1. [Thor](https://github.com/starcoinorg/thor): Implement a WASM-based smart contract engine on Lightning Network, through a third-party arbitration service, players can play Gobang games on Lightning Network.
-2. [Gobang game on Move State Channel](https://github.com/starcoinorg/stargate/tree/master/demo/Gobang): a proof-of-concept solution for Move state channel that implements a Gobang game on the state channel, with the game implemented via Move.
+* [Thor](https://github.com/starcoinorg/thor): Implement a WASM-based smart contract engine on Lightning Network, through a third-party arbitration service, players can play Gobang games on Lightning Network.
+* [Gobang game on Move State Channel](https://github.com/starcoinorg/stargate/tree/master/demo/Gobang): a proof-of-concept solution for Move state channel that implements a Gobang game on the state channel, with the game implemented via Move.
+
+### P2P network protocols and applications
+
+* [IPFS: Peer-to-peer hypermedia protocol](https://github.com/ipfs/ipfs)
+* [Planet: Decentralized blogs and websites powered by IPFS and Ethereum Name System](https://github.com/Planetable/Planet)
+* [RingsNetwork: p2p network based on ICE](https://github.com/RingsNetwork/rings-node)
+* [Yjs: Yjs is a CRDT implementation on p2p network](https://github.com/yjs/yjs)

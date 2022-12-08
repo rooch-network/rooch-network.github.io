@@ -8,7 +8,17 @@
 
 比如有一个用 Move 写的五子棋游戏，两个用户可以为这个游戏创建一个专门的状态通道，在状态通道上下棋。游戏的状态实际上只保存在状态通道中，等游戏结束，双方清算，游戏的状态也会被丢弃掉（当然也可以备份在用户的设备中），而游戏的智能合约还在 Layer1 或者 Rooch 执行层中。
 
-状态通道上的应用的相关探索：
+### 我们在状态通道应用的探索
 
-1. [Thor](https://github.com/starcoinorg/thor): 在闪电网络上实现基于 WASM 的智能合约引擎，通过第三方仲裁服务，玩家可以在闪电网络上进行五子棋游戏。
-2. [Move 状态通道上的五子棋游戏](https://github.com/starcoinorg/stargate/tree/master/demo/Gobang)：一个 Move 状态通道的概念验证方案，实现了状态通道上的五子棋游戏，该游戏通过 Move 实现。
+* [Thor](https://github.com/starcoinorg/thor): 在闪电网络上实现基于 WASM 的智能合约引擎，通过第三方仲裁服务，玩家可以在闪电网络上进行五子棋游戏。
+* [Move 状态通道上的五子棋游戏](https://github.com/starcoinorg/stargate/tree/master/demo/Gobang)：一个 Move 状态通道的概念验证方案，实现了状态通道上的五子棋游戏，该游戏通过 Move 实现。
+
+### P2P 网络协议和应用
+
+* [IPFS: Peer-to-peer hypermedia protocol](https://github.com/ipfs/ipfs)
+* [Planet: Decentralized blogs and websites powered by IPFS and Ethereum Name System](https://github.com/Planetable/Planet)
+* [RingsNetwork: p2p network based on ICE](https://github.com/RingsNetwork/rings-node)
+* [Yjs: Yjs is a CRDT implementation on p2p network](https://github.com/yjs/yjs)
+
+
+
