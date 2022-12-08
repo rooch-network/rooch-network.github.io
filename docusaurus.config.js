@@ -8,7 +8,7 @@ const baseUrl = process.env.BASE_URL || '/';
 const config = {
   title: 'Rooch Network',
   tagline: 'a Move Execution layer connecting DApp to All Layer1',
-  url: 'https://rooch-network.github.io',
+  url: 'https://rooch.network',
   baseUrl: baseUrl,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
