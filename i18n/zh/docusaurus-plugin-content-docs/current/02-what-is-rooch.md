@@ -51,7 +51,6 @@ Layer2 的方案中并不需要依赖异步的共识机制来确认交易执行�
 
 同时，Rooch 也设计了随机轮换的[排序服务器的去中心化方案](04-technology/04-decentralized-validator-network.md)，保证执行层的高可用，同时多个验证节点之间可以相互制约，保证欺诈行为可以及时得到挑战。
 
-
 ### 可执行智能合约的状态通道（SmartContract on State Channel）
 
 状态通道（State Channel），或者叫支付通道（Payment Channel），以闪电网络（Lightning Network）为代表，是一种比较成熟的扩容方案。它的思路是双方各自抵押一定额度的资产在链上，然后在链下维护一个只包含参与方的局部共识状态，每次交易只需要参与方一起确认，所以可以支持通道中的高频交易。
