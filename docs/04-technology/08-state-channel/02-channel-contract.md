@@ -4,7 +4,7 @@ The current state channel solutions all only enable payments through the state c
 
 We believe that Web3 applications will be implemented as protocols over P2P, and running generic smart contracts on state channels will simplify the design of protocols at the P2P network layer, such as billing protocols and exchange protocols.
 
-Thanks to Move's state model, we can execute application contracts deployed in Layer1 or Rooch execution layers directly on the state channel, see [Cross-Layer Invocation](.../07-move-on-rooch/01-cross-layer-interoperability.md).
+Thanks to Move's state model, we can execute application contracts deployed in Layer1 or Rooch execution layers directly on the state channel, see [Cross-Layer Invocation](../07-move-on-rooch/01-cross-layer-interoperability.md).
 
 
 For example, if there is a game written in Move, two users can create a dedicated state channel for this game and play on the state channel. The state of the game is actually only stored in the state channel, and when the game is over, both players clear out and the state of the game is discarded (or backed up in the user's device, of course), while the game's smart contract is still in Layer1 or the Rooch execution layer.
