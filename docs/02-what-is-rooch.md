@@ -4,6 +4,8 @@ Following the conclusion of [Why Rooch?](01-why-rooch.md), we needed a new layer
 
 Rooch is an **execution layer** that supports **multi-chain settlement**, using **Move** as the smart contract language. It aims to connect the multi-chain ecosystem to Web3 DApp, provide **transaction and state scaling** for Layer1, provide the **execution environment** and **settlement protocol** for DApp.
 
+![overview](/diagram/rooch-overview.svg)
+
 ## For Layer1
 
 * Transaction Scaling: Provide faster transaction execution and confirmation, and higher transaction throughput (higher TPS).

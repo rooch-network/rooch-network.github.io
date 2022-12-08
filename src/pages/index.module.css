@@ -21,3 +21,9 @@
   align-items: center;
   justify-content: center;
 }
+
+.heroImage {
+  width: 700px;
+  background: #fff;
+  padding: 10px;
+}
