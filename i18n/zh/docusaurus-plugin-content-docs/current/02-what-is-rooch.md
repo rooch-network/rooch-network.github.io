@@ -4,6 +4,7 @@
 
 Rooch 是一个支持多链结算的执行层，用 Move 作为智能合约语言。它目标是连接多链生态与 Web3 DApp，为 Layer1 提供交易与状态的扩容，为 DApp 提供 Move 的执行环境与结算协议。
 
+![overview](/diagram/rooch-overview.svg)
 ## 为 Layer1
 
 * 交易扩容：提供更快的交易执行和确认速度，以及更高的交易吞吐（更高的 TPS）。
