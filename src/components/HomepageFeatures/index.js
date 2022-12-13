@@ -29,7 +29,7 @@ const FeatureList = [
     link: './docs/technology',
     description: (
       <>
-        Learn how Rooch implements multi-chain settlement, how to ensures decentralization and security, how to supports applications on P2P networks, and more.
+        Learn how Rooch implements multi-chain settlement, how to ensure decentralization and security, how to support applications on P2P networks, and more.
       </>
     ),
   },
