@@ -29,3 +29,8 @@ Open a Markdown file in Vim / Neovim, and execute:
 ## Using
 
 - [markmap](https://github.com/markmap/markmap)
+
+<!-- ## Explain -->
+
+<!-- - rooch.md -->
+<!--   - the mind map in the context of articles -->

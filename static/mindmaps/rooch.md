@@ -1,8 +1,9 @@
 ---
 markmap:
-  <!-- colorFreezeLevel: 0 -->
-  <!-- initialExpandLevel: 2 -->
+  colorFreezeLevel: 0
+  initialExpandLevel: 3
 ---
+
 # Rooch
 
 ## 是什么
@@ -136,9 +137,7 @@ markmap:
 
 ### 模块化区块链
 
-#### Why
-
-- L2 Rollup 自然演进
+#### L2 Rollup 自然演进
 
 #### L2 Rollup
 
@@ -160,6 +159,22 @@ markmap:
 - 仲裁层
 - 链间通信层
 
+### 多链结算协议
+
+#### 结算层
+
+- 位于 L1 和 执行层之间
+- 回滚交易
+
+#### [结算层与仲裁层通讯协议图](https://rooch.network/zh/assets/images/rooch-multi-chain-settlement-2bcfe2fb4f4b28b0e9a73e1890767ee6.svg)
+
+#### 多链结算与跨链的区别
+
+- 多链结算
+  - 更安全
+  - 继承仲裁保护
+  - 通用跨层方案
+
 ### 欺诈证明
 
 #### [OMO](https://rooch.network/zh/assets/images/rooch-omo-50d659ffdd3c6dc7d0ce214221792776.svg)：通用字节码模拟器
@@ -170,8 +185,8 @@ markmap:
   - 通用
   - 清晰
   - 准确
+- 进程指令级别
   - 运行状态
-    - 进程指令级别
 
 #### 交互式仲裁
 
@@ -185,7 +200,7 @@ markmap:
 
 #### 原理
 
-- 默克尔累加器
+- [默克尔累加器](https://cookbook.starcoin.org/zh/docs/concepts/accumulator/)
 
 #### [交互流程](https://rooch.network/zh/assets/images/rooch-secure-txn-confirmation-eb608efc0447e6f1c24799dc65f6c191.svg)
 
@@ -223,13 +238,12 @@ markmap:
     - 数据可用层
   - 执行
   - 校验
-    - 申请仲裁
+  - 申请仲裁
 
 #### 去中心化方案
 
 - L2 共识
   - 保证交易顺序
-  - f空间
 - 设计思路
   - 抵押 Token 注册为验证者
   - 每个 Epoch 随机选择验证者作为排序器
@@ -278,11 +292,103 @@ markmap:
 
 #### [RST](https://rooch.network/zh/assets/images/rooch-state-move-500da3f0c022e7eb642efdb17ac25277.svg)
 
+- Rollup State Tree
+- 稀疏默克尔树
+- 不存在证明
+  - 插入
+- 存在证明
+  - 更新
+  - 删除
+- 使用场景
+  - 状态存储方案
+  - 状态迁移方案
+- Move 链的状态迁移
+  - 自由状态
+- EVM 链的状态迁移
+  - 每个合约维护一个 RST
 
 ### 为什么是 Move
 
+#### 优势
+
+- 平台无关
+- 线性类型
+- 面向资源
+- 账户抽象
+- 无状态合约
+- 并行执行友好
+
+#### [MoveOS](https://rooch.network/zh/assets/images/rooch-moveos-217eb2afcd791c8d90a4540a71615692.svg)
+
+- 兼容多链的执行环境
+
+#### Rooch Framework
+
+- 账户抽象
+- 跨层合约
+
+#### 跨层互操作性
+
+- 消息通信
+- 合约依赖
+  - Move Layer1
+  - 统一 Move 生态
+- 方法调用
+  - 没有读取链上状态
+  - 读取链上状态
+  - 修改链上状态
+- 状态类型的延续性
+  - 降低用户认知成本
+  - 在 Solidity 模拟 Move 状态
+
+#### 账户抽象
+
+- 用于支持多链结算
+- 多链地址映射
+  - Rooch 账户 : 多链账户 = 1 : n
+- 多链状态映射
+  - 保存用户状态
+
+#### Rooch Framework
+
+- Move 实现的基础框架
+- 模块
+  - 账户模块
+  - 状态迁移模块
+  - Layer1 兼容模块
+
 ### P2P 网络上的状态通道
 
+- [Rooch 与 P2P](https://rooch.network/zh/assets/images/rooch-p2p-92625200fe69329ede8221118eb0d5e7.svg)
+  - 简化 P2P 协议实现
+  - 高频流式支付
+- 状态通道的表达
+  - 开启
+  - 使用
+  - 关闭
+    - 协作式
+    - 超时
+    - 欺诈
+- 流式支付
+  - 网络带宽只首先于参与方
+  - 细粒度付费
+    - 字节
+    - 请求
+  - 降低信任风险
+  - 按需付费
+- 智能合约
+  - 通用
+  - 可执行
+  - 简化 P2P 协议设计
+  - 探索
+    - 五子棋游戏
+
 ## 使用场景
+
+### DEX/Swap/DeFi
+
+### 多链资产初始化发行
+
+### 状态通道应用
 
 ## L2 项目概览
