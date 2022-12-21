@@ -78,8 +78,8 @@ const config = {
         logo: {
           alt: 'Rooch Network',
           href: '/',
-          src: '/img/logo-original.svg',
-          srcDark: '/img/logo-white.svg',
+          src: '/img/rooch_black_combine.svg',
+          srcDark: '/img/rooch_white_combine.svg',
         },
         items: [
           {
