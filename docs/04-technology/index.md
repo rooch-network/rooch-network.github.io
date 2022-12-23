@@ -28,7 +28,7 @@ The previous chapter gave the reader an overview of what Rooch is and what it do
 4. [Rooch Move Framework](07-move-on-rooch/03-rooch-framework.md)
 5. [MoveOS](07-move-on-rooch/04-moveos.md)
 
-## Status channels
+## State channels
 
 1. [State channel on P2P network](08-state-channel/index.md)
 2. [Streaming payments](08-state-channel/01-streaming-payment.md)
