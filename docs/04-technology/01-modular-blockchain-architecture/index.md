@@ -4,7 +4,7 @@
 
 Modular blockchain is a natural evolution of the Layer2 Rollup solution.
 
-With the Layer2 Rollup experiment, we migrate the execution of transactions from Layer1 to Layer2, where only transactions are recorded on Layer1 to guarantee data availability, and no transactions are executed on Layer2. So it is natural to think that data availability should can be guaranteed in other ways, and it is not necessary to Rollup transactions to the original Layer1.
+With the Layer2 Rollup experiment, we migrate the execution of transactions from Layer1 to Layer2, where only transactions are recorded on Layer1 to guarantee data availability, and no transactions are executed on Layer1. So it is natural to think that data availability should can be guaranteed in other ways, and it is not necessary to Rollup transactions to the original Layer1.
 
 The industry is still figuring out how to split the module layer in the modular blockchain. As shown in the figure below, it is split into an execution layer, a settlement layer, a consensus and a data availability layer. Where the settlement layer also takes on the role of arbitration.
 
