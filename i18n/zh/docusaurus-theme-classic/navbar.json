@@ -3,8 +3,8 @@
     "message": "Documents",
     "description": "Navbar item with label Documents"
   },
-  "item.label.GitHub": {
-    "message": "GitHub",
-    "description": "Navbar item with label GitHub"
+  "item.label.Blog": {
+    "message": "Blog",
+    "description": "Navbar item with label Blog"
   }
 }
