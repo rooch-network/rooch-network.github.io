@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkrooch_network=self.webpackChunkrooch_network||[]).push([[535],{5641:function(e){e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Hello Rooch","permalink":"/zh/blog/2022/11/27/hello-rooch"}]}')}}]);
