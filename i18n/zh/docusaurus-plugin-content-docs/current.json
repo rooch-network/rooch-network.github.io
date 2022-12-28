@@ -1,0 +1,26 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.技术架构概览": {
+    "message": "技术架构概览",
+    "description": "The label for category 技术架构概览 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.模块化区块链架构": {
+    "message": "模块化区块链架构",
+    "description": "The label for category 模块化区块链架构 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.为什么是 Move？": {
+    "message": "为什么是 Move？",
+    "description": "The label for category 为什么是 Move？ in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.P2P 网络上的状态通道": {
+    "message": "P2P 网络上的状态通道",
+    "description": "The label for category P2P 网络上的状态通道 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Miscellaneous": {
+    "message": "Miscellaneous",
+    "description": "The label for category Miscellaneous in sidebar tutorialSidebar"
+  }
+}

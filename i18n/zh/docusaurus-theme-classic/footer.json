@@ -1,11 +1,19 @@
 {
-  "link.title.Docs": {
-    "message": "Docs",
-    "description": "The title of the footer links column with title=Docs in the footer"
+  "link.title.Rooch Network": {
+    "message": "Rooch Network",
+    "description": "The title of the footer links column with title=Rooch Network in the footer"
   },
   "link.title.More": {
     "message": "More",
     "description": "The title of the footer links column with title=More in the footer"
+  },
+  "link.item.label.Home": {
+    "message": "Home",
+    "description": "The label of footer link with label=Home linking to /"
+  },
+  "link.item.label.What is Rooch?": {
+    "message": "What is Rooch?",
+    "description": "The label of footer link with label=What is Rooch? linking to /docs/what-is-rooch"
   },
   "link.item.label.Documents": {
     "message": "Documents",
@@ -14,6 +22,14 @@
   "link.item.label.GitHub": {
     "message": "GitHub",
     "description": "The label of footer link with label=GitHub linking to https://github.com/rooch-network"
+  },
+  "link.item.label.Blog": {
+    "message": "Blog",
+    "description": "The label of footer link with label=Blog linking to /blog/"
+  },
+  "link.item.label.Contact Us": {
+    "message": "Contact Us",
+    "description": "The label of footer link with label=Contact Us linking to /contact-us/"
   },
   "copyright": {
     "message": "Copyright © 2022 Rooch Network. Built with Docusaurus.",
