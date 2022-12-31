@@ -5,7 +5,7 @@ slug: /
 
 Rooch is the first **Move Execution layer** that connects Multi-Chains to Web3. It provides **scalability** for public chains, **Move execution environment** and **settlement protocol** for Web3 applications.
 
-The name **Rooch** is a shortcut for **Root & Branch**, which was the first name of a magazine, also used for a beer. We thought the name was a good representation of the Rooch's position in the ecosystem. 
+The name **Rooch** is a shortcut for **Root & Branch**. We thought the name was a good representation of the Rooch's position in the ecosystem. 
 
 ![root-branch](/diagram/rooch-root-branch.svg)
 
