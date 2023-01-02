@@ -13,6 +13,6 @@ Rooch 是一个多链的**执行层**，目标是连接**多个公链**与 **Web
 
 链（Chain）是根（Root），应用（DApp）是枝（Branch），Rooch 将 Root 和 Branch 连接起来。
 
-1. [为什么需要 Rooch？](01-why-rooch.md)这篇文档从当前公链的扩容方案以及 Web3 应用的需求角度，解答了这个问题。
-2. [Rooch 是什么？](02-what-is-rooch.md)这篇文档阐述了 Rooch 的关键特性。
-3. 如果想进一步了解 Rooch 是如何实现的，可以阅读[技术架构](04-technology/index.md)章节，了解它的技术实现。
+1. [为什么需要 Rooch？](01-why-rooch.md): 从公链的扩容以及 Web3 应用的需求角度解答这个问题
+2. [Rooch 是什么？](02-what-is-rooch.md): Rooch 的关键特性
+3. [技术架构](04-technology/index.md): Rooch 的技术实现细节
