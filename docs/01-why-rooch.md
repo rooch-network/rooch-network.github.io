@@ -1,12 +1,11 @@
 # Why Rooch
 
+After all these years of development, the blockchain industry has achieved initial proof in the fields of Cryptocurrency and DeFi. The prototypes of applications are already present, but how to make blockchain technology adopted by massive users is the most important challenge that the industry needs to solve at present.
 
-After all these years of development, the blockchain industry has achieved initial proof in the fields of Cryptocurrency and DeFi, and the prototypes of applications are already present, but how to make blockchain technology adopted by massive users is the most important challenge that the industry needs to solve at present.
-
-We can deconstruct the challenge into two questions:
+We further dismantle the challenge into two questions:
 
 1. How can blockchain support massive users? That is the blockchain scaling problem.
-2. How can the blockchain support the building of applications? That is the relationship between blockchain and Web3 application.
+2. How can the blockchain support the construction of applications? That is the relationship between blockchain and Web3 application.
 
 ## How can blockchain support massive users
 

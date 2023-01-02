@@ -9,7 +9,7 @@ Rooch is the first **Move Execution layer** that connects Multi-Chains to Web3. 
 
 ![root-branch](/diagram/rooch-root-branch.svg)
 
-* **Chain** is root, **DApp** is branch, **Rooch** connects **Root** and **Branch**.
+* **Chain** is Root, **DApp** is Branch, **Rooch** connects **Root** and **Branch**.
 
 ## Quick Start
 
