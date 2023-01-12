@@ -4,5 +4,5 @@ title: Contact Us
 
 # Contact Us
 
-* Email: contract@rooch.network
+* Email: contact@rooch.network
 * Telegram group: https://t.me/roochnetwork

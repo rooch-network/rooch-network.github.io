@@ -1,8 +1,8 @@
-# Modular Blockchain Architecture
+# Modular Architecture
 
-## Why Modular Blockchain?
+## Why Modular?
 
-Modular blockchain is a natural evolution of the Layer2 Rollup solution.
+Modular architecture is a natural evolution of the Layer2 Rollup solution.
 
 With the Layer2 Rollup experiment, we migrate the execution of transactions from Layer1 to Layer2, where only transactions are recorded on Layer1 to guarantee data availability, and no transactions are executed on Layer1. So it is natural to think that data availability should can be guaranteed in other ways, and it is not necessary to Rollup transactions to the original Layer1.
 
@@ -26,3 +26,11 @@ In the modular architecture of Rooch, the roles of the different layers are spli
 * **Settlement layer**: performs [state migration](../06-state-scaling.md) and asset settlement between Layer1 and the execution layer. Settlement period depends on the final deterministic period of the arbitration layer. Multiple Layer1s can be supported simultaneously as settlement layer, including the previously mentioned Move public chain and EVM public chains such as Ethereum and BSC, and all Layer1s with Turing-complete smart contracts will be supported in the future.
 * **Arbitration layer**: executes fraud proofs and makes arbitrations. In the Optimistic scenario, the Arbitration layer waits for the challenge period to pass. If no challenge occurs, it considers the execution layer's transactions to have reached finality and notifies the settlement layer for settlement.
 * **CrossChain Message Layer**: Since the above different layers will be on different Layer1, an inter-chain communication mechanism between Layer1 is needed to collaborate to complete the settlement as well as arbitration.
+
+## Modular combination
+
+Based on modular architecture, Rooch provides different combinations to deal with different application scenarios:
+
+1. Rooch Ethereum Layer2: Rooch(Execution) + Layer1s(Settlement) + Ethereum(Arbitration) + DA
+2. XChain Modular DApp: Rooch(Execution) + XChain(Settlement + Arbitration) + DA
+3. Rooch Layer3 Modular DApp: Rooch(Execution) + Rooch Layer2(Settlement + Arbitration) + DA

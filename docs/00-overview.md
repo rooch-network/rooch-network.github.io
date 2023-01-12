@@ -3,9 +3,9 @@ slug: /
 ---
 # Overview 
 
-Rooch is the first **Move Execution layer** that connects Multi-Chains to Web3. It provides **scalability** for public chains, **Move execution environment** and **settlement protocol** for Web3 applications.
+Rooch is a **modular layer2** that supports multi-chain settlement, using Move as the smart contract language and security guaranteed by Ethereum. It aims to connect the multi-chain ecosystem with Web3, provides **scalability** for public chains, **Move execution environment** and **settlement protocol** for Web3 DApp.
 
-The name **Rooch** is a shortcut for **Root & Branch**, which was the first name of a magazine, also used for a beer. We thought the name was a good representation of the Rooch's position in the ecosystem. 
+The name **Rooch** is a shortcut for **Root & Branch**. We thought the name was a good representation of the Rooch's position in the ecosystem.
 
 ![root-branch](/diagram/rooch-root-branch.svg)
 
