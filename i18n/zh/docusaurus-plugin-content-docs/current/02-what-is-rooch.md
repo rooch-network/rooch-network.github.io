@@ -24,7 +24,7 @@ Rooch 通过模块化的设计，充分利用当前多链生态的优势，连�
 
 通常的模块化区块链的设计方案中，结算层和仲裁层由同一个 Layer1 承担，而 Rooch 将二者分开，从而实现了多链结算。
 
-每一层都可以根据不同 Layer1 的特性以及成本进行选择和调整，详细的技术方案请参看：[模块化架构](04-technology/01-modular-blockchain-architecture/index.md)和[多链结算协议](04-technology/01-modularblockchain-architecture/01-multi-chain-settlement-protocol.md)。
+每一层都可以根据不同 Layer1 的特性以及成本进行选择和调整，详细的技术方案请参看：[模块化架构](04-technology/01-modular-blockchain-architecture/index.md)和[多链结算协议](04-technology/01-modular-blockchain-architecture/01-multi-chain-settlement-protocol.md)。
 
 而我们有了这样一个多链结算的 Layer2，就可以安全地将多链资产聚合起来，为 DApp 提供丰富的资产以及统一的结算协议。
 
