@@ -5,9 +5,9 @@ slug: /
 
 # 概览
 
-Rooch 是一个多链的**执行层**，目标是连接**多个公链**与 **Web3 应用**，为公链提供**扩展能力**，为 Web3 应用提供 **Move 执行环境**以及**结算协议**。
+Rooch 是一个支持多链结算的**模块化的 Layer2**，使用 Move 作为智能合约语言，安全受 Ethereum 保证。目标是连接多链生态与 Web3 应用，为公链提供**扩展能力**，为 Web3 应用提供 **Move 执行环境**以及**结算协议**。
 
-**Rooch** 名称来自于 **Root & Branch** 的缩写。Root & Branch 最早是一个杂志名称，后来一个啤酒也用了这个名字。我们认为它很好的表达了 Rooch 在生态系统中的位置。
+**Rooch** 名称来自于 **Root & Branch** 的缩写。我们认为它很好的表达了 Rooch 在生态系统中的位置。
 
 ![root-branch](/diagram/rooch-root-branch.svg)
 

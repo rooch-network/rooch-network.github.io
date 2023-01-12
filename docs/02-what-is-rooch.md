@@ -1,8 +1,9 @@
 # What is Rooch
 
-Following the conclusion of [Why Rooch?](01-why-rooch.md), we needed a new layered modular blockchain solution, so we designed Rooch.
+Following the conclusion of [Why Rooch?](01-why-rooch.md), 
+we need a new infrastructure to support the building of applications in the blockchain ecosystem, so we designed Rooch.
 
-Rooch is the first **execution layer** that supports **multi-chain settlement**, using **Move** as the smart contract language. It aims to connect the multi-chain ecosystem to Web3 DApp, provide **transaction and state scaling** for Layer1, and provide the **execution environment** and **settlement protocol** for DApp.
+Rooch is a **modular layer2** that supports multi-chain settlement, using Move as the smart contract language and security guaranteed by Ethereum. It aims to connect the multi-chain ecosystem with Web3, provides **scalability** for public chains, **Move execution environment** and **settlement protocol** for Web3 DApp.
 
 ![overview](/diagram/rooch-overview.svg)
 
@@ -15,41 +16,30 @@ Rooch is the first **execution layer** that supports **multi-chain settlement**,
 
 * Aggregate multi-chain assets.
 * Provide secure and instant confirmed high-speed execution environment.
-* Provide a state-channel-based settlement protocol on P2P networks.
+* Provide Modular DApp framework and state-channel-based settlement protocol on P2P networks.
 
 ## Key Features
 
-### Multi-chain settlement Execution Layer
+### Ethereum Layer2 with multi-chain settlement
 
-Rooch takes benefit of the current multi-chain ecosystem through a modular blockchain architecture that connects multiple Layer1 settlement layers and focuses on building an execution layer. 
+Rooch takes benefit of the current multi-chain ecosystem through a modular architecture that connects multiple Layer1 as settlement layers and the arbitration layer (Ethereum) guarantees security. 
 
 Normally, the modular blockchain solution has the settlement layer and arbitration layer in the same Layer1, but Rooch separates the two, thus enabling multi-chain settlement.
 
 Each layer can be selected and adapted according to the features and cost of different Layer1. For detailed technical solutions, please refer to: [modular blockchain architecture](04-technology/01-modular-blockchain-architecture/index.md) and [multi-chain settlement protocol](04-technology/01-modular-blockchain-architecture/01-multi-chain-settlement-protocol.md).
 
-And with such an implementation layer for multi-chain computing, we can securely aggregate multi-chain assets to provide DApps with rich assets as well as a unified settlement protocol.
-
-And with such an execution layer for multi-chain settlement, we can securely aggregate multi-chain assets to DApps, provide a unified settlement protocol to DApps.
+With such a multi-chain settlement Layer2, we can securely aggregate multi-chain assets and provide DApp with rich assets and a unified settlement protocol.
 
 ### Transaction and State Scaling for Layer1
 
 The current major layered scaling solutions mainly focus on scaling Layer1 transaction execution, but not on Layer1 state scaling. We believe that the state explosion problem will become one of the bottlenecks of Layer1 in the future, and Rooch provides both transaction and state scaling for Layer1.
 
-* Transaction scaling: through the [parallel transaction execution](04-technology/05-parallel-transaction-execution.md) to provide higher throughput.
+* Transaction scaling: through [parallel transaction execution](04-technology/05-parallel-transaction-execution.md) to provide higher throughput.
 * State Scaling: Rooch uses the features provided by Move to migrate the state of smart contract, from Layer1 to the execution layer, thus enabling [state scaling](04-technology/06-state-scaling.md) for Layer1.
 
-### Seamless CrossLayer Interoperability
+### Performance & Security improved on Layer2
 
-In current layered solution, cross-layer interaction is basically implemented only for message communication. We believe that cross-layer contract invocation are more developer-friendly and helpful for building a cross-layer smart contract ecosystem.
-
-In Rooch, an application's smart contracts can depend on and invoke contracts deployed in Move Layer1. The Move Layer1 is the module repository layer of Rooch.
-
-This ensures the continuity of dependencies and combinations between applications, and extends the combinability of smart contracts figured out in the DeFi era to cross-layer combinability, enabling seamless [cross-layer interoperability](04-technology/07-move-on-rooch/01-cross-layer-interoperability.md). .
-
-This bring the composability of smart contracts that was figured out in the DeFi era to cross-layer composability, ensuring [seamless cross-layer interoperability](04-technology/07-move-on-rooch/01-cross-layer-interoperability.md).
-
-
-### Secure and Instant transaction confirmation
+Rooch provides higher performance through [parallel transaction execution](04-technology/05-parallel-transaction-execution.md), and also improves security.
 
 The Layer2 solution does not rely on an asynchronous consensus mechanism to confirm transaction execution results, so it can achieve instant transaction confirmation. 
 
@@ -61,12 +51,17 @@ And Rooch ensures security by providing [transaction accumulator proofs](04-tech
 At the same time, Rooch also designed a randomly [rotating sequencer solution](04-technology/04-decentralized-validator-network.md) to ensure high availability of the execution layer, while multiple validators can constrain each other to ensure that fraud can be challenged just in time.
 
 
-### SmartContract on State Channel
+### Modular DApp & P2P DApp for Layer3
 
-The State Channel, or Payment Channel, represented by the Lightning Network, is a proven scaling solution. The idea is that each participant pledges a certain amount of assets on the chain, and then maintains a local consensus state off-chain that contains only the participants, and each transaction only needs to be confirmed by the participants together，so it can support high frequency transactions in the channel.
+Rooch provides two ways to build applications at Layer3:
 
-However, current state channels are built on Layer1, the costs of Gas and time to create a channel is high and cannot be directly used in P2P networks. 
+1. Modular DApp: Developers can use Rooch as a modular DApp framework, build dedicated modular DApp based on the Rooch framework, and use Rooch Layer2 as the settlement layer.
+2. P2P state channel DApp: Build DApp on a P2P network, and Rooch Layer2 provides a state-channel-based settlement protocol.
 
-Rooch provides secure and instant transaction confirmation and low transaction costs, allowing nodes in a P2P network to create a network connection and upgrade it to a [state channel](04-technology/08-state-channel/index.md), thus enabling [high-frequency streaming payment](04-technology/08-state-channel/01-streaming-payment.md) in P2P networks.
+## Summarize
 
-Also, Rooch supports [smart contract in state channel](04-technology/08-state-channel/02-channel-contract.md) through the feature of Move, simplifying the design of game and DApp protocol on P2P networks.
+The main value Rooch brings to the blockchain ecosystem:
+
+1. More Scaling For Layer1
+2. High performance & security On Layer2
+3. More Possibility For Layer3

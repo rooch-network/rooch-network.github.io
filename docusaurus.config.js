@@ -7,7 +7,7 @@ const baseUrl = process.env.BASE_URL || '/';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Rooch Network',
-  tagline: 'the first Move Execution layer connecting DApp to All Layer1',
+  tagline: 'A modular Layer2 network on Ethereum with multi-chain settlement, powered by Move Language',
   url: 'https://rooch.network',
   baseUrl: baseUrl,
   onBrokenLinks: 'throw',

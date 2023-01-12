@@ -39,22 +39,10 @@ There are several major directions to explore how decentralized applications (DA
 2. The application is implemented through a dedicated application chain, which implements the application logic on the chain and contains a internal consensus mechanisms.
 3. The application is built on a P2P network and is represented as a decentralized protocol.
 
-All applications in Option 1 run in the same global smart contract world, with no isolation between applications, easily ensuring **composability**, but competing for the capacity of the same Layer1.
+Option 1，all applications run in the same global smart contract world, with no isolation between applications, easily ensuring **composability**, but competing for the throughput and state capacity of the same Layer1.
 
-Option 2 achieves application isolation, but has higher startup costs and still has Layer1 scaling problem.
+Option 2 achieves application isolation, but it has to be responsible for security by itself, and the startup costs are higher. At the same time, it still has Layer1 scaling problem.
 
-We believe that the Web3 application will be built out as Option 3, and there are two difficulties in combining P2P networks and chains:
+Option 3 has a mature application pattern and no scaling challenges, but how to combine with the chain is a challenge.
 
-1. The asynchronous confirmation mechanism of Layer1 makes it difficult to provide settlement capability to P2P networks directly.
-2. In a multi-chain ecosystem, applications built directly on the chain will cause fragmentation of the application ecosystem.
-
-### Solution
-
-Based on the above discussion, we found that the market requires such a protocol:
-
-1. It is a layered modular scaling solution.
-2. It can connect multiple Layer1 to take full benefit of the multi-chain ecosystem and provide scaling capacity for multiple Layer1. 
-3. It bridges the gap between multiple chains through a layer of abstraction to provide a unified execution environment and settlement protocol for Web3 applications.
-
-And this is the goal of **Rooch**.
-
+Therefore, how to support the building of DApp in the blockchain ecosystem, realize the isolation of applications, and reduce the startup cost of applications is the main task of the current Web3 infrastructure, which is also the goal of Rooch.
