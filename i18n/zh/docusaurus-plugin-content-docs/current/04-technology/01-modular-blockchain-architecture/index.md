@@ -8,7 +8,7 @@
 
 模块化区块链中的模块层如何拆分，业界尚在摸索中。如下图所示，拆分为执行层，结算层，共识和数据可用层。其中结算层也承担仲裁的职责。
 
-![](https://docs.celestia.org/assets/images/monolithic-modular-d2ebbbc814c3338adf1cdd8b91eef221.png)
+![](https://docs.celestia.org/assets/images/monolithic-modular-c078dd91fd68b8e6a168ca8bbccfd3d8.png)
 > （上图来自 https://docs.celestia.org/concepts/how-celestia-works/monolithic-vs-modular）
 
 而 Rooch 在这个基础上进行改进，将仲裁职能从结算层拆分出来，从而支持多个结算层。关于结算协议请参看：[多链结算协议](01-multi-chain-settlement-protocol.md)
@@ -17,7 +17,7 @@
 
 在 Rooch 的模块化架构中，不同的层的职能划分：
 
-![modular](/static/diagram/rooch-modular.svg)
+![modular](/diagram/rooch-modular.svg)
 
 * **执行层（Execution）**：执行智能合约交易，并保存执行的状态。应用主要和执行层提供的协议和服务交互。
 * **模块仓库层（Module Repository）**：在 Rooch 中，应用的合约可以依赖部署在 Move Layer1 上的 Move 合约模块，Move Layer1 可以作为 Move 模块仓库层，这样可以保证应用之间的依赖和组合的延续性。当前 Move Layer1，[Starcoin](https://github.com/starcoinorg/starcoin)，[Aptos](https://github.com/aptos-labs/aptos-core)，[Sui](https://github.com/MystenLabs/sui)。
