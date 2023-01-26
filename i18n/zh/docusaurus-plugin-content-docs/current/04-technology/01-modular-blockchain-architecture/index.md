@@ -17,7 +17,7 @@
 
 在 Rooch 的模块化架构中，不同的层的职能划分：
 
-![modular](/diagram/rooch-modular.svg)
+![modular](/static/diagram/rooch-modular.svg)
 
 * **执行层（Execution）**：执行智能合约交易，并保存执行的状态。应用主要和执行层提供的协议和服务交互。
 * **模块仓库层（Module Repository）**：在 Rooch 中，应用的合约可以依赖部署在 Move Layer1 上的 Move 合约模块，Move Layer1 可以作为 Move 模块仓库层，这样可以保证应用之间的依赖和组合的延续性。当前 Move Layer1，[Starcoin](https://github.com/starcoinorg/starcoin)，[Aptos](https://github.com/aptos-labs/aptos-core)，[Sui](https://github.com/MystenLabs/sui)。

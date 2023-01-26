@@ -2,7 +2,7 @@
 
 通过前一个章节，读者大概理解了 Rooch 是什么，以及要做什么。本章节主要用来解答“Rooch 是如何做到的”这个问题。
 
-![overview](/diagram/rooch-overview.svg)
+![overview](/static/diagram/rooch-overview.svg)
 
 ### 多链结算的执行层
 

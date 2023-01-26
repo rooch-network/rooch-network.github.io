@@ -14,7 +14,7 @@
 
 既然我们实现了跨层的合约依赖，当应用运行在执行层或者状态通道的时候，就可以直接调用 Layer1 的方法。
 
-![cross layer invoke](/diagram/rooch-cross-layer-invoke.svg)
+![cross layer invoke](/static/diagram/rooch-cross-layer-invoke.svg)
 
 * 如果该方法没有读取链上状态，则相当于在链下虚拟机中运行链上合约的字节码，返回结果只取决于输入参数。
 * 如果该方法读取了链上状态，则相当于以 Layer1 的某个高度做状态快照，从状态快照读取状态，然后计算结果。

@@ -8,7 +8,7 @@
 
 同时，Rooch 通过 Move 的状态特性，支持在[状态通道中执行智能合约](./02-channel-contract.md)，简化 P2P 网络上的游戏以及 DApp 协议的设计。
 
-![p2p](/diagram/rooch-p2p.svg)
+![p2p](/static/diagram/rooch-p2p.svg)
 
 ## 状态通道的表达
 

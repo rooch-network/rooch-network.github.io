@@ -14,7 +14,7 @@ Rooch 在每个结算层的 Layer1 中部署结算智能合约，合约中维护
 
 ## 多个结算层和仲裁层之间的通讯协议
 
-![multi chain settlement](/diagram/rooch-multi-chain-settlement.svg)
+![multi chain settlement](/static/diagram/rooch-multi-chain-settlement.svg)
 
 :::note
 
