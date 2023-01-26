@@ -7,7 +7,7 @@ Rooch is a **modular layer2** that supports multi-chain settlement, using Move a
 
 The name **Rooch** is a shortcut for **Root & Branch**. We thought the name was a good representation of the Rooch's position in the ecosystem.
 
-![root-branch](/diagram/rooch-root-branch.svg)
+![root-branch](/static/diagram/rooch-root-branch.svg)
 
 **Chain** is the root, **DApp** is the branch, and **Rooch** connects **Root** and **Branch**.
 

@@ -12,7 +12,7 @@ Rooch 利用 Move 的状态特性，设计出一种跨层的状态迁移方案�
 
 状态迁移的思路是在链上维护一个链上只记录根，链下存储全量数据的状态树，我们可以称为 **Rollup State Tree**，简称 RST。
 
-![state move](/diagram/rooch-state-move.svg)
+![state move](/static/diagram/rooch-state-move.svg)
 
 当链上的用户状态迁移到 RST 中后，状态从链上消失，如上图中的 NFT1。Rooch 的验证节点会在链下应用状态树的操作，NFT1 出现在链下的状态树中，用户可以从链下状态树中取回，实现状态迁移。
 当链下状态需要迁移回链上时，需要携带状态树的叶节点存在证明，在链上执行操作。

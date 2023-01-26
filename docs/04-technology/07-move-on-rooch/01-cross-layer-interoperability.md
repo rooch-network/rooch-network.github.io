@@ -14,7 +14,7 @@ In Rooch, an application's smart contracts can depend on contracts deployed in M
 
 Now that we have implemented cross-layer contract dependencies, we can directly invoke Layer1 function when the application is running in the execution layer or state channel.
 
-![cross layer invoke](/diagram/rooch-cross-layer-invoke.svg)
+![cross layer invoke](/static/diagram/rooch-cross-layer-invoke.svg)
 
 * If the function does not read the on-chain state, it is equivalent to running the bytecode of the on-chain contract in the off-chain virtual machine, and the result depends only on the input parameters.
 * If the function reads the on-chain state, it is equivalent to taking a snapshot of the state at the height of Layer1, reading the state from the state snapshot, and computing the result.
