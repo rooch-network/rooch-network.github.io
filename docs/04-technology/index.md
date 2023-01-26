@@ -2,7 +2,7 @@
 
 The previous chapter gave the reader an overview of what Rooch is and what it does. This section is to answer the question "How Rooch work?".
 
-![overview](/static/diagram/rooch-overview.svg)
+![overview](/diagram/rooch-overview.svg)
 
 ## Multi-chain settlement Execution layer
 

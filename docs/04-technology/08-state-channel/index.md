@@ -8,7 +8,7 @@ Rooch provides secure and instant transaction confirmation and low transaction c
 
 Also, Rooch supports [smart contract in state channel](./02-channel-contract.md) through the feature of Move, simplifying the design of game and DApp protocol on P2P networks.
 
-![p2p](/static/diagram/rooch-p2p.svg)
+![p2p](/diagram/rooch-p2p.svg)
 
 ## Representation of a state channel
 

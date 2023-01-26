@@ -4,7 +4,7 @@
 
 Rooch 是一个支持多链结算的**模块化的 Layer2**，使用 Move 作为智能合约语言，安全受 Ethereum 保证。目标是连接多链生态与 Web3 应用，为公链提供**扩展能力**，为 Web3 应用提供 **Move 执行环境**以及**结算协议**。
 
-![overview](/static/diagram/rooch-overview.svg)
+![overview](/diagram/rooch-overview.svg)
 ## 为 Layer1
 
 * 交易扩容：提供更快的交易执行和确认速度，以及更高的交易吞吐（更高的 TPS）。

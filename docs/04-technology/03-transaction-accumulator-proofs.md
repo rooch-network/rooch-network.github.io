@@ -14,4 +14,4 @@ When the user submits a transaction to the sequencer, the sequencer returns to t
 
 The root of the accumulator is recorded in the consensus layer and verified by the consensus layer. Suppose the user finds that the order of the transactions recorded in the consensus layer does not match the order of the transactions when he submits them. In that case, he can initiates arbitration with the arbitration layer via the transaction accumulator proof.
 
-![secure txn confirmation](/static/diagram/rooch-secure-txn-confirmation.svg)
+![secure txn confirmation](/diagram/rooch-secure-txn-confirmation.svg)

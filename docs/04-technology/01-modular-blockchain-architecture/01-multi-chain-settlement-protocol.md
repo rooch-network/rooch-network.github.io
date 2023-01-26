@@ -15,7 +15,7 @@ Rooch deploys a settlement smart contract each settlement Layer1, which maintain
 
 ## Communication protocols between multiple settlement layers and the arbitration layer
 
-![multi chain settlement](/static/diagram/rooch-multi-chain-settlement.svg)
+![multi chain settlement](/diagram/rooch-multi-chain-settlement.svg)
 
 :::note
 

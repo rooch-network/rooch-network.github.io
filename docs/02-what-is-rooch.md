@@ -5,7 +5,7 @@ we need a new infrastructure to support the building of applications in the bloc
 
 Rooch is a **modular layer2** that supports multi-chain settlement, using Move as the smart contract language and security guaranteed by Ethereum. It aims to connect the multi-chain ecosystem with Web3, provides **scalability** for public chains, **Move execution environment** and **settlement protocol** for Web3 DApp.
 
-![overview](/static/diagram/rooch-overview.svg)
+![overview](/diagram/rooch-overview.svg)
 
 ## For Layer1
 

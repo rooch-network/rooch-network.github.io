@@ -9,7 +9,7 @@ Rooch 是一个支持多链结算的**模块化的 Layer2**，使用 Move 作为
 
 **Rooch** 名称来自于 **Root & Branch** 的缩写。我们认为它很好的表达了 Rooch 在生态系统中的位置。
 
-![root-branch](/static/diagram/rooch-root-branch.svg)
+![root-branch](/diagram/rooch-root-branch.svg)
 
 链（Chain）是根（Root），应用（DApp）是枝（Branch），Rooch 将 Root 和 Branch 连接起来。
 

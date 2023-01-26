@@ -12,7 +12,7 @@ Rooch uses the state feature of Move to design a cross-layer state migration sol
 
 The idea of state migration is to maintain a state tree on the chain that only records the root on the chain and stores the whole data off-chain, which we can call **Rollup State Tree**, or RST for short.
 
-![state move](/static/diagram/rooch-state-move.svg)
+![state move](/diagram/rooch-state-move.svg)
 
 When the user state on the chain is migrated into RST, the state disappears from the chain, as NFT1 in the above figure. the Validate node of Rooch will apply the state tree operation off-chain, NFT1 appears in the state tree off-chain, and the user can retrieve it from the state tree off-chain to achieve state migration.
 
