@@ -1,10 +1,10 @@
 {
   "link.title.Rooch Network": {
-    "message": "Rooch Network",
+    "message": "Rooch 网络",
     "description": "The title of the footer links column with title=Rooch Network in the footer"
   },
   "link.title.More": {
-    "message": "More",
+    "message": "更多",
     "description": "The title of the footer links column with title=More in the footer"
   },
   "link.item.label.Home": {
@@ -12,11 +12,11 @@
     "description": "The label of footer link with label=Home linking to /"
   },
   "link.item.label.What is Rooch?": {
-    "message": "What is Rooch?",
+    "message": "什么是 Rooch？",
     "description": "The label of footer link with label=What is Rooch? linking to /docs/what-is-rooch"
   },
   "link.item.label.Documents": {
-    "message": "Documents",
+    "message": "文档",
     "description": "The label of footer link with label=Documents linking to /docs/"
   },
   "link.item.label.GitHub": {
@@ -24,11 +24,11 @@
     "description": "The label of footer link with label=GitHub linking to https://github.com/rooch-network"
   },
   "link.item.label.Blog": {
-    "message": "Blog",
+    "message": "博客",
     "description": "The label of footer link with label=Blog linking to /blog/"
   },
   "link.item.label.Contact Us": {
-    "message": "Contact Us",
+    "message": "联系我们",
     "description": "The label of footer link with label=Contact Us linking to /contact-us/"
   },
   "copyright": {
