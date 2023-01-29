@@ -1,10 +1,10 @@
 {
   "item.label.Documents": {
-    "message": "Documents",
+    "message": "文档",
     "description": "Navbar item with label Documents"
   },
   "item.label.Blog": {
-    "message": "Blog",
+    "message": "博客",
     "description": "Navbar item with label Blog"
   }
 }

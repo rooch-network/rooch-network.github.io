@@ -7,10 +7,6 @@
     "message": "技术架构概览",
     "description": "The label for category 技术架构概览 in sidebar tutorialSidebar"
   },
-  "sidebar.tutorialSidebar.category.模块化区块链架构": {
-    "message": "模块化区块链架构",
-    "description": "The label for category 模块化区块链架构 in sidebar tutorialSidebar"
-  },
   "sidebar.tutorialSidebar.category.为什么是 Move？": {
     "message": "为什么是 Move？",
     "description": "The label for category 为什么是 Move？ in sidebar tutorialSidebar"
@@ -22,5 +18,9 @@
   "sidebar.tutorialSidebar.category.Miscellaneous": {
     "message": "Miscellaneous",
     "description": "The label for category Miscellaneous in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.模块化架构": {
+    "message": "模块化架构",
+    "description": "The label for category 模块化架构 in sidebar tutorialSidebar"
   }
 }
