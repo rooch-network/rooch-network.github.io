@@ -2,8 +2,6 @@
 title: Partnership Announcement~ MoveFunsDao <> Rooch
 ---
 ![movefuns](https://user-images.githubusercontent.com/99104408/217434466-c5670401-0094-4386-b0de-699e25f31650.png)
-
-![image](https://user-images.githubusercontent.com/99104408/217434347-7281b69b-cb3f-4eef-9624-10f4bbbfe6be.png)
 Rooch Network has an established partnership with MoveFunsDAO, "a DAO for Move developers, with the main goal of uniting the developer community to build across multiple Move chain ecosystems." At the date of this posting, MoveFunsDAO has gathered more than 250 Move developers for the purpose of collective action and learning within the broader Move ecosystem, including Aptos, Starcoin, and Sui.  
 Most notably, MoveFuns has already organized a CTF MOVEment in December 2022 alongside organizers Aptos, Pontem Network, and Movebit, and we expect it to foster many great opportunities for developers rushing to Move. 
 MoveFunsDao & Rooch will keep a close relationship with the goal of empowering developers so the greater Move ecosystem can flourish. 
