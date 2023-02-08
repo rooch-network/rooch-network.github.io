@@ -4,8 +4,12 @@
 
 ![modular](/diagram/rooch-omo.svg)
 
-Rooch 基于 [OMO](https://github.com/starcoinorg/omo) 提供了链上交互式仲裁的能力。
+Rooch 基于 [OMO](https://github.com/rooch-network/omo) 提供了链上交互式仲裁的能力。
 
+1. 交互式欺诈证明的控辩双方通过交互找到 OMO MIPS 的分歧指令。
+2. 在链上的仲裁合约中模拟执行该分歧指令。链上的仲裁合约可以用任意图灵完备的智能合约实现，比如上图中的 `MIPS.move` 和 `MIPS.sol`。
+
+同时，Rooch 也正在和 [zkMove](https://github.com/young-rocks/zkmove) 合作，将来会支持交互式和零知识组合的证明方案。
 ## OMO
 
 OMO 是一个拥有单步状态证明能力的通用字节码模拟器：
@@ -23,4 +27,4 @@ OMO 是一个拥有单步状态证明能力的通用字节码模拟器：
 
 此时，控辩双方已经对上一步（`m-1`）的中间状态证明达成共识，法官只需要基于 `m-1` 步的状态执行第 `m` 步，然后将生成的状态证明与控辩双方提供的证明做对比，既可判断哪一方提交的证据是对的。
 
-[OMO 文档](https://github.com/starcoinorg/omo/blob/main/docs/guidelines.md)
+[OMO 文档](https://github.com/rooch-network/omo/blob/main/docs/guidelines.md)
