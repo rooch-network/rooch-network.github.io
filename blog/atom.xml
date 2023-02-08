@@ -2,11 +2,22 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://rooch.network/blog</id>
     <title>Rooch Network Blog</title>
-    <updated>2022-11-27T00:00:00.000Z</updated>
+    <updated>2023-02-07T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://rooch.network/blog"/>
     <subtitle>Rooch Network Blog</subtitle>
     <icon>https://rooch.network/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Partnership Announcement~ MoveFunsDao <> Rooch]]></title>
+        <id>/2023/2/7/Partnership-Announcement-MoveFunsDAO</id>
+        <link href="https://rooch.network/blog/2023/2/7/Partnership-Announcement-MoveFunsDAO"/>
+        <updated>2023-02-07T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[movefuns]]></summary>
+        <content type="html"><![CDATA[<p><img loading="lazy" src="https://user-images.githubusercontent.com/99104408/217434466-c5670401-0094-4386-b0de-699e25f31650.png" alt="movefuns" class="img_ev3q">
+Rooch Network has an established partnership with MoveFunsDAO, "A DAO for Move developers, with the main goal of uniting the developer community to build across multiple Move chain ecosystems." At the date of this posting, MoveFunsDAO has gathered more than 250 Move developers for the purpose of collective action and learning within the broader Move ecosystem, including Aptos, Starcoin, and Sui.<br>
+<!-- -->Most notably, MoveFuns has already organized a CTF MOVEment in December 2022 alongside organizers Aptos, Pontem Network, and Movebit, and we expect it to foster many great opportunities for developers rushing to Move.
+MoveFunsDao &amp; Rooch will keep a close relationship with the goal of empowering developers so the greater Move ecosystem can flourish while we grow an ever larger developer community.</p>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Hello Rooch]]></title>
         <id>/2022/11/27/hello-rooch</id>
