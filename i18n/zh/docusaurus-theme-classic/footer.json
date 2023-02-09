@@ -19,6 +19,10 @@
     "message": "文档",
     "description": "The label of footer link with label=Documents linking to /docs/"
   },
+  "link.item.label.Material": {
+    "message": "物料",
+    "description": "The label of footer link with label=Material"
+  },
   "link.item.label.GitHub": {
     "message": "GitHub",
     "description": "The label of footer link with label=GitHub linking to https://github.com/rooch-network"
