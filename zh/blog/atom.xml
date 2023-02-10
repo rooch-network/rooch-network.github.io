@@ -2,11 +2,20 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://rooch.network/zh/blog</id>
     <title>Rooch Network Blog</title>
-    <updated>2023-02-07T00:00:00.000Z</updated>
+    <updated>2023-02-09T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://rooch.network/zh/blog"/>
     <subtitle>Rooch Network Blog</subtitle>
     <icon>https://rooch.network/zh/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Partnership Announcement~ MoveBit <> Rooch]]></title>
+        <id>/2023/2/9/blog/Partnership-Announcement-MoveBit</id>
+        <link href="https://rooch.network/zh/blog/2023/2/9/blog/Partnership-Announcement-MoveBit"/>
+        <updated>2023-02-09T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[logo-4]]></summary>
+        <content type="html"><![CDATA[<p><img loading="lazy" src="https://user-images.githubusercontent.com/99104408/217911743-1d9f34bd-d79a-4ccb-bbb6-9f8460845b36.png" alt="logo-4" class="img_ev3q">
+Rooch Network will partner with MoveBit to ensure the highest possible level of security independently verified by an expert third party. Founded by experts and professors in security, MoveBit is a blockchain security company focused on Move ecosystem security. MoveBit will soon be a household name in the security audit sector of the blockchain industry. </p><p>“MoveBit is a security audit company for the Move ecosystem with a vision to make the Move ecosystem the most secure Web3 destination. The MoveBit team is comprised of security leaders from academia and enterprise with 10 years of security experience. The team was one of the earliest contributors to the Move ecosystem, working with Move developers to set the standard for secure Move applications.” </p><p>Some of MoveBit’s recent audits include Aptos, Starcoin, Starcoin DAO, PolyNetwork, Starswap, Transit Finance, OmniBTC, MoveDID, and Cetus. </p><p>Rooch will secure independent formal verification through MoveBit audits during key stages of project development to ensure the utmost security and to create an atmosphere of trust for ecosystem participants. Security audits will be published in conjunction with MoveBit.</p>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Partnership Announcement~ MoveFunsDao <> Rooch]]></title>
         <id>/2023/2/7/Partnership-Announcement-MoveFunsDAO</id>
