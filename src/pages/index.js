@@ -5,23 +5,29 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import HomepagePartners from '@site/src/components/HomepagePartners';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
+  const en = siteConfig.baseUrl === "/";
+
+  // let cJ = localStorage.getItem("sysLan");
+  // console.log(cJ);
+
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
         <h1 className="hero__title">{siteConfig.title}</h1>
         <p>
-        <img src={useBaseUrl('/diagram/rooch-root-branch.svg')} className={styles.heroImage} />
+          <img src={useBaseUrl('/diagram/rooch-root-branch.svg')} className={styles.heroImage} />
         </p>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <p className="hero__subtitle">{en ? siteConfig.tagline : "以太坊上的模块化Layer2网络，具有多链结算，由Move Language支持"}</p>
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
             to="/docs/">
-            Start learning ⏱️
+            {en ? "Start learning" : "开始学习"} ⏱️
           </Link>
         </div>
       </div>
@@ -30,7 +36,7 @@ function HomepageHeader() {
 }
 
 export default function Home() {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
       title="Home"
@@ -38,7 +44,10 @@ export default function Home() {
       <HomepageHeader />
       <main>
         <HomepageFeatures />
+        <HomepagePartners />
       </main>
     </Layout>
   );
 }
+
+

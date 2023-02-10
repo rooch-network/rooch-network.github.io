@@ -133,6 +133,10 @@ const config = {
                 to: '/blog/',
               },
               {
+                label: 'Material',
+                to:'https://www.figma.com/file/rBJBLeqsgCfkryL1adDNDG/Rooch?node-id=18%3A2&t=zbM1JoFxY2Lm3hND-0',
+              },
+              {
                 label: 'Contact Us',
                 to: '/contact-us/',
               },

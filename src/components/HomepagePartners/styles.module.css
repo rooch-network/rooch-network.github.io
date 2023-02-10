@@ -1,0 +1,46 @@
+.title {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.partners {
+  display: flex;
+  align-items: center;
+  padding: 0rem 0;
+  margin-bottom: 100px; 
+  width: 100%;
+}
+
+.cardHeadDiv {
+  display: flex;
+  align-items: center;
+  justify-content: baseline;
+}
+
+.cardTitle {
+  margin-top: 15px;
+}
+
+.icon {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  cursor: pointer;
+  margin-right: 10px;
+  display: block;
+  border-radius: 44px;
+}
+
+.cardDiv {
+  margin-bottom: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px; 
+  border-radius: 10px;
+  background: #f5f6f7;
+}
+
+html[data-theme='dark'] .cardDiv {
+  background: #090909;
+}
