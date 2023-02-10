@@ -22,7 +22,7 @@ function HomepageHeader() {
         <p>
           <img src={useBaseUrl('/diagram/rooch-root-branch.svg')} className={styles.heroImage} />
         </p>
-        <p className="hero__subtitle">{en ? siteConfig.tagline : "以太坊上的模块化Layer2网络，具有多链结算，由Move Language支持"}</p>
+        <p className="hero__subtitle">{en ? siteConfig.tagline : "以太坊上具有多链结算能力的模块化 Layer2 网络，由 Move 语言支持"}</p>
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
