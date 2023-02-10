@@ -15,7 +15,7 @@ const PartnersList = [
     ),
     descriptionZH: (
       <>
-        movefun DAO是一个针对Move开发者的DAO，其主要目标是团结开发者社区，建立一个跨多个Move链的生态系统。
+        MoveFunsDAO 是一个针对 Move 开发者的 DAO，其主要目标是团结开发者社区，建立一个跨多个 Move 链的生态系统。
       </>
     ),
   },

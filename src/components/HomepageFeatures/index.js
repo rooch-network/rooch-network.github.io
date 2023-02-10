@@ -16,7 +16,7 @@ const FeatureList = [
     ),
     descriptionZH: (
       <>
-        多链生态系统需要一个中间层来连接区块链和web3应用程序。
+        多链生态系统需要一个中间层来连接区块链和 Web3 应用程序。
       </>
     ),
   },
@@ -32,7 +32,7 @@ const FeatureList = [
     ),
     descriptionZH: (
       <>
-        Rooch是一个移动执行层，连接多链到Web3。它为公共链提供了可伸缩性，为Web3应用程序提供了Move执行环境和结算协议。
+        Rooch 是一个 Move 执行层，连接多链到 Web3。它为公链提供了可扩展性，为 Web3 应用程序提供了 Move 执行环境和结算协议。
       </>
     ),
   },
@@ -48,7 +48,7 @@ const FeatureList = [
     ),
     descriptionZH: (
       <>
-        了解Rooch如何实现多链结算，如何确保去中心化和安全性，如何支持P2P网络上的应用程序等等。
+        了解 Rooch 如何实现多链结算，如何确保去中心化和安全性，如何支持 P2P 网络上的应用程序等等。
       </>
     ),
   },
