@@ -2,11 +2,20 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://rooch.network/blog</id>
     <title>Rooch Network Blog</title>
-    <updated>2023-02-09T00:00:00.000Z</updated>
+    <updated>2023-02-10T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://rooch.network/blog"/>
     <subtitle>Rooch Network Blog</subtitle>
     <icon>https://rooch.network/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Partnership Announcement~ zkMove <> Rooch]]></title>
+        <id>/2023/2/10/Partnership-Announcement-zkMove</id>
+        <link href="https://rooch.network/blog/2023/2/10/Partnership-Announcement-zkMove"/>
+        <updated>2023-02-10T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[logo配色图]]></summary>
+        <content type="html"><![CDATA[<p><img loading="lazy" src="https://user-images.githubusercontent.com/99104408/218180814-bc9e1a02-baee-42a4-bb46-46925f33f5bb.png" alt="logo配色图" class="img_ev3q">
+Rooch Network is delighted to announce its partnership with zkMove! Rooch will work closely with zkMove to bring its zk-rollup solution to Rooch’s fully interoperable, multi-chain ecosystem. Moreover we will explore new dApp usages and build the Move community together.</p><p>Zero-knowledge rollups or zk-rollups are a next-gen Layer2 scaling solution that enable blockchains to validate transactions faster and maintain low gas fees compared to traditional Layer 1s via a combination of on and off-chain processes. </p><p>zkMove is a zk-proof friendly Move language runtime environment. The initial idea of zkMove is to improve the programmability and composability of zk-proofs technology. </p><p>Some highlights of zkMove: </p><ol><li>A type safe zero-knowledge proof-friendly bytecode virtual machine </li><li>No compromise on performance while pursuing Turing completeness</li><li>Safe and efficient scaling and privacy engine</li></ol><p>For those readers interested in a deep dive into zkMove, there is a wealth of high quality information available at the zkMove medium (<a href="https://zkmove.medium.com/" target="_blank" rel="noopener noreferrer">https://zkmove.medium.com/</a>). The project is also hiring qualified engineers (<a href="https://www.zkmove.net/join_us.html" target="_blank" rel="noopener noreferrer">https://www.zkmove.net/join_us.html</a>)!</p><p>Rooch Network is committed to its partnership with zkMove, and together we will work to deliver the holy grail of blockchain on Rooch~ a fully interoperable, multi-chain ecosystem supported in part by zkMove’s layered solution.</p>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Partnership Announcement~ MoveBit <> Rooch]]></title>
         <id>/2023/2/9/blog/Partnership-Announcement-MoveBit</id>
