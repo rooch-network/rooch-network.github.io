@@ -140,19 +140,28 @@ TODO Rooch 的架构图
 
 ### 支持多链的交互式欺诈证明
 
-Optiimisc Rollup 方案中，链上的仲裁合约如何判定链下的交易执行出错，一直是一个难题。最初的想法是 Layer1 上重新执行一遍 Layer2 的合约，但这种方案的问题：Layer1 的合约要模拟 Layer2 的交易执行，成本较高，也会限制 Layer2 交易的复杂度。
+Optiimisc Rollup 方案中，链上的仲裁合约如何判定链下的交易执行出错，一直是一个难题。最初的想法是 Layer1 上重新执行一遍 Layer2 的合约，但这种方案的问题是 Layer1 的合约要模拟 Layer2 的交易执行，成本较高，也会限制 Layer2 交易的复杂度。
 
-最后业界摸索出一种交互式证明的方案，思路是将交易在模拟器中执行，每一条模拟器的指令的执行都会生成一个状态证明。控辩双方可以通过交互，发现双方的分歧点 m，将 m-1 的状态以及指令 m 提交到链上仲裁合约模拟执行，仲裁合约执行后会给出判定。
+最后业界摸索出一种交互式证明的方案。还用上面那个状态转换公式：
 
-TODO 介绍 OMO
+```math
+σt+1 ≡ Υ(σt, T)
+```
 
-有了 OMO 的支持，实现了仲裁层的模块化，任意支持图灵完备合约的链，都可以在合约中模拟 OMO 的指令，作为仲裁层。
+这里 Υ 代表指令，T 代表指令输入，σ 代表指令所依赖的内存状态。如果在执行过程中，给每个 σ 都生成一个状态证明。 控辩双方可以通过交互，发现双方的分歧点 m，将 m-1 的状态 σ 以及指令 m 提交到链上仲裁合约模拟执行，仲裁合约执行后就可以给出判定。
+
+所以剩下的问题就是通过什么方式来生成证明，主要有两个方案：
+
+1. 直接在合约语言虚拟机中实现，比如 Arbitrum 的 AVM，Fuel 的 FuelVM。
+2. 基于已有的指令集实现一个模拟器，在模拟器中提供证明能力。如 Optimism 的基于 MIPS 指令的 cannon，Arbitrum 新的基于 WASM 指令的 Nitro，以及 Rooch 的基 MIPS 指令的 OMO。
+
+OMO 是一个拥有单步状态证明能力的通用字节码模拟器，为多链执行环境设计。有了 OMO 的支持，实现了仲裁层的模块化，任意支持图灵完备合约的链，都可以在合约中模拟 OMO 的指令，作为仲裁层。
 
 ### ZK + Optimisc 组合方案
 
-业界一直在争论 Optimisc Rollup 和 ZK Rollup 孰优孰劣，但我们认为将二者结合起来兼得两种方案的优点。
+业界一直在争论 Optimisc Rollup 和 ZK Rollup 孰优孰劣，但我们认为将二者结合起来可以兼得两种方案的优点。
 
-在前面的 Optimisc 方案基础上，我们再引入一个新的角色，ZK Prover。它批量给 Proposer 提交的交易状态生成有效证明，并提交给仲裁合约。仲裁合约验证后，就可以判定该交易在 Layer1 上达到了最终确定性，可以进行 Layer2 到 Layer1 的提款交易的结算。
+我们在前面的 Optimisc 方案基础上，我们再引入一个新的角色，ZK Prover。它批量给 Proposer 提交的交易状态生成有效证明，并提交给仲裁合约。仲裁合约验证后，就可以判定该交易在 Layer1 上达到了最终确定性，可以进行 Layer2 到 Layer1 的提款交易的结算。
 
 这种方案的优点：
 
@@ -161,25 +170,71 @@ TODO 介绍 OMO
 
 ### 多链结算
 
-如果我们把 L1ToL2 Bridge 部署到多个链中，我们就得到了一个多链结算的 Layer2。
+如果我们进一步思考模块化的趋势，自然想到，既然 DA 可以迁移到别的链，那结算层是否也可以部署到别的链？
+
+Layer1 和 Layer2 之间的资产结算主要依赖两个组件，一个是 Bridge，一个是 State Commitment Chain，从 Bridge 结算的时候，需要依赖 State Commitment Chain 校验 Layer2 的状态证明。 Bridge 当然可以部署到多个链，但 State Commitment Chain 只能有一个权威的版本，由仲裁合约保证安全。
+
+所以有一个初步的方案就是，其他链上的 State Commitment Chain 都是仲裁链（Ethereum）上的镜像。这个镜像并不需要同步全部的 Layer2 State Root 到其他链，而是用户按需通过 Ethereum 的状态证明做映射。其他链上需要能校验 Ethereum 上的状态证明，所以需要知道 Ethereum 上的状态根。
+
+当前，将 Ethereum 上的状态根同步到其他节点有几个方案：1. 依赖 Oracle。2. 其他链嵌入 Ethereum 轻节点，校验 Ethereum 的区块头。
+
+这样我们就可以得到一个支持多链结算，但安全由 Ethereum 保证的 Layer2 方案。
+
+这种方案和跨链的区别：
+
+1. 如果是依赖中继链的跨链方案，可以认为 Layer2 替代了中继链，是一个安全受仲裁合约保证的中继层。
+2. 如果是互相校验状态证明的跨链方案，多链结算方案和它共享状态根同步的技术，但简化了许多。因为在多链结算方案中，状态根的同步需求是单向的，只需要从仲裁链同步到其他链，不是两两互相同步。
 
 ## 模块化给带来的可能性
 
-### 乐高式拼装
+通过模块化，开发者可以通过 Rooch 组合出不同的应用。
 
-通过模块化，开发者可以通过 Rooch 组合出不同的应用：
+### Rooch Ethereum Layer2
 
-* Rooch Ethereum Layer2 = Rooch + Ehtereum(Settlement+Arbitration) + DA  
-* XChain Rollup DApp = Rooch + DApp Move Contract + XChain(Settlement + Arbitration) + DA
-* Rooch Layer3 Rollup DApp = Rooch + DApp Move Contract + Rooch Ethereum Layer2(Settlement + Arbitration) + DA
-* Sovereign Rollup DApp = Rooch + DApp Move Contract + DA
+Rooch + Ethereum(Settlement+Arbitration) + DA  
+
+这是 Rooch 首先要运行的网络。提供一个由 Ethereum 安全保证的，可以和 Ethereum 上的资产互通的 Move 运行平台。未来可以扩展到多链结算。
+
+### Rooch Layer3 Rollup DApp
+
+Rooch + DApp Move Contract + Rooch Ethereum Layer2(Settlement + Arbitration) + DA
+
+如果应用把自己的结算和仲裁部署到 Rooch Layer2，它就是一个 Rooch 的 Layer3 应用。
+
+### XChain Rollup DApp
+
+Rooch + DApp Move Contract + XChain(Settlement + Arbitration) + DA
+
+任意链都可以通过 Rooch 来给开发者提供一套基于 Move 语言的 Rollup DApp 工具包。开发者只需要通过 Move 语言编写自己的应用逻辑，就可以运行一个安全受 XChain 保障的，资产可以和 XChain 互通的，独立环境的 Rollup 应用。当然这个需要和各公链的开发者来协同开发。
+
+### Sovereign Rollup DApp
+
+Rooch + DApp Move Contract + DA
+
+如果应用不需要结算和仲裁保证安全，则可以直接将 Rooch 作为 Sovereign Rollup 的一个框架，不部署 Bridge 以及 Arbitration 合约，自己负责安全。
+
+### Arweave SCP DApp
+
+Rooch + DApp Move Contract + DA（Arweave）
+
+SCP 和 Sovereign Rollup 思路类似，SCP 要求应用程序的代码也要保存到 DA 层。而 Rooch 中合约部署本身也是一个交易，合约代码都在交易中，升级合约也是交易，都会写到 DA 层，所以我们认为符合 SCP 的标准。
+
+### Move DApp Chain
+
+Cosmos SDK + MoveOS + DApp Move Contract
+
+MoveOS 可以作为一个独立的 Move 运行环境嵌入到任意的链的运行环境中，去构建应用链或者新的公链。
+
+### 非区块链项目
+
+非区块链项目，可以把 MoveOS 作为一个可以带有数据校验能力以及存储证明能力的数据库使用。比如用它做一个本地的博客系统，数据结构和业务逻辑通过 Move 表达。等未来基础设施成熟，则可以直接和区块链生态对接起来。再比如可以用它做云计算中的 FaaS 服务，开发者通过 Move 编写 FaaS 中的 Function，平台托管状态，用户间的 Function 还可以互相组合调用。更多的可能性需要大家探索。
 
 Rooch 的模块化方案可以适应于不同类型以及阶段的应用。比如开发者可以先通过部署合约在 Rooch Ethereum Layer2 上验证自己的想法，等验证成功后，将应用迁移到独立的基于 Rooch 搭建的 App-Specific Rollup 中。
 
-再或者开发者直接通过 Sovereign Rollup 方式启动应用，因为应用早期对安全性要求不高，也没有和其他链互通资产的需求。等应用成长起来，对安全性要求变高，这时候可以启用欺诈证明模块从而保证应用的安全。
-
-
+再或者开发者直接通过 Sovereign Rollup 方式启动应用，因为应用早期对安全性要求不高，也没有和其他链互通资产的需求。等应用成长起来，对安全性要求变高，这时候可以启用结算以及欺诈证明模块从而保证应用的安全。
 
 ## 总结
 
-TODO
+我在 17 年底进入区块链领域。当时业界有非常多的团队尝试在区块链领域构建应用。可惜当时基础设施尚不完备，业界尚未摸索出一个可复制的构建应用的模式，大多数应用类项目以失败告终，打击了开发者也打击了投资者。区块链上的应用应该如何构建出来？这个问题一直让我思考了五年。
+
+而现在，随着 Layer1，Layer2 以及智能合约，模块化基础设施的完备，这个问题的答案也逐渐清晰起来。希望 Rooch 可以给 Web3 DApp 构建和落地。
