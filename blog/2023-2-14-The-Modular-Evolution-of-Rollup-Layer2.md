@@ -134,7 +134,7 @@ The Sequencer sorts the transactions and outputs them into a transaction pipelin
 
 The Proposer needs to periodically submit the root of the state tree and the root of the accumulator to the State Commitment Chain contract on the chain.
 
-So we have a modular Layer2 with low gas fees, high TPS, and greater security, it is Rooch.
+So we have a modular Layer2 with low gas fees, high TPS, and greater security, this is **Rooch**.
 
 ![Rooch Architecture](/diagram/rooch-architecture.svg)
 

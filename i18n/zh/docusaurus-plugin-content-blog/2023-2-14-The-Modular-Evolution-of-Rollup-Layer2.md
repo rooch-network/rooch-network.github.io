@@ -25,7 +25,7 @@ author: jolestar
 
 所以要提供公开的可验证性，关键是 Y 要公开可用，历史上所有的 T 要公开可用并且顺序确定，中间的状态可通过 Y 和 T 重新计算得到。而程序的公开可用我们可以通过开源来实现，关键是 T 公开可用如何保证，这就引入了数据可用性（DA）的概念。
 
-**数据可用性** 需要有个公开的不可篡改的账本来记录应用的交易。自然想到，区块链账本就是这样一个系统，于是将 Layer2 的交易写回 Layer1，保证数据可用性，这也就是 Rollup 名称的来源。
+**数据可用性**需要有个公开的不可篡改的账本来记录应用的交易。自然想到，区块链账本就是这样一个系统，于是将 Layer2 的交易写回 Layer1，保证数据可用性，这也就是 Rollup 名称的来源。
 
 所以 Layer2 系统中需要有个角色收集用户的交易，进行排序并写入到 DA，这个角色叫 **定序器（Sequencer）**。这里的交易序列叫 **Canonical Transaction Chain**。
 
@@ -46,13 +46,13 @@ author: jolestar
 
 当然，Rollup 方案也做了一些妥协：
 
-1. 将交易写入 Layer1 ，也就代表 Layer2 的扩展性依然受 Layer1 区块大小限制。以 Ethereum 为例，某个 Layer2 完全占据 Ethereum 的所有区块，能提供的平均 TPS 也才数百，扩展性受 DA 限制。
-2. 为了节省 Gas 费，Sequencer 会将交易批量写入 DA，而在写入 DA 之前，Sequencer 有可能通过调整交易的顺序作弊。 
+1. 将交易写入 Layer1，也就代表 Layer2 的扩展性依然受 Layer1 区块大小限制。以 Ethereum 为例，某个 Layer2 完全占据 Ethereum 的所有区块，能提供的平均 TPS 也才数百，扩展性受 DA 限制。
+2. 为了节省 Gas 费，Sequencer 会将交易批量写入 DA，而在写入 DA 之前，Sequencer 有可能通过调整交易的顺序来作弊。 
 
 这里总结一下 Layer2 的安全以及交易的最终确定性：
 
-1. 如果用户自己运行了一个 Layer2 的节点，并且忠实的按照 DA 的交易顺序执行，用户可以认为交易是即时确认并且达到最终确定的，因为如果用户执行的结果和 Proposer 不一样，说明 Proposer 作弊，需要回滚链上的状态，最终会和用户自己的节点执行的结果一样。 这里主要的风险点在于前面提到的，如果实时从 Sequencer 同步数据， Sequencer 调整尚未写入 DA 的交易的顺序带来的风险。
-2. 如果用户自己无法运行节点，需要依赖一个 RPC 提供方，用户需要承担一定的信任风险。但这个风险和用户信任 Layer1 的 RPC 节点带来的风险类似。这里额外的风险依然是  Sequencer 丢弃交易或者重排交易带来的风险。
+1. 如果用户自己运行了一个 Layer2 的节点，并且忠实地按照 DA 的交易顺序执行，用户可以认为交易是即时确认并且达到最终确定的，因为如果用户执行的结果和 Proposer 不一样，说明 Proposer 作弊，需要回滚链上的状态，最终会和用户自己的节点执行的结果一样。 这里主要的风险点在于前面提到的，如果实时从 Sequencer 同步数据， Sequencer 调整尚未写入 DA 的交易的顺序带来的风险。
+2. 如果用户自己无法运行节点，需要依赖一个 RPC 提供方，用户需要承担一定的信任风险。但这个风险和用户信任 Layer1 的 RPC 节点带来的风险类似。这里额外的风险依然是 Sequencer 丢弃交易或者重排交易带来的风险。
 3. 如果 Proposer 出错，但没有节点发起挑战，超过了挑战期，这时候错误的状态无法回滚，只能通过社会共识硬分叉方式来修复状态。
 
 ## Rollup 的模块化演进
@@ -75,9 +75,9 @@ author: jolestar
 
 将 DA 职能迁移出来，用一个独立的解决方案，获得的首要好处是 Layer2 的交易 Gas 费至少降低一个数量级。
 
-从安全方面来看，即便是 DA 链的去中心化弱于 Ethereum，但 DA 层的对安全的保证主要是挑战期内的交易，过了挑战期后，DA 主要是为了方便其他节点同步数据，对安全并没有保障作用，所以去中心化的要求可以降低一个层次。
+从安全方面来看，即便是 DA 链的去中心化弱于 Ethereum，但 DA 层对安全的保证主要是挑战期内的交易，过了挑战期后，DA 主要是为了方便其他节点同步数据，对安全并没有保障作用，所以去中心化的要求可以降低一个层次。
 
-DA 专用链可以提供更高的存储带宽和更低的存储成本，并且针对多个应用共享 DA 进行专门的设计。这也是当前如 Celestia，Polygon Avail 这样的 DA 链的立足点。
+DA 专用链可以提供更高的存储带宽和更低的存储成本，并且针对多个应用共享 DA 进行专门的设计。这也是当前如 Celestia、Polygon Avail 这样的 DA 链的立足点。
 
 将 DA 层拆分出去后，我们得到了下图的架构：
 
@@ -114,9 +114,9 @@ Sequence Proof 的工作原理：
 分场景探讨一下：
 
 1. Sequencer 丢弃或者重排了用户交易。这会导致 Sequencer 在同一个位置生成了两个 Sequence Proof。用户提交 Sequence Proof 给仲裁合约，Sequencer 需要提供该交易被包含在最新的交易累加器的根中的证明，如果不能给出，则惩罚 Sequencer。
-2. Sequencer 没有正确的将交易写入 DA 链，和 Proposer 合谋隐藏交易。如果仲裁链和 DA 链有桥，则通过桥来验证，惩罚 Sequencer。否则用户可以发起挑战，要求 Sequencer 给出某个位置的交易的证明以及原始信息。但这种情况仲裁合约无法判断用户是否是恶意挑战，所以如果 Sequencer 给出数据则不惩罚 Sequencer。而对用户来说，恶意挑战损人损己，也缺少经济动力。
+2. Sequencer 没有正确地将交易写入 DA 链，和 Proposer 合谋隐藏交易。如果仲裁链和 DA 链有桥，则通过桥来验证，惩罚 Sequencer。否则用户可以发起挑战，要求 Sequencer 给出某个位置的交易的证明以及原始信息。但这种情况仲裁合约无法判断用户是否是恶意挑战，所以如果 Sequencer 给出数据则不惩罚 Sequencer。而对用户来说，恶意挑战损人损己，也缺少经济动力。
 
-我们通过引入 Sequence Proof 让 Layer2 的协议变的更安全。
+我们通过引入 Sequence Proof 让 Layer2 的协议变得更安全。
 
 ### 交易流水线（Transaction Pipeline）以及并行执行（Parallel Execution）
 
@@ -124,7 +124,7 @@ Sequence Proof 的工作原理：
 
 ![Transaction Pipeline](/diagram/rooch-txn-pipeline.svg)
 
-验证交易时，需要验证签名和是否有足够的 Gas 费，而 Gas 费的校验需要依赖状态。如果我们允许 Sequencer 验证交易依赖的状态和最新状态之间有一定的延迟（秒级），从而保证验证交易不会被执行交易阻塞，则 Gas 校验会不太准确，有被 DDoS 攻击的风险。
+验证交易时，需要验证签名和是否有足够的 Gas 费，而 Gas 费的校验需要依赖状态。如果我们为了保证验证交易不会被执行交易阻塞，允许 Sequencer 验证交易依赖的状态和最新状态之间有一定的延迟（秒级），会导致 Gas 校验会不太准确，有被 DDoS 攻击的风险。
 
 但我们认为 Sequencer 属于 DA 是一个正确的方向，所以值得我们进一步研究。比如可以将交易费中 DA 部分拆分出来，通过 UTXO（Sui Move Object） 表达，则可以降低 Gas 费检测成本。 
 
@@ -132,13 +132,13 @@ Sequencer 给交易排序然后输出成交易流水线，然后同步给 Propos
 
 Proposer 需要定时提交状态树的根，以及累加器的根到链上的 State Commitment Chain 合约中。
 
-于是我们得到了一个低 Gas 费，高 TPS，并且更安全的模块化 Layer2： Rooch。
+于是我们得到了一个低 Gas 费，高 TPS，并且更安全的模块化 Layer2： **Rooch**。
 
 ![Rooch Architecture](/diagram/rooch-architecture.svg)
 
-* MoveOS：它包含 MoveVM 以及 StateDB，是系统的执行以及状态存储引擎。StateDB 由两层的稀疏默克尔树构建，可以提供状态证明。根据前面的分析可得出，状态树以及状态证明是 Rollup 应用不可或缺的组件。
+* MoveOS：它包含 MoveVM 以及 StateDB，是系统的执行以及状态存储引擎。StateDB 由两层稀疏默克尔树构建，可以提供状态证明。根据前面的分析可得出，状态树以及状态证明是 Rollup 应用不可或缺的组件。
 * RPC：对外提供查询，提交交易，以及订阅服务。可以通过代理方式兼容其他链的 RPC 接口。
-* Sequencer：验证交易，给交易排序，提供 Sequence Proof，讲交易流式输出到 Transaction Pipeline。
+* Sequencer：验证交易，给交易排序，提供 Sequence Proof，将交易流式输出到 Transaction Pipeline。
 * Proposer：从 Transaction Pipeline 获取交易，批量执行，定期提交到链上的 State Commitment Chain。
 * Challenger：从 Transaction Pipeline 获取交易，批量执行，和 State Commitment Chain 比较，决定是否发起挑战。
 * DA & Settlement & Arbitration Interface：对不同的模块层的抽象和封装，保证在不同的实现之间切换时不影响上层业务逻辑。
