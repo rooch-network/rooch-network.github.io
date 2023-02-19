@@ -75,7 +75,7 @@ TODO Rollup 方案的图
 
 将 DA 职能迁移出来，用一个独立的解决方案，获得的首要好处是 Layer2 的交易 Gas 费降低至少一个数量级。
 
-从安全方面来看，即便是 DA 链的去中心化弱于 Ethereum，但 DA 层的对安全的保证主要是挑战期内的交易，过了挑战期后，DA 主要是为了方便其他节点同步数据，对安全并没有保障作用，所以去的中心化要求可以降低一个层次。
+从安全方面来看，即便是 DA 链的去中心化弱于 Ethereum，但 DA 层的对安全的保证主要是挑战期内的交易，过了挑战期后，DA 主要是为了方便其他节点同步数据，对安全并没有保障作用，所以去中心化的要求可以降低一个层次。
 
 DA 专用链可以提供更高的存储带宽和更低的存储成本，并且针对多个应用共享 DA 进行专门的设计。这也是当前如 Celestia，Polygon Avail 这样的 DA 链的立足点。
 
@@ -111,7 +111,7 @@ TODO 交互图
 
 分场景探讨一下：
 
-1. Sequencer 丢弃了用户的交易，或者重拍了用户交易。这会导致 Sequencer 在同一个位置生成了两个 Sequence Proof。用户提交 Sequence Proof 给仲裁合约，Sequencer 需要提供该交易被包含在最新的交易累加器的根中的证明，如果不能给出，则惩罚 Sequencer。
+1. Sequencer 丢弃了用户的交易，或者重排了用户交易。这会导致 Sequencer 在同一个位置生成了两个 Sequence Proof。用户提交 Sequence Proof 给仲裁合约，Sequencer 需要提供该交易被包含在最新的交易累加器的根中的证明，如果不能给出，则惩罚 Sequencer。
 2. Sequencer 没有正确的将交易写入 DA 链，和 Proposer 合谋隐藏交易。用户可以发起挑战，要求 Sequencer 给出某个位置的交易的证明以及原始信息。
 
 我们通过引入 Sequence Proof 让 Layer2 的协议变的更安全。
