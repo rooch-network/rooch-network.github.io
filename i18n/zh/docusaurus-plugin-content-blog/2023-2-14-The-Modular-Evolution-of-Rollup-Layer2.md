@@ -1,6 +1,6 @@
 ---
 title: Rollup Layer2 的模块化演进之路
-author: jolestar
+authors: jolestar
 ---
 
 本文尝试从演化角度讨论 Rollup Layer2 的发展以及演进，主要解答以下几个问题：
