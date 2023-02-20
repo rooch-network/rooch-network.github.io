@@ -1,6 +1,6 @@
 ---
 title: The Modular Evolution of Rollup Layer2
-author: jolestar
+authors: jolestar
 ---
 
 This article attempts to discuss the development and evolution of Rollup Layer2 from an evolutionary perspective, mainly addressing the following questions:
