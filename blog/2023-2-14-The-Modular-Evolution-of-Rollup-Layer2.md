@@ -37,7 +37,7 @@ At this point, we have achieved the verifiability of the application. But if som
 
 There are two arbitration schemes for rollups:
 
-1. Each time the Proposer submits a state, they also provide the **validity proof**, which proves the validity of state transition between the current state and the previous one, and is verified by the arbitration contract on-chain. The validity proof is generally generated using zero-knowledge techniques, which is called **ZK Rollup**.
+1. Each time the Proposer submits a state, they also provide the **validity proof**, which proves the validity of state transition between the current state and the previous one, and is verified by the arbitration contract on-chain. The validity proof is generated using zero-knowledge techniques, which is called **ZK Rollup**.
 2. Assuming the Proposer's results are correct, but if inconsistencies are found, **fraud proof** is submitted, which is judged by the arbitration contract. If the arbitration contract determines that the Proposer has cheated, the Proposer will be penalized, and the State Commitment Chain will be rolled back to the state before the fraudulent transaction. Of course, to ensure safety, a relatively long challenge period is usually set to achieve the final settlement of on-chain transactions. This is called **Optimistic Rollup**.
 
 We also need to achieve asset interoperability between Layer1 and Layer2. Therefore, we build a bridge between Layer1 and Layer2, and use state proofs for asset settlement between them. Layer2's state root on Layer1 is guaranteed by Layer1's arbitration contract, so the security of this bridge is also guaranteed by the arbitration contract.
@@ -64,7 +64,7 @@ Based on the previous analysis, in the Rollup solution, multiple contracts on th
 Modular has two meanings here:
 
 1. Through modular design, the system becomes a plug-and-play system. Developers can meet different application scenario requirements through module assembly.
-2. Based on the ability provided by 1 , the implementation of  modular layer is not bound to the same Layer1, thus obtaining better scalability.
+2. Based on the ability provided by 1, the implementation of the modular layer is not bound to the same Layer1, thus obtaining better scalability.
 
 There are three main modular layers that we can consider:
 
@@ -85,7 +85,7 @@ After splitting the DA layer, we obtain the architecture shown in the figure bel
 
 ![Modular Rollup layer2](/blog/modular/modular-rollup-layer2.svg)
 
-In the above figure, the DA is responsible for saving the Canonical Transaction Chain, and Layer1 is left with an L1ToL2 Transaction Queue to implement message communication between Layer1 and Layer2. Users can also write transactions directly to this queue to ensure Layer2's Permissionless that the Sequencer cannot audit users or transactions.
+In the above figure, the DA is responsible for saving the Canonical Transaction Chain, and Layer1 is left with an L1ToL2 Transaction Queue to implement message communication between Layer1 and Layer2. Users can also write transactions directly to this queue to ensure the  Layer2 is permissionless and that the Sequencer cannot audit users or transactions.
 
 However, a new problem arises here. If the transaction sequence written by the Sequencer into the DA and the transaction sequence executed by the Proposer are inconsistent, how will the arbitration contract judge? One solution is to have a cross-chain bridge between the DA chain and the arbitration chain, which verifies the data proof provided by the DA chain in the arbitration contract. However, this solution depends on the implementation of cross-chain bridges between the DA and other chains, and the DA solution selection will be restricted. Another solution is to introduce Sequence proof.
 
@@ -202,8 +202,8 @@ In this way, we can get a Layer2 solution that supports multi-chain settlement, 
 
 The difference between this solution and cross-chain is:
 
-1. If it is a cross-chain solution that relies on a relay chain, Layer2 can be regarded as replacing the relay chain and is a relay layer that security guaranteed by the arbitration contract.
-2. If it is a cross-chain solution that verifies the state proof between chains, the multi-chain settlement solution shares the same technical solution for state root synchronization, but it is much simpler. Because in the multi-chain settlement solution, the synchronization requirement for state roots is one-way, only need to synchronize from the arbitration chain to other chains, not two-way synchronization between each pair of chains.
+1. If it is a cross-chain solution that relies on a relay chain, Layer2 can be regarded as replacing the relay chain and is a relay layer with security guaranteed by the arbitration contract.
+2. If it is a cross-chain solution that verifies the state proof between chains, the multi-chain settlement solution shares the same technical solution for state root synchronization, but it is much simpler. Th synchronization requirement for state proofs is one-way in the multi-chain settlement solution, we only need to synchronize from the arbitration chain to other chains, rather than provide for two-way synchronization between each pair of chains.
 
 ## Possibilities brought by Modular
 
@@ -214,7 +214,7 @@ Through modular, developers can combine Rooch with other components to create di
 2. **Rooch Layer3 Rollup DApp** = Rooch + DApp Move Contract + Rooch Ethereum Layer2 (Settlement+Arbitration) + DA
    If an application deploys its settlement and arbitration to Rooch Layer2, it becomes a Rooch Layer3 application.
 3. **XChain Rollup DApp** = Rooch + DApp Move Contract + XChain (Settlement+Arbitration) + DA
-   Any chain can provide developers with a Move-based Rollup DApp toolkit through Rooch. Developers can write their own application logic in Move language, and run a Rollup application that security is guaranteed by XChain, and can interoperate with assets on XChain. Of course, this requires collaboration with developers from each public chain.
+   Any chain can provide developers with a Move-based Rollup DApp toolkit through Rooch. Developers can write their own application logic in Move language, and run a Rollup application with security guaranteed by XChain, and can interoperate with assets on XChain. Of course, this requires collaboration with developers from each public chain.
 4. **Sovereign Rollup DApp** = Rooch + DApp Move Contract + DA
    Applications can also use Rooch as a Sovereign Rollup SDK, without deploying the Bridge and Arbitration contracts. The State Commitment Chain is also saved on DA to ensure verifiability, with security ensured by social consensus.
 5. **Arweave SCP DApp** = Rooch + DApp Move Contract + DA (Arweave)
@@ -224,15 +224,15 @@ Through modular, developers can combine Rooch with other components to create di
 7. **Non-Blockchain Projects**
    Non-blockchain projects can use MoveOS as a database with data verification and storage proof capabilities. For example, it can be used to build a local blog system, where data structure and business logic are expressed through Move. As the infrastructure matures, it can be directly integrated into the blockchain ecosystem. Another example is using it for FaaS services in cloud computing, where developers write functions in Move, and the platform manages the state. Functions can be combined and called. There are more possibilities to be explored.
 
-Rooch's modular design can adapt to applications of different types and stages. For example, developers can first validate their ideas by deploying contracts on the Rooch Ethereum Layer2, and then migrate the application to an independent App-Specific Rollup built when it grows up.
+Rooch's modular design can adapt to applications of different types and stages. For example, developers can first validate their ideas by deploying contracts on the Rooch Ethereum Layer2, and then migrate the application to an independent App-Specific Rollup when it grows up.
 
-Alternatively, developers can start the application directly through the Sovereign Rollup method, because in the early stages of the application, there is no high requirement for security, and there is no need to interoperate with assets on other chains. Later, as the application grows, and the need to interoperate with assets arises, and the security requirement increases, Settlement and Arbitration modular can be enabled to ensure the security of the assets.
+Alternatively, developers can start the application directly through the Sovereign Rollup method, because in the early stages of the application, there is no high requirement for security, and there is no need to interoperate with assets on other chains. Later, as the application grows, and the need to interoperate with assets arises, and the security requirement increases, Settlement and Arbitration modularity can be enabled to ensure the security of the assets.
 
 ## Technical Trends of Modular Applications
 
 ### Potential of DA has yet to be tapped
 
-From the previous analysis, it can be seen that regardless of the combination method, it depends on the DA layer. The role of the DA layer in decentralized applications is similar to the log platform in Web2 systems. It can be used for auditing, supporting big data analysis, and conducting AI training. Many applications and services will be built around the DA layer in the future. Currently, there are already DA chain such as Celestia, Polygoin avail, and there will be more in the future, such as EigenLayer, Ethereum danksharding, and so on.
+From the previous analysis, it can be seen that regardless of the combination method, it depends on the DA layer. The role of the DA layer in decentralized applications is similar to the log platform in Web2 systems. It can be used for auditing, supporting big data analysis, and conducting AI training. Many applications and services will be built around the DA layer in the future. Currently, there are already DA chains such as Celestia, Polygoin avail, and there will be more in the future, such as EigenLayer, Ethereum danksharding, and so on.
 
 According to the previous analysis, we conclude that the role of the Sequencer should belong to a part of the DA layer. If the DA layer can provide transaction verification capabilities for applications and has sufficient performance, the Sequencer's responsibilities can actually be fully borne by the DA layer, and users can directly write transactions to the DA layer. Of course, whether users can pay the Gas fee for DA with the application's token is another problem that needs to be solved.
 
@@ -242,14 +242,14 @@ New application forms will promote the explosion of new programming languages, a
 
 1. Using the same language for DApps can quickly accumulate the basic libraries needed for the application and form an ecosystem effect. Therefore, supporting multiple languages at the beginning is not a good strategy.
 2. Decentralized applications must ensure verifiability at least, and smart contract languages can reduce many mental burdens for developers in ensuring verifiability.
-3. Move's platform-agnostic makes it easy to adapt to different platforms and applications.
+3. Move's platform-agnostic nature makes it easy to adapt to different platforms and applications.
 4. Move's state is structured, which is beneficial for DApp's data structure expression and storage retrieval.
 
 ## Conclusion
 
-I entered the blockchain industry at the end of 2017. at the time, many teams were trying to build applications in the blockchain. Unfortunately, the infrastructure was not yet complete and the industry had not yet figured out a replicable pattern for building applications. Most application-based projects failed, which was a blow to developers and investors. How should applications be built on the blockchain? This question has been on my mind for five years.
+I entered the blockchain industry at the end of 2017. at the time, many teams were trying to build applications on the blockchain. Unfortunately, the infrastructure was not yet complete and the industry had not yet figured out a replicable pattern for building applications. Most application-based projects failed, which was a blow to developers and investors. How should applications be built on the blockchain? This question has been on my mind for five years.
 
-Now, with the mature of Layer1, Layer2, and smart contracts, as well as modular infrastructure, the answer to this question has become gradually clearer.
+Now, with the maturity of Layer1, Layer2, and smart contracts, as well as modular infrastructure, the answer to this question has become gradually clearer.
 
 I hope that in the upcoming wave of Web3 DApp explosion, Rooch can help developers build applications faster and truly land them.
 
