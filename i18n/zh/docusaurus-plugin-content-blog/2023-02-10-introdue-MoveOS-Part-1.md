@@ -6,11 +6,7 @@
 
 区块链行业经过10多年的生态发展，从比特币的兴起和以太坊的流行，以区块链为核心的技术引发了 crypto 生态的爆发，各种金融类数字应用和资产已经在加密货币和去中心化金融等方面取得长足的进步，目前区块链进入稳定发展阶段，crypto类似传统的金融业，已经积累了非常好的基础，目前区块链有向更广泛的应用场景发展，Web3 就是其中之一，要满足10亿级以上用户，海量的dApp，能快速响应和高性能，接近 Web2 的体验等。
 
-当前的主要公链都存在不可能三角难题(去中心化，安全性，可扩展性)的困扰，导致了网络拥堵，推高了交易成本。为了适应区块链由 crypto 向 web3 的演进，各大公链也在不断的进化，特别是生态中最活跃的 Ethereum ，其共识也从 PoW 切换为 PoS，Ethereum 定位为 生态中的 Layer1 层，Layer1 提供最终确定性的实现和结算，保证安全性，并在 layer1 基础上构建性能和扩展性更好的 Rollup layer2 层(Arbitrum、Optimism、Starknet等)，Rollup layer2 提供更高的性能和扩展性来满足 web3 的需要，这也是 Ethereum 的扩容方案，最终演变了当下流行的模块化区块链架构。
-
-### **模块化**
-
-模块化区块链架构是相对于之前的单体区块链架构来说的，当前的区块链架构基本都是单体区块链架构，单体区块链是把所有功能都紧密耦合在一条链上，包括执行，通讯，结算以及数据等，而模块化区块链架构却是把每个功能模块分拆为独立的层或链，如下图：
+当前的主要公链都存在不可能三角难题(去中心化，安全性，可扩展性)的困扰，导致了网络拥堵，推高了交易成本。为了适应区块链由 crypto 向 Web3 的演进，在公链成为提供交易最终确定性、结算能力，安全性保证的 Layer1 层，并在 Layer1 基础上构建性能和扩展性更好的 Rollup Layer2 层(Arbitrum、Optimism、Starknet等)，Rollup Layer2 提供更高的性能和扩展性来满足 Web3 的需要，最终演变了当下流行的模块化区块链架构。
 
 ![https://docs.celestia.org/assets/images/monolithic-modular-c078dd91fd68b8e6a168ca8bbccfd3d8.png](https://docs.celestia.org/assets/images/monolithic-modular-c078dd91fd68b8e6a168ca8bbccfd3d8.png)
 
@@ -26,11 +22,27 @@
 
 Rooch 作为主打安全，高性能，可扩展的 Rollup Execution Layer，合约执行能力是核心功能之一，执行的核心就是 MoveOS, 它包含 OMO, MoveVM 以及 StateDB，是系统的执行以及状态存储引擎。StateDB 由两层稀疏默克尔树构建，可以提供状态证明，状态树以及状态证明是 Rollup 应用不可或缺的组件。
 
-MoveOS 是基于 MoveVM 开发的 Move 执行环境，目的是屏蔽不同的 Move Layer1 之间的适配层的差异，对 Move 应用供统一的 Move 运行环境，方便开发者将 Move 集成到不同的应用中，同时，它还会集成 🔖[欺诈证明](https://rooch.network/zh/docs/technology/fraud-proofs) 方案，方便开发者在不同的应用场景中使用欺诈证明机制来保证安。
+MoveOS 是基于 MoveVM 开发的 Move 执行环境，目的是屏蔽不同的 Move Layer1 之间的适配层的差异，对 Move dApp 供统一的 Move 运行环境，方便开发者将 MoveVM 集成到不同的应用中，同时，它还会集成 🔖[欺诈证明](https://rooch.network/zh/docs/technology/fraud-proofs) 方案，方便开发者在不同的应用场景中使用欺诈证明机制来保证安。
 
 ![https://rooch.network/zh/assets/images/rooch-architecture-9414770217ec12ad7cc101673861c921.svg](https://rooch.network/zh/assets/images/rooch-architecture-9414770217ec12ad7cc101673861c921.svg)
 
-### **MoveOS 的优点(包含MoveVM)**
+### **MoveOS 的优点**
+
+MoveOS的底层使用Move语言及MoveVM，Move 语言的特性尤其适合对资产类进行编程：
+
+- 资产是一等公民
+- 安全性
+- 可验证
+- 易用性
+
+为了更好达成Move 语言作为区块链智能合约标准语言，MoveVM也在根本上设计为一个可嵌入的运行时，更方便集成的同时，也从安全性和高性能进行设计。Move 语言采用的可执行格式是一种类型化的字节码，它比汇编高级，但比源语言低，保留大量源代码类型信息的格式，同时配合内置的安全算法和字节码验证器来保证代码正确性，确保每个Module是安全可信的：
+
+- 资源安全
+- 内存安全
+- 类型安全
+- 并行能力
+
+MoveOS 在充分利用 Move 和 MoveVM 特性的基础上进一步扩展，目标是打造Web3时代的通用智能合约开发语言和运行时。
 
 ### **MoveOS functions**
 
