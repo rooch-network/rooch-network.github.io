@@ -2,7 +2,7 @@
 
 ## Where does Rooch MoveOS come from (Rooch MoveOS 从哪里来)
 
-### **区块链的演进**
+### 区块链的演进
 
 区块链行业经过10多年的生态发展，从比特币的兴起和以太坊的流行，以区块链为核心的技术引发了 crypto 生态的爆发，各种金融类数字应用和资产已经在加密货币和去中心化金融等方面取得长足的进步，目前区块链进入稳定发展阶段，crypto类似传统的金融业，已经积累了非常好的基础，目前区块链有向更广泛的应用场景发展，Web3 就是其中之一，要满足10亿级以上用户，海量的dApp，能快速响应和高性能，接近 Web2 的体验等。
 
@@ -16,9 +16,9 @@
 
 ![https://rooch.network/zh/assets/images/rooch-modular-3f38e8dda5bf6149dd1fad2c713aae0f.svg](https://rooch.network/zh/assets/images/rooch-modular-3f38e8dda5bf6149dd1fad2c713aae0f.svg)
 
-## **What is MoveOS (MoveOS 是什么)**
+## What is MoveOS (MoveOS 是什么)
 
-### **MoveOS 是 Rooch 的核心之一**
+### MoveOS 是 Rooch 的核心之一
 
 Rooch 作为主打安全，高性能，可扩展的 Rollup Execution Layer，合约执行能力是核心功能之一，执行的核心就是 MoveOS, 它包含 OMO, MoveVM 以及 StateDB，是系统的执行以及状态存储引擎。StateDB 由两层稀疏默克尔树构建，可以提供状态证明，状态树以及状态证明是 Rollup 应用不可或缺的组件。
 
@@ -26,7 +26,7 @@ MoveOS 是基于 MoveVM 开发的 Move 执行环境，目的是屏蔽不同的 M
 
 ![https://rooch.network/zh/assets/images/rooch-architecture-9414770217ec12ad7cc101673861c921.svg](https://rooch.network/zh/assets/images/rooch-architecture-9414770217ec12ad7cc101673861c921.svg)
 
-### **MoveOS 的优点**
+### MoveOS 的优点
 
 MoveOS的底层使用Move语言及MoveVM，Move 语言的特性尤其适合对资产类进行编程：
 
@@ -44,7 +44,7 @@ MoveOS的底层使用Move语言及MoveVM，Move 语言的特性尤其适合对�
 
 MoveOS 在充分利用 Move 和 MoveVM 特性的基础上进一步扩展，目标是打造Web3时代的通用智能合约开发语言和运行时。
 
-### **MoveOS functions**
+### MoveOS functions
 
 OMO   TODO
 
@@ -52,6 +52,6 @@ MoveVM TODO
 
 StateDB TODO
 
-## **Where does Rooch want to go (Rooch 到哪里去)**
+## Where does Rooch want to go (Rooch 到哪里去)
 
 ### 应用领域
