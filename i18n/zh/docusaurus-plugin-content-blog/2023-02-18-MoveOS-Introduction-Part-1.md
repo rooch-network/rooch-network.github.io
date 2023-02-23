@@ -35,23 +35,38 @@ MoveOS的底层使用Move语言及MoveVM，Move 语言的特性尤其适合对�
 - 可验证
 - 易用性
 
-为了更好达成Move 语言作为区块链智能合约标准语言，MoveVM也在根本上设计为一个可嵌入的运行时，更方便集成的同时，也从安全性和高性能进行设计。Move 语言采用的可执行格式是一种类型化的字节码，它比汇编高级，但比源语言低，保留大量源代码类型信息的格式，同时配合内置的安全算法和字节码验证器来保证代码正确性，确保每个Module是安全可信的：
+MoveOS 在充分利用 Move 和 MoveVM 特性的基础上进一步扩展，目标是打造Web3时代的通用智能合约开发语言和运行时。
 
+### MoveOS Features
+
+> OMO
+> OMO是一个拥有单步状态证明能力的通用字节码模拟器，为多链执行环境设计。有了 OMO 的支持，可以实现仲裁层的模块化。任意支持图灵完备合约的链，都可以在合约中模拟 OMO 的指令，作为仲裁层：
+> 
+1.  为多链执行环境设计：拥有丰富的指令与系统调用实现。
+2. 多平台支持：对 CPU 与操作系统进行了抽象。
+3. 清晰准确的单步状态证明通用方案：拥有进程指令级别的运行状态。
+
+OMO 主要有以下四个关键组件：
+
+- Loader: c加载可执行文件。
+- CPU Emulator: 在宿主机上模拟执行指令。
+- Registers and Stack: 寄存器与栈模拟。
+- OS Interface: 在宿主机上模拟执行系统调用
+
+![https://github.com/rooch-network/omo/raw/main/docs/imgs/arch.png](https://github.com/rooch-network/omo/raw/main/docs/imgs/arch.png)
+
+详情请查看：[OMO 文档](https://github.com/rooch-network/omo/blob/main/docs/guidelines.md)
+
+> MoveVM
+> 为了更好达成Move 语言作为区块链智能合约标准语言，MoveVM也在根本上设计为一个可嵌入的运行时，更方便集成的同时，也从安全性和高性能进行设计。Move 语言采用的可执行格式是一种类型化的字节码，它比汇编高级，但比源语言低，保留大量源代码类型信息的格式，同时配合内置的安全算法和字节码验证器来保证代码正确性，确保每个Module是安全可信的：
+> 
 - 资源安全
 - 内存安全
 - 类型安全
 - 并行能力
 
-MoveOS 在充分利用 Move 和 MoveVM 特性的基础上进一步扩展，目标是打造Web3时代的通用智能合约开发语言和运行时。
-
-### MoveOS functions
-
-OMO   TODO
-
-MoveVM TODO
-
 StateDB TODO
 
-## Where does Rooch want to go (Rooch 到哪里去)
+## Where does MoveOS want to go (MoveOS 到哪里去)
 
 ### 应用领域
