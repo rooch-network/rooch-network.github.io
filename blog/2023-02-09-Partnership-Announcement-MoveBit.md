@@ -1,5 +1,6 @@
 ---
 title: Partnership Announcement~ MoveBit <> Rooch
+slug: partnership-announcement-movebit
 ---
 ![logo-4](https://user-images.githubusercontent.com/99104408/217911743-1d9f34bd-d79a-4ccb-bbb6-9f8460845b36.png)
 Rooch Network will partner with MoveBit to ensure the highest possible level of security independently verified by an expert third party. Founded by experts and professors in security, MoveBit is a blockchain security company focused on Move ecosystem security. MoveBit will soon be a household name in the security audit sector of the blockchain industry. 
