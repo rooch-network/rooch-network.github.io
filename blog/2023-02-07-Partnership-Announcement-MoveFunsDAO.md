@@ -1,5 +1,6 @@
 ---
 title: Partnership Announcement~ MoveFunsDao <> Rooch
+slug: partnership-announcement-movefunsdao
 ---
 ![movefuns](https://user-images.githubusercontent.com/99104408/217434466-c5670401-0094-4386-b0de-699e25f31650.png)
 Rooch Network has an established partnership with MoveFunsDAO, "A DAO for Move developers, with the main goal of uniting the developer community to build across multiple Move chain ecosystems." At the date of this posting, MoveFunsDAO has gathered more than 250 Move developers for the purpose of collective action and learning within the broader Move ecosystem, including Aptos, Starcoin, and Sui.  
