@@ -1,5 +1,6 @@
 ---
-Hello Rooch
+title: Hello Rooch
+slug: hello-rooch
 ---
 ![black](https://user-images.githubusercontent.com/99104408/220233003-f425bb91-47fa-44ba-8d2c-3a0fd10cb34d.jpg)
 
