@@ -65,8 +65,20 @@ OMO 主要有以下四个关键组件：
 - 类型安全
 - 并行能力
 
-StateDB TODO
+详情请参看: Move 语言文档及 MoveVM 规范
 
-## Where does MoveOS want to go (MoveOS 到哪里去)
+[Move language](https://github.com/move-language/move/tree/main/language)
 
-### 应用领域
+[MoveVM Specification](https://github.com/move-language/move/blob/main/language/documentation/spec/vm.md)
+
+> StateDB
+> 
+> 
+> MoveOS 中的 StateDB (状态存储)主要使用 Sparse Merkle Tree(简称SMT)技术为基础，通过两层SMT结构对状态数据进行组织，在增加极小寻址时间的情况下，极大的提高存储空间和状态证明，较好的解决状态爆炸。
+> 
+> SMT 是在 Merkle Tree 在的改进版，SMT 是一颗预定大小的Merkle tree，而通过设置默认值的方式解决占用大量容量的问题，即使 Ethereum 中 2¹⁶⁰ 也可以保存在SMT中。
+> 
+
+## MoveOS 展望
+
+Move OS 作为 Rooch 的执行层的核心，具有安全、高效，资产亲和，并行执行，灵活易用的特点，不仅仅能应用也 Rooch 网络中，也能当成一个独立执行组件和其他 Rollup 或 Layer1 结合，无论是通过直接集成(Rust环境)，或者是编译成 WebAssembly ，还是做成独立的GRPC服务，都是可行的。
