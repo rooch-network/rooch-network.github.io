@@ -76,9 +76,21 @@ OMO 主要有以下四个关键组件：
 > 
 > MoveOS 中的 StateDB (状态存储)主要使用 Sparse Merkle Tree(简称SMT)技术为基础，通过两层SMT结构对状态数据进行组织，在增加极小寻址时间的情况下，极大的提高存储空间和状态证明，较好的解决状态爆炸。
 > 
-> SMT 是在 Merkle Tree 在的改进版，SMT 是一颗预定大小的Merkle tree，而通过设置默认值的方式解决占用大量容量的问题，即使 Ethereum 中 2¹⁶⁰ 也可以保存在SMT中。
+> SMT 是在 Merkle Tree 在的变体，SMT 是一颗预定大小的Merkle tree，能快速识别数据变更和证明的基础上，也可以提供不存在证明(proof of non-inclusion)，同时通过设置默认值的方式解决占用大量容量的问题，即使 Ethereum 中 2¹⁶⁰ 的海量账户也可以保存在 SMT 中。
 > 
 
-## MoveOS 展望
+SMT 参考资料和代码实现：
 
-Move OS 作为 Rooch 的执行层的核心，具有安全、高效，资产亲和，并行执行，灵活易用的特点，不仅仅能应用也 Rooch 网络中，也能当成一个独立执行组件和其他 Rollup 或 Layer1 结合，无论是通过直接集成(Rust环境)，或者是编译成 WebAssembly ，还是做成独立的GRPC服务，都是可行的。
+[Sparse Merkle Tree Introduction](https://medium.com/newcryptoblock/sparse-merkle-tree-introduction-a267f3a29223)
+
+[Diem paper](https://diem-developers-components.netlify.app/papers/the-diem-blockchain/2020-05-26.pdf)
+
+[Diem SMT implement](https://github.com/diem/diem/tree/latest/storage/jellyfish-merkle)
+
+## MoveOS 总结展望
+
+Move OS 作为 Rooch 的执行层的核心，具有安全、高效，资产亲和，并行执行，灵活易用的特点，不仅仅能应用也 Rooch 网络中，也能当成一个独立执行组件和其他 Rollup layer2，Layer3 或 Layer1 结合，可以通过以下3种方式进行集成：
+
+1.  Rollup Layer2 层模块功能 或 Layer1 链中直接集成 MoveOS 功能(需要 Rust 环境)。
+2.  MoveOS 编译成 WebAssembly ，再与 Rollup Layer2 或 Layer1 交互。
+3. MoveOS 做成独立的GRPC服务，Rollup Layer2 或 Layer1 通过 GRPC 接口通讯。
