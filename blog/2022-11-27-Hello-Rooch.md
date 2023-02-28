@@ -2,7 +2,8 @@
 title: Hello Rooch
 slug: hello-rooch
 ---
-![black](https://user-images.githubusercontent.com/99104408/220233003-f425bb91-47fa-44ba-8d2c-3a0fd10cb34d.jpg)
+
+![while](/img/rooch_black_combine.png)
 
 A long, long time ago in a galaxy, far, far, wait– January 3rd, 2009, bitcoin went live on mainnet with the mining of its genesis block, and the blockchain was born. It wasn’t until 2015 that Ethereum 1.0 broke out onto the scene, delivering its landscape altering smart contracts. Ever since the blockchain industry has been rapidly iterating. Today, a pantheon of Layer1s have risen to the fore, delivering a suite of sophisticated features and application scenarios that have begun to disrupt traditional finance as we know it.
 
@@ -25,4 +26,5 @@ Here’s an industry shattering capability–  not only does Rooch significantly
 Rooch’s Layer3 opens up a new frontier with its instant transaction confirmation and distributed P2P network. The bread and butter of web2, micropayments, are brought back from the dead for blockchain. Any application can leverage the rooch-enabled P2P network to enable microtransactions, all they have to do is pay the network fee per byte, no proof of storage required. Rooch’s Modular DApp framework lets projects broaden their target market in the planning stage, while the move language and its modules shrink the development window for faster time to market. 
 
 Rooch is the missing link, the golden goose that will deliver on the “ancient” promise of a decentralized, fast & secure, multi-chain world. 
-![Frame 1](https://user-images.githubusercontent.com/99104408/220232974-f2d38315-9370-4918-88c1-0863d8bd6b1a.jpg)
+
+![Rooch banner](/img/rooch-banner.png)
