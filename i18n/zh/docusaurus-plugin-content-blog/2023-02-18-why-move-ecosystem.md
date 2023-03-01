@@ -1,6 +1,7 @@
 ---
 title: 为什么是 Move 之编程语言的生态构建
-author: jolestar
+authors: jolestar
+slug: why-move-ecosystem
 ---
 
 作为一个 Move 的鼓吹者，每次给开发者推广 Move 的时候都会遇到这样的问题。**Move 有什么优势吗？为什么是 Move？**

@@ -1,6 +1,6 @@
 ---
 title: Why Move? From the Perspective of Programming Language Ecosystem Building
-author: jolestar
+authors: jolestar
 slug: why-move-ecosystem
 ---
 
