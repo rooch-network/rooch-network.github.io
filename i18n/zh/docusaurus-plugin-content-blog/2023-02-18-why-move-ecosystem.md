@@ -156,15 +156,15 @@ Move 的这种依赖方式虽然和动态库的模式类似，但它同时利用
 
 编程语言模块之间的可组合性是构建编程语言生态的另外一个重要特性。可以说，正因为模块之间有可组合性，才产生依赖关系，而不同的依赖方式也提供了不同的组合能力。
 
-根据前面对依赖方式的分析，在 Solidity 生态谈论智能合约的可组合性的时候，实际上主要说的是 `contract` 之间的组合，而不是 `library`  之间的组合。而我们前面也说了， `contract` 之间的依赖是一种类似与远程调用的依赖，互相传递的实际上是消息，而不能是 `引用` 或者 `资源`。
+根据前面对依赖方式的分析，在 Solidity 生态谈论智能合约的可组合性的时候，实际上主要说的是 `contract` 之间的组合，而不是 `library` 之间的组合。而我们前面也说了，`contract` 之间的依赖是一种类似与远程调用的依赖，互相传递的实际上是消息，而不能是`引用`或者`资源`。
 
-这里用 `资源(resource)`  这个词，主要是强调这种类型的变量在程序内不能随意的复制(copy)或者丢弃(drop)，这是线性类型带来的特性，这个概念在编程语言中还不普及。
+这里用`资源（resource）`这个词，主要是强调这种类型的变量在程序内不能随意的复制（copy）或者丢弃（drop），这是线性类型带来的特性，这个概念在编程语言中还不普及。
 
 线性类型来自于线性逻辑，而线性逻辑本身是为了表达经典逻辑无法表达的资源消耗类的逻辑。比如有“牛奶”，逻辑上可以推导出“奶酪”，但这里没办法表达资源消耗，没办法表达 X 单位的“牛奶”可以得出 Y 单位的“奶酪” 这样的逻辑，所以才有了线性逻辑，编程语言里也有了线性类型。
 
 编程语言中首先要处理资源就是内存，所以线性类型的一个应用场景就是追踪内存的使用，保证内存资源被正确的回收，比如 Rust。但如果将这个特性普遍推广，我们就可以在程序中模拟和表达任意类型的`资源`。
 
-那为什么组合时能进行`资源` 传递非常重要呢？我们先来理解一下当前的基于 Interface 的组合方式，大多数编程语言，包括 Solidity 都是这样的组合方式。
+那为什么组合时能进行`资源`传递非常重要呢？我们先来理解一下当前的基于 Interface 的组合方式，大多数编程语言，包括 Solidity 都是这样的组合方式。
 
 我们要将多个模块组合起来，最关键的是约定好调用的函数以及函数的参数和返回值类型，一般叫做函数的“签名”。我们一般用 Interface 来定义这种约束，但具体的实现由各方自己实现。
 
@@ -190,7 +190,7 @@ module Account{
 }
 ```
 
-可以看出，Token 是一种类型，可以从账号 withdraw 出来一个 Token 对象。有人要问，这样做有什么意义呢？
+可以看出，Token 是一种类型，可以从账号提取（withdraw）出来一个 Token 对象。有人要问，这样做有什么意义呢？
 
 我们可以通过一种比较通俗的类比来比较二者的组合方式的区别。Token 对象类似于生活中的现金，你想去一个商场购买东西，有两种支付方式：
 
@@ -203,7 +203,7 @@ module Account{
 
 基于自由状态的组合的关键优势有两个：
 
-1. 可以有效的降低基于接口组合的嵌套深度，对这个感兴趣的朋友可以参看以前我一次分享中关于闪电贷的例子。考虑到有的读者对闪电贷背景不清楚，这里就不详述里。
+1. 可以有效地降低基于接口组合的嵌套深度，对这个感兴趣的朋友可以参看以前我一次分享中关于闪电贷的例子。考虑到有的读者对闪电贷背景不清楚，这里就不详述了。
 2. 可以明确的将资源的定义和基于资源的行为拆分开来，这里有一个典型的例子是灵魂绑定的 NFT。
 
 灵魂绑定的 NFT 这个概念是 Vitalik 提出的，想用 NFT 来表达一种身份关系，而这种关系不应该是可以转让的，比如毕业证，荣誉证书等。
@@ -231,9 +231,9 @@ struct NFT<NFTMeta: copy + store + drop, NFTBody: store> has store {
 }
 ```
 
-然后我们可以把上层封装设想成不同容器，不同的容器有不同的行为。比如 NFT 放在个人展览馆里的时候，是可以拿出来的，但一旦放一些特殊容器中，想要拿出来则需要有其他规则限制，这就实现了“绑定”。
+然后我们可以把上层封装设想成不同容器，不同的容器有不同的行为。比如 NFT 放在个人展览馆里的时候，是可以拿出来的，但一旦放到一些特殊容器中，想要拿出来则需要有其他规则限制，这就实现了“绑定”。
 
-比如 Starcoin 的 NFT 标准实现了一种灵魂绑定 NFT 的容器叫做 `IdentifierNFT` ：
+比如 Starcoin 的 NFT 标准实现了一种灵魂绑定 NFT 的容器叫做 `IdentifierNFT`：
 
 ```rust
 /// IdentifierNFT 中包含了一个 Option 的 NFT，默认是空的，相当于一个可以容纳 NFT 的箱子
@@ -241,7 +241,7 @@ struct IdentifierNFT<NFTMeta: copy + store + drop, NFTBody: store> has key {
         nft: Option<NFT<NFTMeta, NFTBody>>,
 }
 
-/// 用户通过 Accept 方法初始化一个空的 IdentifierNFT 在自己的账号下
+/// 用户通过 accept 方法初始化一个空的 IdentifierNFT 在自己的账号下
 public fun accept<NFTMeta: copy + store + drop, NFTBody: store>(sender: &signer);
 
 /// 开发者通过 MintCapability 给 receiver 授予该 nft，将 nft 嵌入到 IdentifierNFT 中
@@ -255,11 +255,9 @@ public fun revoke<NFTMeta: copy + store + drop, NFTBody: store>(_cap: &mut BurnC
 
 这段阐述了 Move 基于线性类型带来的一种新的组合方式。当然，只有语言的特性优势并不能自然带来编程语言的生态，还必须有应用场景。我们继续来讨论 Move 语言的应用场景扩展。
 
-
-
 ## 智能合约的应用场景扩展
 
-Move 最初作为 Libra 链的智能合约编程语言，设计之处就考虑到了不同的应用场景。当时 Starcoin 正好在设计中，考虑到它的特性正好符合 Starcoin 追求的目标，就将其应用在公链场景里。再后来 Libra 项目搁浅，又孵化出几个公链项目，在几个不同的方向上探索：
+Move 最初作为 Libra 链的智能合约编程语言，设计之初就考虑到了不同的应用场景。当时 Starcoin 正好在设计中，考虑到它的特性正好符合 Starcoin 追求的目标，就将其应用在公链场景里。再后来 Libra 项目搁浅，又孵化出几个公链项目，在几个不同的方向上探索：
 
 - MystenLabs 的 Sui 引入了不可变状态，试图在 Move 中实现类似 UTXO 的编程模型。
 - Aptos 在探索 Layer1 上的交易的并行执行，以及高性能。
@@ -276,7 +274,7 @@ Move 最初作为 Libra 链的智能合约编程语言，设计之处就考虑�
 
 这几个挑战同时也是机遇，它们之间有冲突，需要有取舍，需要在发展中寻找平衡，还没有一种语言做过这种尝试。这种平衡可以保证 Move 有可能探索更多的应用场景，而不仅仅是和区块链绑定。
 
-这点上，Solidity 通过指令和链交互带来的一个问题是 Solidity&EVM 生态完全和链的绑定了，运行就需要模拟一个链的环境。这限制了 Solidity 拓展到其他场景。
+这点上，Solidity 通过指令和链交互带来的一个问题是 Solidity&EVM 生态完全和链绑定了，运行就需要模拟一个链的环境。这限制了 Solidity 拓展到其他场景。
 
 关于智能合约编程语言的未来，有许多不同的看法，大体上有四种：
 
@@ -295,12 +293,10 @@ Move 最初作为 Libra 链的智能合约编程语言，设计之处就考虑�
 
 > 后记：写这篇文章的时候 Rooch 项目尚未创建，但关于分层以及 DApp 构建的设想已经在脑海里酝酿许久。Rooch 是对如何用 Move 构建 DeFi 之外应用的一个回答，详细请参看文章《[Rollup Layer2 的模块化演进之路](https://rooch.network/zh/blog/modular-evolution-of-rollup-layer2/)》。
 
-
-
 ### 相关链接
 
 1. [https://github.com/move-language/move](https://github.com/move-language/move) Move 项目的新仓库
 2. [awesome-move: Code and content from the Move community](https://github.com/MystenLabs/awesome-move)  一个 Move 相关项目的资源集合，包括公链以及 Move 实现的库
 3. [Soulbound (vitalik.ca)](https://vitalik.ca/general/2022/01/26/soulbound.html) Vitalik 关于 NFT 灵魂绑定的文章
 4. [SIP22 NFT](https://starcoin.org/zh/developer/sips/sip-22/) Starcoin 的 NFT 标准，包括 IdentifierNFT 的说明
-5. [开启比特币智能合约的「三把锁」 (jolestar.com)](https://jolestar.com/bitcoin-smart-contract/)
+5. [开启比特币智能合约的「三把锁」(jolestar.com)](https://jolestar.com/bitcoin-smart-contract/)
