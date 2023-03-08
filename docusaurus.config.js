@@ -122,6 +122,23 @@ const config = {
             ],
           },
           {
+            title: 'Media',
+            items: [
+              {
+                label: 'Twitter',
+                href: 'https://twitter.com/RoochNetwork',
+              },
+              {
+                label: 'Youtube',
+                href: 'https://www.youtube.com/channel/UC2WeEQQsK_PDiARYrSAPaPQ',
+              },
+              {
+                label: 'Telegram',
+                href: 'https://t.me/roochnetwork'
+              },
+            ],
+          },
+          {
             title: 'More',
             items: [
               {
