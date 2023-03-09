@@ -133,6 +133,10 @@ const config = {
                 href: 'https://www.youtube.com/channel/UC2WeEQQsK_PDiARYrSAPaPQ',
               },
               {
+                label: 'Discord',
+                href: 'https://discord.gg/dT4DfDvE'
+              },
+              {
                 label: 'Telegram',
                 href: 'https://t.me/roochnetwork'
               },
