@@ -41,7 +41,7 @@ const config = {
         sitemap: {},
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          sidebarCollapsible: true, 
+          sidebarCollapsible: true,
           // Please change this to your repo.
           editUrl: ({ locale, versionDocsDirPath, docPath }) => {
             let link
@@ -122,7 +122,7 @@ const config = {
             ],
           },
           {
-            title: 'Media',
+            title: 'Social Media',
             items: [
               {
                 label: 'Twitter',
