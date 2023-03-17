@@ -14,6 +14,6 @@ Some highlights of zkMove:
 2. No compromise on performance while pursuing Turing completeness
 3. Safe and efficient scaling and privacy engine
 
-For those readers interested in a deep dive into zkMove, there is a wealth of high quality information available at the zkMove medium (https://zkmove.medium.com/). The project is also hiring qualified engineers (https://www.zkmove.net/join_us.html)!
+For those readers interested in a deep dive into zkMove, there is a wealth of high quality information available at the zkMove medium (https://zkmove.medium.com/). The project is also hiring qualified engineers (https://www.zkmove.net)!
 
 Rooch Network is committed to its partnership with zkMove, and together we will work to deliver the holy grail of blockchain on Rooch~ a fully interoperable, multi-chain ecosystem supported in part by zkMove’s layered solution. 

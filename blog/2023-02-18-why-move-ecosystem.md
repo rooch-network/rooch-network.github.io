@@ -327,12 +327,12 @@ The reason is simple: in the Web3 world, whether it's a game or other applicatio
 
 This article explains Move's attempts to implement on-chain smart contracts and the challenges faced by current smart contracts in terms of dependency and composability. Based on these attempts, the article also explores the potential for Move ecosystem building.
 
-> Afterword: When writing this article, the Rooch project had not yet been created, but ideas about layered solution and DApp building had been brewing in my mind for a long time. Rooch is an answer to how to use Move to build DApp beyond DeFi. For more details, please see the article "The Modular Evolution of Rollup Layer2[https://rooch.network/blog/modular-evolution-of-rollup-layer2/]"
+> Afterword: When writing this article, the Rooch project had not yet been created, but ideas about layered solution and DApp building had been brewing in my mind for a long time. Rooch is an answer to how to use Move to build DApp beyond DeFi. For more details, please see the article "[The Modular Evolution of Rollup Layer2](https://rooch.network/blog/modular-evolution-of-rollup-layer2)".
 
 #### Links
 
 1. [https://github.com/move-language/move](https://github.com/move-language/move) The new repository of the Move project
 2. [awesome-move: Code and content from the Move community](https://github.com/MystenLabs/awesome-move)
 3. [Soulbound (vitalik.ca)](https://vitalik.ca/general/2022/01/26/soulbound.html) Vitalik's article about NFT Soulbound
-4. [SIP22 NFT](https://starcoin.org/en/developer/sips/sip-22/) Starcoin's NFT standard, including the explanation of IdentifierNFT
+4. [SIP22 NFT](https://github.com/starcoinorg/sips/blob/master/sip-22/index.md) Starcoin's NFT standard, including the explanation of IdentifierNFT
 5. [Unlocking the "Three Locks" of Bitcoin Smart Contracts (jolestar.com)](https://jolestar.com/bitcoin-smart-contract/)

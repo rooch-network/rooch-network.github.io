@@ -291,12 +291,12 @@ Move 最初作为 Libra 链的智能合约编程语言，设计之初就考虑�
 
 考虑到文章也比较长了，很多方面还没表述到，我会基于这个题目写一个系列，探讨 Move 在安全方面以及应用构建等方向的更多优势。
 
-> 后记：写这篇文章的时候 Rooch 项目尚未创建，但关于分层以及 DApp 构建的设想已经在脑海里酝酿许久。Rooch 是对如何用 Move 构建 DeFi 之外应用的一个回答，详细请参看文章《[Rollup Layer2 的模块化演进之路](https://rooch.network/zh/blog/modular-evolution-of-rollup-layer2/)》。
+> 后记：写这篇文章的时候 Rooch 项目尚未创建，但关于分层以及 DApp 构建的设想已经在脑海里酝酿许久。Rooch 是对如何用 Move 构建 DeFi 之外应用的一个回答，详细请参看文章《[Rollup Layer2 的模块化演进之路](https://rooch.network/zh/blog/modular-evolution-of-rollup-layer2)》。
 
 ### 相关链接
 
 1. [https://github.com/move-language/move](https://github.com/move-language/move) Move 项目的新仓库
 2. [awesome-move: Code and content from the Move community](https://github.com/MystenLabs/awesome-move)  一个 Move 相关项目的资源集合，包括公链以及 Move 实现的库
 3. [Soulbound (vitalik.ca)](https://vitalik.ca/general/2022/01/26/soulbound.html) Vitalik 关于 NFT 灵魂绑定的文章
-4. [SIP22 NFT](https://starcoin.org/zh/developer/sips/sip-22/) Starcoin 的 NFT 标准，包括 IdentifierNFT 的说明
+4. [SIP22 NFT](https://github.com/starcoinorg/sips/blob/master/sip-22/index.zh.md) Starcoin 的 NFT 标准，包括 IdentifierNFT 的说明
 5. [开启比特币智能合约的「三把锁」(jolestar.com)](https://jolestar.com/bitcoin-smart-contract/)
