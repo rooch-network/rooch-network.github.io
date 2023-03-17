@@ -8,8 +8,10 @@ With the Layer2 Rollup experiment, we migrate the execution of transactions from
 
 The industry is still figuring out how to split the module layer in the modular blockchain. As shown in the figure below, it is split into an execution layer, a settlement layer, a consensus and a data availability layer. Where the settlement layer also takes on the role of arbitration.
 
+<!-- markdown-link-check-disable -->
 ![](https://docs.celestia.org/assets/images/monolithic-modular-c078dd91fd68b8e6a168ca8bbccfd3d8.png)
 > (Above figure is from: https://docs.celestia.org/concepts/how-celestia-works/monolithic-vs-modular)
+<!-- markdown-link-check-enable -->
 
 Rooch improves on this by splitting the arbitration role from the settlement layer, thus can supporting multiple settlement layers. For the settlement protocol, please refer to:[Multi-chain settlement protocol](01-multi-chain-settlement-protocol.md)
 
