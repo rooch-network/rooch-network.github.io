@@ -1,8 +1,13 @@
 {
-    "replacementPatterns": [
+    "ignorePatterns": [
         {
-            "pattern": "^/",
-            "replacement": "/static"
+            "pattern": "^/img"
+        },
+        {
+            "pattern": "^/diagram"
+        },
+        {
+            "pattern": "^/blog"
         }
     ]
 }
