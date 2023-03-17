@@ -41,7 +41,7 @@ const config = {
         sitemap: {},
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          sidebarCollapsible: true, 
+          sidebarCollapsible: true,
           // Please change this to your repo.
           editUrl: ({ locale, versionDocsDirPath, docPath }) => {
             let link
@@ -118,6 +118,27 @@ const config = {
               {
                 label: 'Documents',
                 to: '/docs/',
+              },
+            ],
+          },
+          {
+            title: 'Social Media',
+            items: [
+              {
+                label: 'Twitter',
+                href: 'https://twitter.com/RoochNetwork',
+              },
+              {
+                label: 'Youtube',
+                href: 'https://www.youtube.com/channel/UC2WeEQQsK_PDiARYrSAPaPQ',
+              },
+              {
+                label: 'Discord',
+                href: 'https://discord.gg/dT4DfDvE'
+              },
+              {
+                label: 'Telegram',
+                href: 'https://t.me/roochnetwork'
               },
             ],
           },

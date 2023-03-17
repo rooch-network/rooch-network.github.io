@@ -21,7 +21,7 @@
   },
   "link.item.label.Material": {
     "message": "物料",
-    "description": "The label of footer link with label=Material"
+    "description": "The label of footer link with label=Material linking to https://www.figma.com/file/rBJBLeqsgCfkryL1adDNDG/Rooch?node-id=18%3A2&t=zbM1JoFxY2Lm3hND-0"
   },
   "link.item.label.GitHub": {
     "message": "GitHub",
@@ -38,5 +38,25 @@
   "copyright": {
     "message": "Copyright © 2022 Rooch Network. Built with Docusaurus.",
     "description": "The footer copyright"
+  },
+  "link.title.Social Media": {
+    "message": "社交媒体",
+    "description": "The title of the footer links column with title=Social Media in the footer"
+  },
+  "link.item.label.Twitter": {
+    "message": "Twitter",
+    "description": "The label of footer link with label=Twitter linking to https://twitter.com/RoochNetwork"
+  },
+  "link.item.label.Youtube": {
+    "message": "Youtube",
+    "description": "The label of footer link with label=Youtube linking to https://www.youtube.com/channel/UC2WeEQQsK_PDiARYrSAPaPQ"
+  },
+  "link.item.label.Discord": {
+    "message": "Discord",
+    "description": "The label of footer link with label=Discord linking to https://discord.gg/dT4DfDvE"
+  },
+  "link.item.label.Telegram": {
+    "message": "Telegram",
+    "description": "The label of footer link with label=Telegram linking to https://t.me/roochnetwork"
   }
 }
