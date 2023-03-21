@@ -1,0 +1,13 @@
+{
+    "ignorePatterns": [
+        {
+            "pattern": "^/img"
+        },
+        {
+            "pattern": "^/diagram"
+        },
+        {
+            "pattern": "^/blog"
+        }
+    ]
+}

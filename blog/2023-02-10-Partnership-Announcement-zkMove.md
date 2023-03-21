@@ -1,5 +1,6 @@
 ---
 title: Partnership Announcement~ zkMove <> Rooch
+slug: partnership-announcement-zkmove
 ---
 ![logo配色图](https://user-images.githubusercontent.com/99104408/218180814-bc9e1a02-baee-42a4-bb46-46925f33f5bb.png)
 Rooch Network is delighted to announce its partnership with zkMove! Rooch will work closely with zkMove to bring its zk-rollup solution to Rooch’s fully interoperable, multi-chain ecosystem. Moreover we will explore new dApp usages and build the Move community together.
@@ -13,6 +14,6 @@ Some highlights of zkMove:
 2. No compromise on performance while pursuing Turing completeness
 3. Safe and efficient scaling and privacy engine
 
-For those readers interested in a deep dive into zkMove, there is a wealth of high quality information available at the zkMove medium (https://zkmove.medium.com/). The project is also hiring qualified engineers (https://www.zkmove.net/join_us.html)!
+For those readers interested in a deep dive into zkMove, there is a wealth of high quality information available at the zkMove medium (https://zkmove.medium.com/). The project is also hiring qualified engineers (https://www.zkmove.net)!
 
 Rooch Network is committed to its partnership with zkMove, and together we will work to deliver the holy grail of blockchain on Rooch~ a fully interoperable, multi-chain ecosystem supported in part by zkMove’s layered solution. 

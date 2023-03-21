@@ -4,6 +4,8 @@ markmap:
   initialExpandLevel: 3
 ---
 
+<!-- markdown-link-check-disable -->
+
 # Rooch
 
 ## 是什么
@@ -392,3 +394,5 @@ markmap:
 ### 状态通道应用
 
 ## L2 项目概览
+
+<!-- markdown-link-check-enable -->

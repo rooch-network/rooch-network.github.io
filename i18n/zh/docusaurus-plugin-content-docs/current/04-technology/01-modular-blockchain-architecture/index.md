@@ -8,8 +8,10 @@
 
 模块化区块链中的模块层如何拆分，业界尚在摸索中。如下图所示，拆分为执行层，结算层，共识和数据可用层。其中结算层也承担仲裁的职责。
 
+<!-- markdown-link-check-disable -->
 ![](https://docs.celestia.org/assets/images/monolithic-modular-c078dd91fd68b8e6a168ca8bbccfd3d8.png)
 > （上图来自 https://docs.celestia.org/concepts/how-celestia-works/monolithic-vs-modular）
+<!-- markdown-link-check-enable -->
 
 而 Rooch 在这个基础上进行改进，将仲裁职能从结算层拆分出来，从而支持多个结算层。关于结算协议请参看：[多链结算协议](01-multi-chain-settlement-protocol.md)
 
