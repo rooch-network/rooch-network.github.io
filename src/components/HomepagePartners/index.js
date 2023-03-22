@@ -22,22 +22,22 @@ const PartnersList = [
   {
     title: 'https://www.movebit.xyz/images/logo-movebit.png',
     icon: '',
-    link: 'https://github.com/movefuns',
+    link: 'https://movebit.xyz',
     description: (
       <>
-        MoveBit is a security company for the Move ecosystem, with a vision to make the Move ecosystem the most secure Web3.<br/><br/>
+        Founded by experts and professors in security, MoveBit is a blockchain security company focused on Move ecosystem security.<br/><br/>
       </>
     ),
     descriptionZH: (
       <>
-        MoveBit 是 Move 生态的安全公司，愿景是让 Move 生态成为最安全的 Web3。<br/><br/>
+        MoveBit由安全专家教授创立，是一家专注于Move生态安全的区块链安全公司。<br/><br/>
       </>
     ),
   },
   {
     title: 'https://www.zkmove.net/assets/img/logo.jpg',
     icon: '',
-    link: 'https://github.com/movefuns',
+    link: 'https://www.zkmove.net',
     description: (
       <>
         A zero-knowledge Move language runtime environment. Safe, Efficient, and Privacy-protected.<br/><br/>
