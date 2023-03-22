@@ -19,6 +19,36 @@ const PartnersList = [
       </>
     ),
   },
+  {
+    title: 'https://www.movebit.xyz/images/logo-movebit.png',
+    icon: '',
+    link: 'https://movebit.xyz',
+    description: (
+      <>
+        Founded by experts and professors in security, MoveBit is a blockchain security company focused on Move ecosystem security.<br/><br/>
+      </>
+    ),
+    descriptionZH: (
+      <>
+        MoveBit由安全专家教授创立，是一家专注于Move生态安全的区块链安全公司。<br/><br/>
+      </>
+    ),
+  },
+  {
+    title: 'https://www.zkmove.net/assets/img/logo.jpg',
+    icon: '',
+    link: 'https://www.zkmove.net',
+    description: (
+      <>
+        A zero-knowledge Move language runtime environment. Safe, Efficient, and Privacy-protected.<br/><br/>
+      </>
+    ),
+    descriptionZH: (
+      <>
+        一个零知识的 Move 语言运行时环境。安全、高效、隐私保护。<br/><br/>
+      </>
+    ),
+  },
 ];
 
 
@@ -37,7 +67,7 @@ function Feature({ icon, title, link, description, descriptionZH }) {
             }
             {
               title.indexOf("http") === 0 ?
-                <img src={title} /> :
+                <img src={title} height="110" /> :
                 <h3 className={styles.cardTitle}>{title}</h3>
             }
           </div>
