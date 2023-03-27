@@ -1,9 +1,22 @@
 {
-	"dependencies": {
-		"next": "^13.2.4",
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0",
-		"nextra": "^2.2.20",
-		"nextra-theme-docs": "^2.2.20"
-	}
+  "name": "rooch-network.github.io",
+  "version": "0.0.1",
+  "description": "Rooch website",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rooch-network/rooch-network.github.io.git"
+  },
+  "homepage": "https://rooch.network",
+  "dependencies": {
+    "next": "^13.2.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "nextra": "^2.2.20",
+    "nextra-theme-docs": "^2.2.20"
+  }
 }
