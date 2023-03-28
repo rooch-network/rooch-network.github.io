@@ -1,5 +1,5 @@
 {
-  "index": "State Channel on P2P Network",
+  "introduction": "",
   "01-streaming-payment": "Streaming Payment",
   "02-channel-contract": "SmartContract on State Channel"
 }
