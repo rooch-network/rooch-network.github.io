@@ -2,6 +2,6 @@
   "resource-oriented": "Resource-Oriented Programming",
   "fully-contract-based": "Fully Contract-Based Application",
   "account-abstraction": "Account Abstraction",
-  "in-contract-storage": "In-Contract Storage",
+  "in-contract-storage": "In-Contract KV Storage with CRUD",
   "gas-fee-delegation": "Flexible Gas Fee"
 }
