@@ -1,0 +1,34 @@
+# Rooch Layer3
+
+Rooch Layer3 is a DApp hosting platform for developers to deploy their DApps contained with Rooch instances.
+
+> The key difference between Rooch Layer2 (DApp hosting) and Rooch Layer3 (smart contract hosting):
+>
+> - On Layer2, all smart contracts of different DApps are deployed in the same Rooch instance
+> - On Layer3, smart contracts of each DApps are deployed in a single Rooch instance
+
+## Architecture
+
+import Image from "next/image";
+
+<Image
+  src="/diagram/rooch-layer3.png"
+  alt="Rooch Layer2 Architecture"
+  width={600}
+  height={600}
+  class="mx-auto mb-2 mt-6"
+/>
+
+> Details of Rooch Layer3 architecture will be introduced later.
+
+## Why Layer3?
+
+### DApp-Specific-Platforms
+
+Comparing with Layer2, where all DApps share the resources provided by a single platform, Layer3 allows DApps to have DApp-Specific-Platforms. This brings even larger scalability to Layer3 DApps.
+
+Layer3 DApps can also customize the their Rooch instance to achieve other features, such as privacy.
+
+### Easy Deployment
+
+Comparing with AppChain, where developers need to find their own node operators to provide security for their own blockchains, Layer3 can realize one-click deployment as simple as pushing your code to GitHub.
