@@ -16,8 +16,10 @@
     "next": "^13.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-spring": "^9.4.4",
     "nextra": "^2.2.20",
-    "nextra-theme-docs": "^2.2.20"
+    "nextra-theme-docs": "^2.2.20",
+    "cobe": "0.4.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",

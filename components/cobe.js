@@ -1,26 +1,9 @@
-# Rooch
-
-Limitless, Secured Web3 Development
-
-{/* <button>Documentation</button> */}
-
-## Key Advantages
-
-- Move Language - crypto native functions with language level safety
-- Layer2 - an off-chain environment secured by Ethereum
-- Hybird Security - With ZK Proof and Fraud Proof
-- Multi-Chain Settlement - Aggregate assets from multiple ecosystems
-- Dev and User Experience - Gas Fee Delegation / Session Key / KV Interface / Built-In Liquidity Pool, GraphQL…
-
----
-title: COBE
----
 
 import createGlobe from "cobe";
 import { useEffect, useRef } from "react";
 import { useSpring } from 'react-spring';
 
-export function Cobe() {
+export default function Cobe({title = "Rooch", desc = ""}) {
   const canvasRef = useRef();
   const pointerInteracting = useRef(null);
   const pointerInteractionMovement = useRef(0);
@@ -92,8 +75,9 @@ export function Cobe() {
         letterSpacing: '.3em',
         textIndent: '.3em',
         margin: 'auto',
-      }}>COBE</h1>
-      <span style={{ fontSize: '1.2em' }}>5kB WebGL Globe</span>
+        color:'white'
+      }}>{title}</h1>
+      <span style={{ fontSize: '1.2em' }}>{desc}</span>
     </div>
     <canvas
       ref={canvasRef}
@@ -140,51 +124,3 @@ export function Cobe() {
     />
   </div>
 }
-
-<Cobe/>
-
-import Link from 'next/link'
-
-<div style={{ textAlign: 'center' }}>
-  <div className="inline-flex justify-center cta-container">
-    <Link href="/docs">
-      <a className="cta" draggable="false">Get Started</a>
-    </Link>
-    <a href="https://cobe-playground.vercel.app" className="cta" draggable="false">Playground</a>
-  </div>
-  <div style={{ marginTop: '2rem' }}/>
-  <a href="https://twitter.com/shuding_/status/1475916082875666441" target="_blank" style={{
-    color: 'inherit',
-    opacity: .5,
-    fontSize: 14
-  }}>How the library was created →</a>
-</div>
-
-<style jsx global>{`
-body {
-  background: linear-gradient(
-      180deg,
-      hsla(0, 0%, 100%, 0) 0,
-      #fff min(110vw, 800px)
-    ),
-    fixed
-      repeating-radial-gradient(
-        circle at 50% min(calc(50vw + 3.5rem), calc(300px + 5rem)),
-        #f5f5f5 0,
-        #fff 40px
-      );
-}
-.dark body {
-  background: linear-gradient(
-    0deg,
-    hsla(0, 0%, 100%, 0.2) 0,
-    #000 min(110vw, 800px)
-  ),
-  fixed
-    repeating-radial-gradient(
-      circle at 50% min(calc(50vw + 3.5rem), calc(300px + 5rem)),
-      #050505 0,
-      #000 40px
-    );
-}
-`}</style>
