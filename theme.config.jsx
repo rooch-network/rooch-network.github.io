@@ -10,4 +10,7 @@ export default {
         { locale: 'en-US', text: 'English' },
         { locale: 'zh-CN', text: '简体中文' },
     ],
+    sidebar: {
+        defaultMenuCollapseLevel: 1
+    }
 };
