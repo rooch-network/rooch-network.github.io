@@ -1,1 +1,26 @@
 # Rooch
+
+Rooch is a smart contract execution runtime with the following features:
+
+- **MoveVM** - Rooch embeds a full MoveVM and the smart contracts are programmed with Move Language
+- **Provable** - Rooch can produce per-step execution proof for proving the integrity of state transitions
+- **Modular** - Rooch has abstracted interfaces which allows different DA Layer, Settlement Layer and Arbitration Layer to tap in
+
+## Architecture
+
+import Image from "next/image";
+
+<Image
+  src="/diagram/rooch-architecture.svg"
+  alt="Hello"
+  width={600}
+  height={600}
+  class="mx-auto my-2"
+/>
+
+- **RPC** - RPC component provides access endpoint for users and developers to upload Move modulars as well as send transactions to call contracts and native functions
+  > **RPC Proxy** is for interprating differernt transaction structure to the native schema for allowing users to send transaction directly from versatile wallets. E.g. users can directly send transaction from MetaMask.
+- **MoveOS** - MoveOS is the component that does all the computational and storage work
+- **Role Specific Modules** - These are the funcational modules that allow node operators to config their nodes as different roles in a Layer2 or a Layer3 network
+- **Interfaces** - Rooch has built-in interfaces to work with different layers.
+  > Interfaces being abstracted enough ensures that Rooch will be able to adapt to different ecosystems. E.g. Use arbitrary DA layer; deploy Rooch as Layer2 on arbitrary Layer1s.
