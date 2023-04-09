@@ -26,52 +26,141 @@ function FooterHeader({ children }: { children: ReactNode }) {
   return <h3 className="text-sm text-black dark:text-white">{children}</h3>;
 }
 
-const navigation = {
-  solutions: [
-  ],
-  useRooch: [
-    { name: "Faucet", href: "/" },
-  ],
-  developer: [
-    {
-      name: "GitHub",
-      href: "https://github.com/rooch-network?type=source",
-    },
-    {
-      name: "WebApps Bug Bounty",
-      href: "https://github.com/rooch-network/rooch-network.github.io",
-    },
-    {
-      name: "Contracts Bug Bounty",
-      href: "/",
-    },
-    {
-      name: "Discord",
-      href: "https://discord.com/invite/dT4DfDvE",
-    },
-  ],
-  community: [
-    { name: "Twitter", href: "https://twitter.com/RoochNetwork" },
-    {
-      name: "Youtube",
-      href: "https://www.youtube.com/channel/UC2WeEQQsK_PDiARYrSAPaPQ",
-    },
-    { name: "Discord", href: "https://discord.com/invite/dT4DfDvE" },
-    { name: "Telegram", href: "https://t.me/roochnetwork" },
-  ],
-  legal: [
-    { name: "Terms of Use", href: "/" },
-    { name: "Privacy Policy", href: "/" },
-    { name: "Cookie Policy", href: "/" },
-  ],
-  general: [
-    { name: "About", href: "/" },
-    { name: "Blog", href: "/" },
-    { name: "Material", href: "/" },
-  ],
-};
+const navigation = new Map(
+  [
+    ["zh-CN",
+      [
+        {
+          title: "解决方案",
+          items: []
+        },
+        {
+          title: "使用 Rooch",
+          items: [{ name: "水龙头", href: "/" }]
+        },
+        {
+          title: "开发者",
+          items: [
+            {
+              name: "GitHub",
+              href: "https://github.com/rooch-network?type=source",
+            },
+            {
+              name: "WebApps 漏洞赏金",
+              href: "https://github.com/rooch-network/rooch-network.github.io",
+            },
+            {
+              name: "合约漏洞赏金",
+              href: "/",
+            },
+            {
+              name: "Discord",
+              href: "https://discord.com/invite/dT4DfDvE",
+            }
+          ]
+        },
+        {
+          title: "社区",
+          items: [
+            {
+              name: "Twitter",
+              href: "https://twitter.com/RoochNetwork"
+            },
+            {
+              name: "Youtube",
+              href: "https://www.youtube.com/channel/UC2WeEQQsK_PDiARYrSAPaPQ",
+            },
+            { name: "Discord", href: "https://discord.com/invite/dT4DfDvE" },
+            { name: "Telegram", href: "https://t.me/roochnetwork" },]
+        },
+        {
+          title: "条款",
+          items: [
+            { name: "使用条款", href: "/" },
+            { name: "隐私策略", href: "/" },
+            { name: "Cookie 策略", href: "/" },
+          ]
+        },
+        {
+          title: "其他",
+          items: [
+            { name: "关于", href: "/" },
+            { name: "博客", href: "/" },
+            { name: "物料", href: "/" },
+          ]
+        }
+      ]
+    ],
+    ["en-US",
+      [
+        {
+          title: "Solutions",
+          items: []
+        },
+        {
+          title: "Use Rooch",
+          items: [{ name: "Faucet", href: "/" }]
+        },
+        {
+          title: "Developer",
+          items: [
+            {
+              name: "GitHub",
+              href: "https://github.com/rooch-network?type=source",
+            },
+            {
+              name: "WebApps Bug Bounty",
+              href: "https://github.com/rooch-network/rooch-network.github.io",
+            },
+            {
+              name: "Contracts Bug Bounty",
+              href: "/",
+            },
+            {
+              name: "Discord",
+              href: "https://discord.com/invite/dT4DfDvE",
+            }
+          ]
+        },
+        {
+          title: "Community",
+          items: [
+            {
+              name: "Twitter",
+              href: "https://twitter.com/RoochNetwork"
+            },
+            {
+              name: "Youtube",
+              href: "https://www.youtube.com/channel/UC2WeEQQsK_PDiARYrSAPaPQ",
+            },
+            { name: "Discord", href: "https://discord.com/invite/dT4DfDvE" },
+            { name: "Telegram", href: "https://t.me/roochnetwork" },]
+        },
+        {
+          title: "Legal",
+          items: [
+            { name: "Terms of Use", href: "/" },
+            { name: "Privacy Policy", href: "/" },
+            { name: "Cookie Policy", href: "/" },
+          ]
+        },
+        {
+          title: "General",
+          items: [
+            { name: "About", href: "/" },
+            { name: "Blog", href: "/" },
+            { name: "Material", href: "/" },
+          ]
+        }
+      ]
+    ]
+  ]
+)
 
 export function FooterContent() {
+  const { locale } = useRouter()
+  const nav = navigation.get(locale)
+
   return (
     <div className="w-full" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
@@ -81,66 +170,20 @@ export function FooterContent() {
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="grid grid-cols-1 gap-8 xl:col-span-2">
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 md:gap-8">
-              <div className="mt-12 md:!mt-0">
-                <FooterHeader>Solutions</FooterHeader>
-                <ul role="list" className="mt-4 space-y-1.5 list-none ml-0">
-                  {navigation.solutions.map((item) => (
-                    <li key={item.name}>
-                      <FooterLink href={item.href}>{item.name}</FooterLink>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mt-12 md:!mt-0">
-                <FooterHeader>Use Rooch</FooterHeader>
-                <ul role="list" className="mt-4 space-y-1.5 list-none ml-0">
-                  {navigation.useRooch.map((item) => (
-                    <li key={item.name}>
-                      <FooterLink href={item.href}>{item.name}</FooterLink>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mt-12 md:!mt-0">
-                <FooterHeader>Developers</FooterHeader>
-                <ul role="list" className="mt-4 space-y-1.5 list-none ml-0">
-                  {navigation.developer.map((item) => (
-                    <li key={item.name}>
-                      <FooterLink href={item.href}>{item.name}</FooterLink>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mt-12 md:!mt-0">
-                <FooterHeader>Community</FooterHeader>
-                <ul role="list" className="mt-4 space-y-1.5 list-none ml-0">
-                  {navigation.community.map((item) => (
-                    <li key={item.name}>
-                      <FooterLink href={item.href}>{item.name}</FooterLink>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mt-12 md:!mt-0">
-                <FooterHeader>Legal</FooterHeader>
-                <ul role="list" className="mt-4 space-y-1.5 list-none ml-0">
-                  {navigation.legal.map((item) => (
-                    <li key={item.name}>
-                      <FooterLink href={item.href}>{item.name}</FooterLink>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mt-12 md:!mt-0">
-                <FooterHeader>General</FooterHeader>
-                <ul role="list" className="mt-4 space-y-1.5 list-none ml-0">
-                  {navigation.general.map((item) => (
-                    <li key={item.name}>
-                      <FooterLink href={item.href}>{item.name}</FooterLink>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              {
+                nav.map((v) => {
+                  return <div className="mt-12 md:!mt-0">
+                    <FooterHeader>{v.title}</FooterHeader>
+                    <ul role="list" className="mt-4 space-y-1.5 list-none ml-0">
+                      {v.items.map((item) => (
+                        <li key={item.name}>
+                          <FooterLink href={item.href}>{item.name}</FooterLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                })
+              }
             </div>
           </div>
           <div className="mt-12 xl:!mt-0">
@@ -218,18 +261,14 @@ export function Footer({ menu }: { menu?: boolean }): ReactElement {
 
   return (
     <footer className="bg-[#FAFAFA] pb-[env(safe-area-inset-bottom)] relative dark:bg-[#111111]">
-      {/* <div className="absolute top-0 h-12 w-full -translate-y-full bg-gradient-to-t from-[#FAFAFA] to-transparent dark:from-black pointer-events-none" /> */}
       <div
         className={cn(
           "mx-auto max-w-[90rem] py-2 px-4 flex gap-2",
           menu ? "flex" : "hidden"
         )}
       >
-        {/* <ThemeSwitch /> */}
-        <LocaleSwitch options={config.i18n}/>
-        
+        <LocaleSwitch options={config.i18n} />
       </div>
-      {/* <hr className="dark:border-neutral-800" /> */}
       <div
         className={cn(
           "mx-auto max-w-[90rem] py-12 flex justify-center md:justify-center text-black dark:text-white",
