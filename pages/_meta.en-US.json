@@ -16,6 +16,7 @@
     "type": "page",
     "theme": {
       "sidebar": false,
+      "timestamp": false,
       "typesetting": "article"
     }
   },
