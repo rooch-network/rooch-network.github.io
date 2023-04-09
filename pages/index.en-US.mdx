@@ -1,5 +1,49 @@
-# Rooch
+---
+title: Index
+---
 
+import Cobe from '../components/cobe'
+
+<Cobe desc = "Limitless, Secured Web3 Development"/>
+
+import Link from 'next/link'
+
+<div style={{ textAlign: 'center' }}>
+  <div className="inline-flex justify-center cta-container">
+    <Link href="docs/00-overview" className="cta">
+        Get Started
+    </Link>
+  </div>
+</div>
+
+<style jsx global>{`
+body {
+  background: linear-gradient(
+      180deg,
+      hsla(0, 0%, 100%, 0) 0,
+      #fff min(110vw, 800px)
+    ),
+    fixed
+      repeating-radial-gradient(
+        circle at 50% min(calc(50vw + 3.5rem), calc(300px + 5rem)),
+        #f5f5f5 0,
+        #fff 40px
+      );
+}
+.dark body {
+  background: linear-gradient(
+    0deg,
+    hsla(0, 0%, 100%, 0.2) 0,
+    #000 min(110vw, 800px)
+  ),
+  fixed
+    repeating-radial-gradient(
+      circle at 50% min(calc(50vw + 3.5rem), calc(300px + 5rem)),
+      #050505 0,
+      #000 40px
+    );
+}
+`}</style>
 All-in-One Solution for your Web3 DApp.
 
 <button>Documentation</button>
