@@ -16,6 +16,6 @@
     "allowJs": false,
     "types": ["next"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/BlogIndex.jsx"],
   "exclude": ["node_modules"]
 }

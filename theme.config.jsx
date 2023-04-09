@@ -14,7 +14,9 @@ export default {
     ],
     footer: {
         component: Footer,
+        // text:"asdd"
     },
+    search: true,
     sidebar: {
         defaultMenuCollapseLevel: 1
     }

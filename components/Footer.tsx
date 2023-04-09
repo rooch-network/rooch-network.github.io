@@ -2,7 +2,8 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { useState, ReactNode, ReactElement } from "react";
 import cn from "classnames";
-import { ThemeSwitch } from "nextra-theme-docs";
+import { LocaleSwitch } from "./localSwitch";
+import { useConfig } from "nextra-theme-docs";
 
 function FooterLink({ href, children }: { href: string; children: ReactNode }) {
   const classes =
@@ -213,18 +214,22 @@ function SubmitForm() {
 }
 
 export function Footer({ menu }: { menu?: boolean }): ReactElement {
+  const config = useConfig()
+
   return (
     <footer className="bg-[#FAFAFA] pb-[env(safe-area-inset-bottom)] relative dark:bg-[#111111]">
-      <div className="absolute top-0 h-12 w-full -translate-y-full bg-gradient-to-t from-[#FAFAFA] to-transparent dark:from-black pointer-events-none" />
+      {/* <div className="absolute top-0 h-12 w-full -translate-y-full bg-gradient-to-t from-[#FAFAFA] to-transparent dark:from-black pointer-events-none" /> */}
       <div
         className={cn(
           "mx-auto max-w-[90rem] py-2 px-4 flex gap-2",
           menu ? "flex" : "hidden"
         )}
       >
-        <ThemeSwitch />
+        {/* <ThemeSwitch /> */}
+        <LocaleSwitch options={config.i18n}/>
+        
       </div>
-      <hr className="dark:border-neutral-800" />
+      {/* <hr className="dark:border-neutral-800" /> */}
       <div
         className={cn(
           "mx-auto max-w-[90rem] py-12 flex justify-center md:justify-center text-black dark:text-white",
