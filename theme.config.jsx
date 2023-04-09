@@ -1,3 +1,5 @@
+import { Footer } from "./components/Footer";
+
 export default {
     logo: <span>Rooch</span>,
     project: {
@@ -10,4 +12,7 @@ export default {
         { locale: 'en-US', text: 'English' },
         { locale: 'zh-CN', text: '简体中文' },
     ],
+    footer: {
+        component: Footer,
+    },
 };

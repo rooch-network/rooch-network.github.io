@@ -1,7 +1,7 @@
 module.exports = {
     content: [
-      "./components/**/*.js",
+      "./components/**/*.{js,tsx}",
       "./pages/**/*.{md,mdx}",
-      "./theme.config.js",
+      "./theme.config.jsx",
     ],
   };
