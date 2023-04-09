@@ -1,0 +1,11 @@
+{
+  "move-language": "Move Language",
+  "fraud-proof": "Fraud Proof",
+  "data-availability": "Data Availability",
+  "pipeline-transaction-processing": "Pipeline Transaction Processing",
+  "sequence-proof": "Sequence Proof",
+  "hybrid-security": "Hybrid Security with ZK Proof",
+  "multi-chain-settlement": "Multi-Chain Settlement",
+  "rollup-state-tree": "Rollup State Tree",
+  "p2p-state-channel": "P2P State Channel"
+}

@@ -15,4 +15,7 @@ export default {
     footer: {
         component: Footer,
     },
+    sidebar: {
+        defaultMenuCollapseLevel: 1
+    }
 };
