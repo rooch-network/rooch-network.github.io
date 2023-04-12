@@ -1,10 +1,9 @@
 
 import { getPagesUnderRoute } from "nextra/context";
 import Link from "next/link";
-import { Page } from "nextra";
 
 export default function BlogIndex({ more = "Read more" }) {
-  return getPagesUnderRoute("/blog").map((page : Page) => {
+  return getPagesUnderRoute("/blog").map((page : any) => {
     return (
       <div key={page.route} className="mb-10">
         <h3>
