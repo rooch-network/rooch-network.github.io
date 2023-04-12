@@ -15,7 +15,6 @@ export default {
     footer: {
         component: Footer,
     },
-    search: true,
     sidebar: {
         defaultMenuCollapseLevel: 1
     }
