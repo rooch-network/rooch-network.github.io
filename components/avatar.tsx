@@ -34,4 +34,4 @@ export const Avatar = ({ name, picture, twitterUsername }: AuthorDetails) => (
       )}
     </dl>
   </div>
-);
+)
