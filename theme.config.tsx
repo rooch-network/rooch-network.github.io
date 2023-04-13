@@ -1,6 +1,8 @@
-import { Footer } from "./components/Footer";
 
-export default {
+import { DocsThemeConfig } from "nextra-theme-docs"
+import { Footer } from "./components/footer"
+
+const theme : DocsThemeConfig = {
     logo: <span>Rooch</span>,
     project: {
         link: 'https://github.com/rooch-network/rooch-network.github.io',
@@ -18,4 +20,6 @@ export default {
     sidebar: {
         defaultMenuCollapseLevel: 1
     }
-};
+}
+
+export default theme

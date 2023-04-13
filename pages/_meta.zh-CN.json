@@ -27,5 +27,12 @@
       "sidebar": false,
       "typesetting": "article"
     }
+  },
+  "404": {
+    "type": "page",
+    "theme": {
+      "sidebar": false,
+      "typesetting": "article"
+    }
   }
 }
