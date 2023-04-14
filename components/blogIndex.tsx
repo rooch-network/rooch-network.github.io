@@ -2,24 +2,49 @@
 import { getPagesUnderRoute } from "nextra/context"
 import Link from "next/link"
 import { useState } from "react"
-
 import { TagsFilter } from "./tagFilter"
 import { AuthorsFilter } from "./authorsFilter"
+import { BlogPostMeta } from "./blogHeader"
+import { Page } from "nextra"
+
+export type PageX = (Page) & {
+  blog: BlogPostMeta
+};
 
 export default function BlogIndex({ more = "Read more" }) {
+  const [pages, _] = useState<Array<PageX>>(getPagesUnderRoute("/blog").map((page: any) => {
 
-  const [pages, _] = useState(getPagesUnderRoute("/blog"))
-  const [pagesFiltered, setPagesFiltered] = useState(pages)
+    let blog = {...page.frontMatter}
+    const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+    let dateObject = new Date(page.frontMatter?.date);
+    
+    blog.date = dateObject.toLocaleDateString(page.locale, options);
+
+    return {
+      ...page,
+      blog: blog
+    }
+  }))
+
+  const [pagesFiltered, setBlogsFiltered] = useState(pages)
   const [selectedAuthor, setSelectedAuthor] = useState("all")
   const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set())
-  const [authors, __] = useState(pages.map((page: any) => page.frontMatter?.author))
+  const [authors, __] = useState(() => {
+    let _authors = []
+
+    pages.forEach((page) => {
+      _authors = _authors.concat(page.blog.authors)
+    })
+
+    return Array.from(new Set(_authors))
+  })
+
   const [tags, ___] = useState(() => {
+    let _tags = []
 
-    var _tags = []
-
-    pages.forEach((e: any) => {
-      if (e.frontMatter?.tag) {
-        _tags = _tags.concat(e.frontMatter?.tag)
+    pages.forEach((page) => {
+      if (page.blog.tags) {
+        _tags = _tags.concat(page.blog.tags)
       }
     })
 
@@ -28,32 +53,31 @@ export default function BlogIndex({ more = "Read more" }) {
 
   const filter = (author: string, tags: Set<string>) => {
 
-    var _blogs = []
+    let _pages: Array<PageX> = []
 
     if (author === "all") {
-      _blogs = _blogs.concat(pages);
+      _pages = _pages.concat(pages);
     } else {
-      _blogs = _blogs.concat(pages.filter((v: any) => v.frontMatter?.author === author))
+      _pages = _pages.concat(pages.filter((page) => page.blog.authors && page.blog.authors.includes(author)))
     }
-    console.log(_blogs)
 
-    var _filteredTagBlogs = []
+    let _filteredTagBlogs = []
     if (tags.size > 0) {
-      _blogs.forEach((blog: any) => {
-        if (blog.frontMatter?.tag) {
+      _pages.forEach((page) => {
+        if (page.blog.tags) {
 
-          for (let i in blog.frontMatter?.tag) {
-            if (tags.has(blog.frontMatter?.tag[i])) {
-              _filteredTagBlogs = _filteredTagBlogs.concat(blog)
+          for (let i in page.blog.tags) {
+            if (tags.has(page.blog.tags[i])) {
+              _filteredTagBlogs = _filteredTagBlogs.concat(page)
               break
             }
           }
         }
       })
     } else {
-      _filteredTagBlogs = _blogs
+      _filteredTagBlogs = _pages
     }
-    setPagesFiltered(_filteredTagBlogs)
+    setBlogsFiltered(_filteredTagBlogs)
   }
 
   return <div>
@@ -83,7 +107,7 @@ export default function BlogIndex({ more = "Read more" }) {
     }} />
 
     {
-      pagesFiltered.map((page: any) => {
+      pagesFiltered.map((page) => {
         return (
           <div key={page.route} className="mb-10">
             <h3>
@@ -92,25 +116,30 @@ export default function BlogIndex({ more = "Read more" }) {
                 style={{ color: "inherit", textDecoration: "none" }}
                 className="block font-semibold mt-8 text-2xl "
               >
-                {page.meta?.title || page.frontMatter?.title || page.name}
+                {page.meta?.title || page.blog.title || page.name}
               </Link>
             </h3>
             <p className="opacity-80 mt-6 leading-7">
-              {page.frontMatter?.description}{" "}
+              {page.blog.description}{" "}
               <span className="inline-block">
                 <Link
-                  href={page.route}
+                  href={page.blog.title}
                   className="text-[color:black] underline underline-offset-2 decoration-from-font"
                 >
                   {more + " →"}
                 </Link>
               </span>
             </p>
-            {page.frontMatter?.date ? (
-              <p className="opacity-50 text-sm mt-6 leading-7">
-                {page.frontMatter.date}
-              </p>
-            ) : null}
+            {
+              <div></div>
+            }
+            {
+              page.blog.date ? (
+                <p className="opacity-50 text-sm mt-6 leading-7">
+                  {page.blog.date}
+                </p>
+              ) : null
+            }
           </div>
         )
       })

@@ -4,6 +4,7 @@ import ROOCH_TEAM from "../data/team";
 import type { Author } from "../data/team";
 
 export function Authors({ authors }: { authors: Array<Author> }) {
+  console.log(authors)
   const validAuthors = authors.filter((author) => ROOCH_TEAM[author]);
   console.log(validAuthors)
   return (
