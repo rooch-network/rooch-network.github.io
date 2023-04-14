@@ -1,11 +1,8 @@
 {
-  "why-move-ecosystem.en.mdx": "",
-  "modular-evolution-of-rollup-layer2.en.mdx": "",
-  "partnership-announcement-zkmove.en.mdx": {
-    "title":""
-    
-  },
-  "partnership-announcement-movebit.en.mdx": "",
-  "partnership-announcement-movefunsdao.en.mdx": "",
-  "hello-rooch.en.mdx": ""
+  "why-move-ecosystem": "",
+  "modular-evolution-of-rollup-layer2": "",
+  "partnership-announcement-zkmove": "",
+  "partnership-announcement-movebit": "",
+  "partnership-announcement-movefunsdao": "",
+  "rooch-towards-web3-native-dapps": "Towards Web3 Native DApps"
 }

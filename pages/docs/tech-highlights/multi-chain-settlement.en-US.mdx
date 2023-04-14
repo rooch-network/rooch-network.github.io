@@ -2,19 +2,22 @@
 
 Multi-chain Settlement is the most important feature of Rooch, and this chapter details the protocols and challenges to be solved for multi-chain settlement.
 
-## Responsibilities of the settlement layer
+![multi chain settlement](/docs/rooch-multi-chain-settlement.svg)
+
+## How it works
 
 The responsibility of the settlement layer is to perform state migration and asset settlement between Layer1 and the execution layer.
+
+On each Layer1, there will be 2 functional smart contracts:
+
+- Bridge contract is in charge of managing all the states and assets that are to be migrated to or from a Rooch instance in the execution layer.
+- Cross-Chain Message contract is used to communicate with Ethereum to verify
 
 Rooch deploys a settlement smart contract each settlement Layer1, which maintains an off-chain state tree, with only the root of the state tree recorded on the chain, through which users migrate state between Layer1 and Rooch.
 
 1. When a user migrates state from Layer1 to Rooch, the state appears in the state tree of Rooch after the transactions in Layer1 are finalized.
 2. When a user migrates state from Rooch to Layer1, the state is first locked and waits for the challenge period to pass before being moved out of the state tree for settlement.
 3. When the settlement layer receives a notification from the arbitration layer that fraud has occurred, it rolls back the root of the off-chain state tree to before the fraud occurred, discarding any state tree changes made during that period.
-
-## Communication protocols between multiple settlement layers and the arbitration layer
-
-![multi chain settlement](/docs/rooch-multi-chain-settlement.svg)
 
 ## The difference between multi-chain settlement and cross-chain
 
