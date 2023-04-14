@@ -1,30 +1,24 @@
 # Fraud Proof
 
-Rooch Network adopts Fraud Proof based Optimistic Rollup mechanism to ensure the security of Rooch Layer2 and Rooch Layer3.
+Rooch Network uses Fraud Proof based [Optimistic Rollups](https://ethereum.org/en/developers/docs/scaling/optimistic-rollups/) mechanism to ensure the security of Rooch DApps.
 
-> Here is an explaination of Optimistic Rollup and Fraud Proof: [Optimistic Rollups](https://ethereum.org/en/developers/docs/scaling/optimistic-rollups/)
-
-> In a later milestone, Rooch will also support [Hybrid Security enabled by ZK Proof](/docs/tech-highlights/hybrid-security).
+> Rooch will also support [Hybrid Security enabled by ZK Proof](/docs/tech-highlights/hybrid-security).
 
 ## OMO - A General Purpose Emulator with Per-Step Proof
 
-Generating Fraud Proof is a critical piece for ensuring security of the off-chain system in an Optimistic Rollup system.
-
-For this purpose, we have designed [OMO](https://github.com/rooch-network/omo).
+Generating Fraud Proof is a critical piece for ensuring security of the off-chain system in an Optimistic Rollup system. For this purpose, we have designed [OMO](https://github.com/rooch-network/omo).
 
 import Image from "next/image";
 
 <Image
   src="/docs/rooch-omo.svg"
   alt="Rooch OMO"
-  width={600}
-  height={600}
-  class="mx-auto my-2"
+  width={500}
+  height={500}
+  class="mx-auto my-4"
 />
 
-### OMO Specifications
-
-Find the [specifications of OMO on GitHub](https://github.com/rooch-network/omo/blob/main/docs/guidelines.md).
+> Find the [specifications of OMO on GitHub](https://github.com/rooch-network/omo/blob/main/docs/guidelines.md).
 
 ### Multi-Round Interactive Arbitration
 
@@ -43,7 +37,7 @@ At this point, the challenger and defender have already agreed on the intermedia
 
 The side that provides the fault state will be slashed with economics mechanisms.
 
-> The details of Tokenomics will be released on 2023 Q4
+> Tokenomics is a [future work](/docs/miscellaneous/future-works#tokenomics)
 
 ### OMO Advantages
 

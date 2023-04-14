@@ -6,9 +6,7 @@ Sequence Proof proves wether a transaction is at a specific position in a sequen
 
 ![Without Sequence Proof Diagram](/docs/without-sequence-proof.png)
 
-In a Layer2 network, limited by Fraud Proof or ZK Proof, the Sequencer can not alter the content of the transaction otherwise it will be facing a slash. However, the Sequencer could reject the transaction from a certain user (by not sending the transaction to DA and Layer1) for indirect profits by colluding with a third party. (e.g. rejects a margin deposit transaction in the hope of getting clearance profit from a user)
-
-This is the issue that Rooch is trying to tackle with Sequence Proof.
+In a Layer2 network, limited by Fraud Proof or ZK Proof, the Sequencer can not alter the content of the transaction otherwise it will be facing a slash. However, the Sequencer could reject the transaction from a certain user (by not sending the transaction to DA and Layer1), or change the position of the transaction, to gain indirect profits by colluding with a third party. (e.g. rejects a margin deposit transaction in the hope of getting clearance profit, or change transaction order for MEV profit)
 
 ## With Sequence Proof
 
