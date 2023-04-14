@@ -19,8 +19,12 @@ import Image from "next/image";
 />
 
 - **RPC** - RPC component provides access endpoint for users and developers to upload Move modulars as well as send transactions to call contracts and native functions
-  > **RPC Proxy** is for interprating differernt transaction structure to the native schema for allowing users to send transaction directly from versatile wallets. E.g. users can directly send transaction from MetaMask.
+  - **RPC Proxy** is a special componenet designed for interprating differernt transaction structures to the native schema to allow users sending transactions directly from all kinds of wallets in the market. E.g. users can directly send transaction from MetaMask to call a Move contract on Rooch
 - **MoveOS** - MoveOS is the component that does all the computational and storage work
-- **Role Specific Modules** - These are the funcational modules that allow node operators to config their nodes as different roles in a Layered network
-- **Interfaces** - Rooch has built-in interfaces to work with different layers.
-  > Interfaces being abstracted enough ensures that Rooch will be able to adapt to different ecosystems. E.g. Use arbitrary DA layer; deploy Rooch as Layer2 on arbitrary Layer1s.
+  - **OMO** is a general purpose MIPS emulator that generates [Fraud Proof](/docs/fraud-proof) for the exeuction
+  - **MoveVM** is a full function turing-complete VM that executes smart contracts written in [Move Language](/docs/move-language)
+  - **State Storage** contains all the user and contract state
+- **Role Specific Modules** - These are the funcational modules that allow node operators to config their nodes as different roles in a Layered network (see [Rooch Network](/docs/rooch-network) for more details)
+- **Interfaces** - Rooch has built-in interfaces to work with different layers. Interfaces being abstracted enough ensures that Rooch will be able to adapt to different ecosystems.
+
+> Find out more about [Rooch on GitHub](https://github.com/rooch-network/rooch)
