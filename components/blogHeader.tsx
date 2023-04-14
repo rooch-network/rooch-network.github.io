@@ -3,15 +3,15 @@ import Head from "next/head"
 import { useConfig } from "nextra-theme-docs"
 import { Authors } from "./authors";
 
-type BlogPostMeta = {
+export type BlogPostMeta = {
   title: string;
   /** Layer2 */
-  tag: string;
+  tags: Array<string>;
   /** 2022/06/06 */
   date: string;
   description: string;
   /** yevgenypats */
-  author: Array<string>;
+  authors: Array<string>;
   /** /images/og-image.png */
   ogImage?: string;
 };
@@ -76,7 +76,7 @@ export function BlogHeader() {
       </Head>
       <BlogTitle data={meta} />
       <BlogDate data={meta} />
-      <Authors authors={meta.author}/>
+      <Authors authors={meta.authors}/>
     </>
   );
 }

@@ -3,7 +3,7 @@ const ROOCH_TEAM: Record<string, AuthorDetails> = {
     name: "Jolestar",
     twitterUsername: "jolestar",
     picture: "/images/people/jolestar.jpg",
-  },
+  }
 };
 
 export type Author = keyof typeof ROOCH_TEAM;
