@@ -36,7 +36,7 @@ export default function BlogIndex({ more = "Read more" }) {
       _authors = _authors.concat(page.blog.authors)
     })
 
-    return new Set(_authors)
+    return Array.from(new Set(_authors))
   })
 
   const [tags, ___] = useState(() => {
@@ -81,7 +81,7 @@ export default function BlogIndex({ more = "Read more" }) {
   }
 
   return <div>
-    <AuthorsFilter authors={Array.from(authors)} selected={selectedAuthor} onClick={(author) => {
+    <AuthorsFilter authors={authors} selected={selectedAuthor} onClick={(author) => {
 
       if (author === selectedAuthor) {
         setSelectedAuthor("all")
