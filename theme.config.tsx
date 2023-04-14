@@ -2,8 +2,13 @@
 import { DocsThemeConfig } from "nextra-theme-docs"
 import { Footer } from "./components/footer"
 
-const theme : DocsThemeConfig = {
+const theme: DocsThemeConfig = {
     logo: <span>Rooch</span>,
+    useNextSeoProps() {
+        return {
+            titleTemplate: '%s – Rooch'
+        }
+    },
     project: {
         link: 'https://github.com/rooch-network/rooch-network.github.io',
     },
