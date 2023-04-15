@@ -21,9 +21,6 @@ const theme: DocsThemeConfig = {
   footer: {
     component: Footer,
   },
-  sidebar: {
-    defaultMenuCollapseLevel: 1,
-  },
 };
 
 export default theme;

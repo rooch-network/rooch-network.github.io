@@ -2,7 +2,7 @@
 title: Rollup Layer2 的模块化演进之路
 description: "从演化角度讨论 Rollup Layer2 的发展以及演进，主要解答：Rollup 是如何工作的，Rollup 的模块化演进，模块化带来的可能性，模块化应用的技术趋势……"
 authors: [jolestar]
-tags: [Rollup, Layer2]
+tags: [Technology]
 date: 2023/02/14
 ---
 
@@ -25,9 +25,11 @@ import { Authors } from "../../components/authors";
 最初有一种想法是定时将 Layer2 应用的状态树根写到 Layer1，这样可以通过状态证明来校验应用的状态，类似于交易所储备金证明。但这种方式第三方无法通过公开的方式验证两次状态转换是正确的。
 
 为了更深入的探讨这个问题，我们抽象一下，任何程序的状态都可以通过一个状态转换公式表达：
+
 ```math
 σt+1 ≡ Υ(σt, T)
 ```
+
 这个公式来自于 Ethereum 黄皮书，但它可以代表任意的程序。在这里 Υ 代表程序，σ 代表状态。状态 σt+1 由程序 Y 通过状态 σt 和交易 T 计算得出。交易 T 代表程序的输入。**任意时候，如果 σt 是确定的，程序 Y 是确定的，T 是确定的，那 σt+1 就是确定的。**
 
 所以要提供公开的可验证性，关键是 Y 要公开可用，历史上所有的 T 要公开可用并且顺序确定，中间的状态可通过 Y 和 T 重新计算得到。而程序的公开可用我们可以通过开源来实现，关键是 T 公开可用如何保证，这就引入了数据可用性（DA）的概念。
@@ -54,7 +56,7 @@ import { Authors } from "../../components/authors";
 当然，Rollup 方案也做了一些妥协：
 
 1. 将交易写入 Layer1，也就代表 Layer2 的扩展性依然受 Layer1 区块大小限制。以 Ethereum 为例，某个 Layer2 完全占据 Ethereum 的所有区块，能提供的平均 TPS 也才数百，扩展性受 DA 限制。
-2. 为了节省 Gas 费，Sequencer 会将交易批量写入 DA，而在写入 DA 之前，Sequencer 有可能通过调整交易的顺序来作弊。 
+2. 为了节省 Gas 费，Sequencer 会将交易批量写入 DA，而在写入 DA 之前，Sequencer 有可能通过调整交易的顺序来作弊。
 
 这里总结一下 Layer2 的安全以及交易的最终确定性：
 
@@ -73,10 +75,9 @@ import { Authors } from "../../components/authors";
 
 我们可以认为有三个主要的模块层：
 
-* **数据可用层（Data Availability）**： 保证执行层的交易数据可以通过公开的方式获取，以及保证交易的序列。
-* **结算层（Settlement）**：实现 Layer1 和 Layer2 之间的资产和状态结算。它包含 State Commitment Chain 和 Bridge。
-* **仲裁层（Arbitration）**：校验欺诈证明，并做出裁决（Optimistic）或者校验有效证明（ZK）。仲裁层要有能力操控 State Commitment Chain。 
-
+- **数据可用层（Data Availability）**： 保证执行层的交易数据可以通过公开的方式获取，以及保证交易的序列。
+- **结算层（Settlement）**：实现 Layer1 和 Layer2 之间的资产和状态结算。它包含 State Commitment Chain 和 Bridge。
+- **仲裁层（Arbitration）**：校验欺诈证明，并做出裁决（Optimistic）或者校验有效证明（ZK）。仲裁层要有能力操控 State Commitment Chain。
 
 ### DA 模块化
 
@@ -133,7 +134,7 @@ Sequence Proof 的工作原理：
 
 验证交易时，需要验证签名和是否有足够的 Gas 费，而 Gas 费的校验需要依赖状态。如果我们为了保证验证交易不会被执行交易阻塞，允许 Sequencer 验证交易依赖的状态和最新状态之间有一定的延迟（秒级），会导致 Gas 校验会不太准确，有被 DDoS 攻击的风险。
 
-但我们认为 Sequencer 属于 DA 是一个正确的方向，所以值得我们进一步研究。比如可以将交易费中 DA 部分拆分出来，通过 UTXO（Sui Move Object） 表达，则可以降低 Gas 费检测成本。 
+但我们认为 Sequencer 属于 DA 是一个正确的方向，所以值得我们进一步研究。比如可以将交易费中 DA 部分拆分出来，通过 UTXO（Sui Move Object） 表达，则可以降低 Gas 费检测成本。
 
 Sequencer 给交易排序然后输出成交易流水线，然后同步给 Proposer 以及其他节点。每个节点可以根据自己的服务器情况来选择并行方案。每个节点需要保证：只并行没有因果关系的交易，有因果关系的交易必须按 Sequencer 的顺序执行，那最终的结果就是一致的。
 
@@ -143,12 +144,12 @@ Proposer 需要定时提交状态树的根，以及累加器的根到链上的 S
 
 ![Rooch Architecture](/diagram/rooch-architecture.svg)
 
-* MoveOS：它包含 MoveVM 以及 StateDB，是系统的执行以及状态存储引擎。StateDB 由两层稀疏默克尔树构建，可以提供状态证明。根据前面的分析可得出，状态树以及状态证明是 Rollup 应用不可或缺的组件。
-* RPC：对外提供查询，提交交易，以及订阅服务。可以通过代理方式兼容其他链的 RPC 接口。
-* Sequencer：验证交易，给交易排序，提供 Sequence Proof，将交易流式输出到 Transaction Pipeline。
-* Proposer：从 Transaction Pipeline 获取交易，批量执行，定期提交到链上的 State Commitment Chain。
-* Challenger：从 Transaction Pipeline 获取交易，批量执行，和 State Commitment Chain 比较，决定是否发起挑战。
-* DA & Settlement & Arbitration Interface：对不同的模块层的抽象和封装，保证在不同的实现之间切换时不影响上层业务逻辑。
+- MoveOS：它包含 MoveVM 以及 StateDB，是系统的执行以及状态存储引擎。StateDB 由两层稀疏默克尔树构建，可以提供状态证明。根据前面的分析可得出，状态树以及状态证明是 Rollup 应用不可或缺的组件。
+- RPC：对外提供查询，提交交易，以及订阅服务。可以通过代理方式兼容其他链的 RPC 接口。
+- Sequencer：验证交易，给交易排序，提供 Sequence Proof，将交易流式输出到 Transaction Pipeline。
+- Proposer：从 Transaction Pipeline 获取交易，批量执行，定期提交到链上的 State Commitment Chain。
+- Challenger：从 Transaction Pipeline 获取交易，批量执行，和 State Commitment Chain 比较，决定是否发起挑战。
+- DA & Settlement & Arbitration Interface：对不同的模块层的抽象和封装，保证在不同的实现之间切换时不影响上层业务逻辑。
 
 ### 支持多链的交互式欺诈证明
 

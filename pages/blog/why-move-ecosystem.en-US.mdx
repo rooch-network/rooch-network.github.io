@@ -4,20 +4,20 @@ description: "As a proponent of the Move programming language, every time I prom
 authors: [jolestar]
 date: 2023/02/18
 slug: why-move-ecosystem
-tags: [rooch]
+tags: [Technology]
 ---
 
 import { Authors } from "../../components/authors";
 
 <Authors authors={["jolestar"]} />
 
-As a proponent of the Move programming language, every time I promote Move to developers, I always encounter the same question: **What are the advantages of Move? Why Move?** 
+As a proponent of the Move programming language, every time I promote Move to developers, I always encounter the same question: **What are the advantages of Move? Why Move?**
 
 It's like introducing your new lover to a friend - you always face similar questions. However, this question is not easy to answer. If we list the pros and cons one by one, there will always be people who question them. After all, the ecosystem of a new language is not yet mature, and the choice can only be based on its potential. Let me make a statement: **Move has the most potential programming language to build an ecosystem like Solidity, and even surpass Solidity**.
 
->Target audience: Developers who are interested in the technology of the blockchain field. This article hopes to explain the current challenges faced by smart contracts and some solutions of Move in a simple way, with minimal use of code, so that readers who do not understand programming languages can also roughly understand it. Feedback from readers is appreciated.
+> Target audience: Developers who are interested in the technology of the blockchain field. This article hopes to explain the current challenges faced by smart contracts and some solutions of Move in a simple way, with minimal use of code, so that readers who do not understand programming languages can also roughly understand it. Feedback from readers is appreciated.
 
->This article was written in May 2022, when Move was just emerging and there was no current scale. I translated and reposted it here,[original link](https://jolestar.com/why-move-1).
+> This article was written in May 2022, when Move was just emerging and there was no current scale. I translated and reposted it here,[original link](https://jolestar.com/why-move-1).
 
 ## Two Paths of Smart Contract
 
@@ -37,7 +37,7 @@ However, after several years of development, especially with the rise of DeFi, p
 
 For application developers, they directly face smart contract programming languages, the basic libraries of programming languages, and whether there are reusable opensource libraries. The security of DeFi requires smart contract code to be audited, and every line of audited code represents money. If developers can slightly modify and copy existing code, they can reduce audit costs.
 
-Now it seems that although Solidity took a seemingly slow path, it actually built its ecosystem faster. Many people now believe that Solidity&EVM is the endpoint of smart contracts, and many chains are beginning to support or port Solidity&EVM. 
+Now it seems that although Solidity took a seemingly slow path, it actually built its ecosystem faster. Many people now believe that Solidity&EVM is the endpoint of smart contracts, and many chains are beginning to support or port Solidity&EVM.
 
 At this point, a new smart contract programming language needs to prove that it has stronger ecosystem building capabilities to convince people to pay attention to and learn to use it.
 
@@ -48,11 +48,11 @@ So the new question is, how to measure the ecosystem building capabilities of a 
 The ecosystem building ability of a programming language refers to its code reuse capability, which mainly manifests in two aspects:
 
 1. The dependency method between modules of the programming language.
-2. The combination method between modules of the programming language. 
+2. The combination method between modules of the programming language.
 
 "Composability" is a feature touted by smart contracts, but in fact, programming languages all have composability. We invented interfaces, traits to make composition more convenient.
 
-Let's talk about the dependency method first. 
+Let's talk about the dependency method first.
 
 Programming languages typically implement dependencies through three methods:
 
@@ -60,21 +60,21 @@ Programming languages typically implement dependencies through three methods:
 2. Using dynamic libraries, which dynamically link dependencies at runtime. The dependencies are not included in the binary, but must be deployed on the target platform in advance.
 3. Depending on remote procedure calls (RPC) at runtime. This refers to various APIs that can be called remotely.
 
-Methods 1 and 2 are generally used in the common library. Common libraries are usually stateless, as it is difficult to assume how an application handles state, such as which file to write to or which database table to store in. 
+Methods 1 and 2 are generally used in the common library. Common libraries are usually stateless, as it is difficult to assume how an application handles state, such as which file to write to or which database table to store in.
 
 This kind of call occurs in the same process and method call context, sharing the call stack and memory space, with no strong isolation (or weak isolation), and requires a trusted environment.
 
 Method 3 actually calls another process or a process on another machine, communicating with each other through messages, and each process is responsible for its own state. Therefore, state dependencies can be provided, and the call also has security isolation.
 
-Each of these three methods has its pros and cons. 
+Each of these three methods has its pros and cons.
 
-Method 1 includes the dependency libraries in the final binary, which has the advantage of not requiring the target platform environment, but the disadvantage of producing a larger binary. 
+Method 1 includes the dependency libraries in the final binary, which has the advantage of not requiring the target platform environment, but the disadvantage of producing a larger binary.
 
-Method 2 has the advantage of producing a smaller binary, but requires a runtime environment. 
+Method 2 has the advantage of producing a smaller binary, but requires a runtime environment.
 
 Method 3 can build cross-language dependency relationships and is generally used in scenarios involving cross-service or cross-organization collaboration. To facilitate developer calls, it is generally simulated as a method call through SDK or code generation.
 
-In the history of technology, many programming languages and operating system platforms have spent a lot of effort trying to bridge the gap between remote and local calls, trying to achieve seamless remote calling and composition. 
+In the history of technology, many programming languages and operating system platforms have spent a lot of effort trying to bridge the gap between remote and local calls, trying to achieve seamless remote calling and composition.
 
 Just mention a few famous technical terms, such as COM (Component Object Model), CORBA, SOAP, REST, etc., all of which are used to solve these problems. Although the dream of seamless call has been shattered, and everyone finally relied on engineers to manually connect interfaces, splicing together the entire Web2 service, the dream is still alive.
 
@@ -96,13 +96,13 @@ In contrast, the execution environment of a smart contract is a sandbox environm
 1. Calls between contracts are calls between different smart contract virtual machines within the same process.
 2. Security depends on the isolation between smart contract virtual machines.
 
-Using Solidity as an example, Solidity contracts (modules indicated as `contract`) declare their functions as public, and then other contracts can directly call the contract through this public method. 
+Using Solidity as an example, Solidity contracts (modules indicated as `contract`) declare their functions as public, and then other contracts can directly call the contract through this public method.
 
 An RPC call process is shown in the following figure:
 
 ![rpc](https://jolestar.com/images/why-move/rpc.png)
 
->Image source https://docs.microsoft.com/en-us/windows/win32/rpc/how-rpc-works
+> Image source https://docs.microsoft.com/en-us/windows/win32/rpc/how-rpc-works
 
 In fact, the blockchain takes over all the communication processes between the Client and Server in the above figure, automatically generates stubs, implements serialization and deserialization, and makes developers feel that remote calls are just like local method calls.
 
@@ -112,7 +112,7 @@ Of course, there is no silver bullet in technology, and new solutions always bri
 
 Through the previous analysis, we understand that the invocation between smart contracts is actually a method similar to remote invocation. But what if we want to call dependencies through libraries?
 
-In Solidity, a module indicated as `library` is equivalent to a static library and must be stateless. 
+In Solidity, a module indicated as `library` is equivalent to a static library and must be stateless.
 
 The dependency on a library will be packaged into the final contract binary during compilation.
 
@@ -158,7 +158,7 @@ So how can we achieve state isolation in smart contract languages? The idea is a
 2. Utilize the mutability constraints that programming languages provide for variables. Many programming languages differentiate between mutable and immutable references, such as Rust.
 3. Provide external storage based on types as keys, limiting the current module to only read external storage using the types it defines as keys.
 4. Provide the ability to declare copy and drop for types in programming languages, ensuring that asset-like variables cannot be copied or discarded.
-   
+
 The Move language uses the above solutions, with points 3 and 4 being unique to Move. This solution is also easy to understand because if we cannot give each smart contract program a separate state space at the virtual machine level, then using types for state isolation is a relatively easy-to-understand way because types have clear ownership and visibility.
 
 In Move, the smart contract invocation between different organizations and programs is as shown in the following figure:
@@ -174,13 +174,13 @@ This change brings several advantages:
 
 The dependency mechanism of Move, while similar to the dynamic library pattern, also utilizes the state-managing feature of the chain, bringing a new dependency pattern to programming languages.
 
-In this pattern, the chain serves both as the execution environment for smart contracts and the binary repository for smart contract programs. 
+In this pattern, the chain serves both as the execution environment for smart contracts and the binary repository for smart contract programs.
 
 Developers can freely combine smart contracts on the chain through dependencies to provide a new smart contract program, and this dependency relationship is traceable on the chain.
 
-Of course, Move is still in its early stages, and the capabilities provided by this dependency mechanism have not been fully utilized, but the prototype has emerged. 
+Of course, Move is still in its early stages, and the capabilities provided by this dependency mechanism have not been fully utilized, but the prototype has emerged.
 
-It can be imagined that in the future, incentive mechanisms based on dependency relationships will definitely appear, as well as new open source ecosystems built on this incentive model. 
+It can be imagined that in the future, incentive mechanisms based on dependency relationships will definitely appear, as well as new open source ecosystems built on this incentive model.
 
 Later, we will continue to discuss the issue of "composability".
 
@@ -192,7 +192,7 @@ According to the analysis of dependency methods above, when discussing the compo
 
 Here, the term `resource` is used to emphasize that this type of variable cannot be copied or discarded arbitrarily within the program, which is a feature of linear types that is not yet popular in programming languages.
 
-Linear types come from linear logic, and linear logic itself is designed to express logic related to resource consumption that classical logic cannot express. 
+Linear types come from linear logic, and linear logic itself is designed to express logic related to resource consumption that classical logic cannot express.
 
 For example, if we have "milk," we can infer "cheese" logically, but we cannot express resource consumption or the logic that X units of "milk" can produce Y units of "cheese". Therefore, linear logic and linear types were developed, which can be applied in programming languages.
 
@@ -230,7 +230,7 @@ We can compare the two methods of combination using a common analogy. A Token ob
 
 1. The store and the bank have an interface connection to an electronic payment system. When you pay, you initiate a request to the bank to transfer the funds to the store.
 2. You withdraw cash from the bank and pay at the store. In this case, the store does not need to connect to the bank interface in advance, it just needs to accept this type of cash. As for whether the store locks the cash in a safe or continues to deposit it in the bank after receiving it, that is up to the store to decide.
-   
+
 The second type of combination method can be called a **resource-based combination** method. We can refer to the resource that flows between contracts of different organizations as "**free state**".
 
 The resource-based combination method is more similar to the combination method in the physical world, such as CDs and players, various machine components. This combination method is not in conflict with the interface-based combination method. For example, if multiple exchanges (swap) want to provide a unified interface for external integration, using the interface-based combination method is more appropriate.
@@ -238,7 +238,7 @@ The resource-based combination method is more similar to the combination method 
 There are two key advantages of the resource-based composition:
 
 1. It can effectively reduce the nesting depth of interface-based composition. (flash loans is a good example for this but considering that some readers may not be familiar with the background of flash loans, I won't elaborate on it here).
-2. It can clearly separate the definition of resources from the behavior based on resources. 
+2. It can clearly separate the definition of resources from the behavior based on resources.
 
 A typical example is the NFT for soulbound.
 The concept of NFT for soulbound was proposed by Vitalik. It is intended to use NFT to express a certain identity relationship, which should not be transferable, such as graduation certificates, honor certificates, etc.
@@ -299,10 +299,10 @@ At the time, we were designing the architecture of Starcoin, and considering tha
 
 Later on, after the Libra project was abandoned, several public chain projects were incubated to explore different directions:
 
-* MystenLabs' Sui introduced immutable states, attempting to implement a UTXO-like programming model in Move.
-* Aptos explored the parallel execution of transactions on Layer1 and high performance.
-* Pontem attempted to bring Move into the Polkadot ecosystem.
-* Starcoin explored the layered scaling solution of Layer2 and even Layer3.
+- MystenLabs' Sui introduced immutable states, attempting to implement a UTXO-like programming model in Move.
+- Aptos explored the parallel execution of transactions on Layer1 and high performance.
+- Pontem attempted to bring Move into the Polkadot ecosystem.
+- Starcoin explored the layered scaling solution of Layer2 and even Layer3.
 
 Meanwhile, the original Move team at Meta (Facebook) is attempting to run Move on Evm, although this may result in losing the feature of transferring `resource` between contracts, it helps to expand the Move ecosystem and merge it with the Solidity ecosystem.
 
@@ -324,11 +324,10 @@ There are many different views on the future of smart contract programming langu
 2. There is no need for a new smart contract language, existing programming languages are enough, as we have analyzed above.
 3. A Turing-complete smart contract language is needed, but the application scenario is limited to the chain, similar to stored procedure scripts in database. This is the view of most current smart contract developers.
 4. Smart contract programming languages will be promoted to other scenarios and ultimately become a universal programming language.
-   
-The last one can be called the maximalist of smart contract languages, and I personally hold this view. 
+
+The last one can be called the maximalist of smart contract languages, and I personally hold this view.
 
 The reason is simple: in the Web3 world, whether it's a game or other applications, there needs to be a digital dispute arbitration solution if there is a dispute. The key technology points of blockchain and smart contracts are about proof of state and computation, and the arbitration mechanism developed in this field can be used in more general scenarios. When a user installs an application, is concerned about its security, and wants the application to provide proof of state and computation, that is, when the application developer must choose to use smart contracts to implement the core logic of the application.
-
 
 ## Summary
 

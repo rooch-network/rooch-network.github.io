@@ -2,7 +2,7 @@
 title: The Modular Evolution of Rollup Layer2
 description: "Discuss the development and evolution of Rollup Layer2 from the perspective of evolution, the main answers: how does Rollup work, the modular evolution of Rollup, the possibilities brought by modularization, and the technical trend of modular applications..."
 authors: [jolestar]
-tags: [Rollup, Layer2]
+tags: [Technology]
 date: 2023/02/14
 ---
 
@@ -79,7 +79,6 @@ There are three main modular layers that we can consider:
 - **Settlement Layer**: Implements asset and state settlement between Layer1 and Layer2. It includes the State Commitment Chain and the Bridge.
 - **Arbitration Layer**: Verifies fraud proofs and makes judgments (optimistic) or verifies valid proofs (ZK). The arbitration layer must have the ability to manipulate the State Commitment Chain.
 
-
 ### DA Modular
 
 By migrating the DA function out and using an independent solution, the primary benefit is that the transaction gas fee of Layer2 is reduced by at least one order of magnitude.
@@ -92,7 +91,7 @@ After splitting the DA layer, we obtain the architecture shown in the figure bel
 
 ![Modular Rollup layer2](/blog/modular/modular-rollup-layer2.svg)
 
-In the above figure, the DA is responsible for saving the Canonical Transaction Chain, and Layer1 is left with an L1ToL2 Transaction Queue to implement message communication between Layer1 and Layer2. Users can also write transactions directly to this queue to ensure the  Layer2 is permissionless and that the Sequencer cannot audit users or transactions.
+In the above figure, the DA is responsible for saving the Canonical Transaction Chain, and Layer1 is left with an L1ToL2 Transaction Queue to implement message communication between Layer1 and Layer2. Users can also write transactions directly to this queue to ensure the Layer2 is permissionless and that the Sequencer cannot audit users or transactions.
 
 However, a new problem arises here. If the transaction sequence written by the Sequencer into the DA and the transaction sequence executed by the Proposer are inconsistent, how will the arbitration contract judge? One solution is to have a cross-chain bridge between the DA chain and the arbitration chain, which verifies the data proof provided by the DA chain in the arbitration contract. However, this solution depends on the implementation of cross-chain bridges between the DA and other chains, and the DA solution selection will be restricted. Another solution is to introduce Sequence proof.
 
@@ -151,7 +150,6 @@ So we have a modular Layer2 with low gas fees, high TPS, and greater security, t
 - Proposer: Retrieves transactions from the transaction pipeline, batch executes them, and periodically submits them to the State Commitment Chain on the chain.
 - Challenger: Retrieves transactions from the transaction pipeline, batch executes them, compares them with the State Commitment Chain, and decides whether to initiate a challenge.
 - DA & Settlement & Arbitration Interface: Abstracts and encapsulates different modular layers to ensure that switching between different implementations does not affect the upper-level business logic.
-
 
 ### Interactive Fraud Proofs with Multi-Chain Support
 
@@ -259,4 +257,3 @@ I entered the blockchain industry at the end of 2017. at the time, many teams we
 Now, with the maturity of Layer1, Layer2, and smart contracts, as well as modular infrastructure, the answer to this question has become gradually clearer.
 
 I hope that in the upcoming wave of Web3 DApp explosion, Rooch can help developers build applications faster and truly land them.
-
