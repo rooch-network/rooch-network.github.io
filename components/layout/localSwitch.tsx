@@ -1,6 +1,6 @@
 import type { ReactElement } from "react";
 import { useRouter } from "next/router";
-import { Select } from "../blog/select";
+import { Select } from "../archive/select";
 import { GlobeIcon } from "nextra/icons";
 import { addBasePath } from "next/dist/client/add-base-path";
 import { DocsThemeConfig } from "nextra-theme-docs/.";

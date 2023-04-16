@@ -1,11 +1,30 @@
+import { ThemeSwitch, useConfig } from "nextra-theme-docs";
+import { LocaleSwitch } from "./localSwitch";
+import { useRouter } from "next/router";
+
 export function Footer() {
   const buttonStyle =
     "inline-flex justify-center items-center w-10 h-10 text-center text-gray-500 hover:bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition dark:text-gray-500 dark:hover:text-gray-200 dark:hover:bg-gray-800";
 
+  const config = useConfig();
+  const route = useRouter();
+  console.log(route);
   return (
     <footer className="mt-auto w-full max-w-[85rem] py-10 px-4 sm:px-6 lg:px-8 mx-auto">
-      <div className="text-center">
-        <div className="mt-3 space-x-2">
+      {route.asPath == "/" || route.asPath == "/about" ? (
+        <div className="text-left pb-4">
+          <LocaleSwitch options={config.i18n} />
+          <ThemeSwitch />
+        </div>
+      ) : null}
+      <hr></hr>
+      <div className="text-center grid grid-cols-2">
+        <div className="mt-3 text-left">
+          <p className="text-gray-500">
+            © Root Branch Ltd. 2023. All rights reserved.
+          </p>
+        </div>
+        <div className="mt-3 space-x-2 text-right">
           <a className={buttonStyle} href="https://github.com/rooch-network/">
             <svg
               className="w-3.5 h-3.5"
@@ -55,11 +74,6 @@ export function Footer() {
               <path d="M9.025 8c0 2.485-2.02 4.5-4.513 4.5A4.506 4.506 0 0 1 0 8c0-2.486 2.02-4.5 4.512-4.5A4.506 4.506 0 0 1 9.025 8zm4.95 0c0 2.34-1.01 4.236-2.256 4.236-1.246 0-2.256-1.897-2.256-4.236 0-2.34 1.01-4.236 2.256-4.236 1.246 0 2.256 1.897 2.256 4.236zM16 8c0 2.096-.355 3.795-.794 3.795-.438 0-.793-1.7-.793-3.795 0-2.096.355-3.795.794-3.795.438 0 .793 1.699.793 3.795z" />
             </svg>
           </a>
-        </div>
-        <div className="mt-3">
-          <p className="text-gray-500">
-            © Root Branch Ltd. 2023. All rights reserved.
-          </p>
         </div>
       </div>
     </footer>

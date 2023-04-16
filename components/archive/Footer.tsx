@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { useState, ReactNode, ReactElement } from "react";
 import cn from "classnames";
-import { LocaleSwitch } from "./localSwitch";
+import { LocaleSwitch } from "../layout/localSwitch";
 import { useConfig } from "nextra-theme-docs";
 
 function FooterLink({ href, children }: { href: string; children: ReactNode }) {
