@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { useState, ReactNode, ReactElement } from "react";
 import cn from "classnames";
-import { LocaleSwitch } from "./localSwitch";
+import { LocaleSwitch } from "../localSwitch";
 import { useConfig } from "nextra-theme-docs";
 
 function FooterLink({ href, children }: { href: string; children: ReactNode }) {
@@ -26,140 +26,142 @@ function FooterHeader({ children }: { children: ReactNode }) {
   return <h3 className="text-sm text-black dark:text-white">{children}</h3>;
 }
 
-const navigation = new Map(
+const navigation = new Map([
   [
-    ["zh-CN",
-      [
-        {
-          title: "解决方案",
-          items: []
-        },
-        {
-          title: "使用 Rooch",
-          items: [{ name: "水龙头", href: "/" }]
-        },
-        {
-          title: "开发者",
-          items: [
-            {
-              name: "GitHub",
-              href: "https://github.com/rooch-network?type=source",
-            },
-            {
-              name: "WebApps 漏洞赏金",
-              href: "https://github.com/rooch-network/rooch-network.github.io",
-            },
-            {
-              name: "合约漏洞赏金",
-              href: "/",
-            },
-            {
-              name: "Discord",
-              href: "https://discord.com/invite/dT4DfDvE",
-            }
-          ]
-        },
-        {
-          title: "社区",
-          items: [
-            {
-              name: "Twitter",
-              href: "https://twitter.com/RoochNetwork"
-            },
-            {
-              name: "Youtube",
-              href: "https://www.youtube.com/channel/UC2WeEQQsK_PDiARYrSAPaPQ",
-            },
-            { name: "Discord", href: "https://discord.com/invite/dT4DfDvE" },
-            { name: "Telegram", href: "https://t.me/roochnetwork" },]
-        },
-        {
-          title: "条款",
-          items: [
-            { name: "使用条款", href: "/" },
-            { name: "隐私策略", href: "/" },
-            { name: "Cookie 策略", href: "/" },
-          ]
-        },
-        {
-          title: "其他",
-          items: [
-            { name: "关于", href: "/" },
-            { name: "博客", href: "/" },
-            { name: "物料", href: "/" },
-          ]
-        }
-      ]
+    "zh-CN",
+    [
+      {
+        title: "解决方案",
+        items: [],
+      },
+      {
+        title: "使用 Rooch",
+        items: [{ name: "水龙头", href: "/" }],
+      },
+      {
+        title: "开发者",
+        items: [
+          {
+            name: "GitHub",
+            href: "https://github.com/rooch-network?type=source",
+          },
+          {
+            name: "WebApps 漏洞赏金",
+            href: "https://github.com/rooch-network/rooch-network.github.io",
+          },
+          {
+            name: "合约漏洞赏金",
+            href: "/",
+          },
+          {
+            name: "Discord",
+            href: "https://discord.com/invite/dT4DfDvE",
+          },
+        ],
+      },
+      {
+        title: "社区",
+        items: [
+          {
+            name: "Twitter",
+            href: "https://twitter.com/RoochNetwork",
+          },
+          {
+            name: "Youtube",
+            href: "https://www.youtube.com/channel/UC2WeEQQsK_PDiARYrSAPaPQ",
+          },
+          { name: "Discord", href: "https://discord.com/invite/dT4DfDvE" },
+          { name: "Telegram", href: "https://t.me/roochnetwork" },
+        ],
+      },
+      {
+        title: "条款",
+        items: [
+          { name: "使用条款", href: "/" },
+          { name: "隐私策略", href: "/" },
+          { name: "Cookie 策略", href: "/" },
+        ],
+      },
+      {
+        title: "其他",
+        items: [
+          { name: "关于", href: "/" },
+          { name: "博客", href: "/" },
+          { name: "物料", href: "/" },
+        ],
+      },
     ],
-    ["en-US",
-      [
-        {
-          title: "Solutions",
-          items: []
-        },
-        {
-          title: "Use Rooch",
-          items: [{ name: "Faucet", href: "/" }]
-        },
-        {
-          title: "Developer",
-          items: [
-            {
-              name: "GitHub",
-              href: "https://github.com/rooch-network?type=source",
-            },
-            {
-              name: "WebApps Bug Bounty",
-              href: "https://github.com/rooch-network/rooch-network.github.io",
-            },
-            {
-              name: "Contracts Bug Bounty",
-              href: "/",
-            },
-            {
-              name: "Discord",
-              href: "https://discord.com/invite/dT4DfDvE",
-            }
-          ]
-        },
-        {
-          title: "Community",
-          items: [
-            {
-              name: "Twitter",
-              href: "https://twitter.com/RoochNetwork"
-            },
-            {
-              name: "Youtube",
-              href: "https://www.youtube.com/channel/UC2WeEQQsK_PDiARYrSAPaPQ",
-            },
-            { name: "Discord", href: "https://discord.com/invite/dT4DfDvE" },
-            { name: "Telegram", href: "https://t.me/roochnetwork" },]
-        },
-        {
-          title: "Legal",
-          items: [
-            { name: "Terms of Use", href: "/" },
-            { name: "Privacy Policy", href: "/" },
-            { name: "Cookie Policy", href: "/" },
-          ]
-        },
-        {
-          title: "General",
-          items: [
-            { name: "About", href: "/" },
-            { name: "Blog", href: "/" },
-            { name: "Material", href: "/" },
-          ]
-        }
-      ]
-    ]
-  ]
-)
+  ],
+  [
+    "en-US",
+    [
+      {
+        title: "Solutions",
+        items: [],
+      },
+      {
+        title: "Use Rooch",
+        items: [{ name: "Faucet", href: "/" }],
+      },
+      {
+        title: "Developer",
+        items: [
+          {
+            name: "GitHub",
+            href: "https://github.com/rooch-network?type=source",
+          },
+          {
+            name: "WebApps Bug Bounty",
+            href: "https://github.com/rooch-network/rooch-network.github.io",
+          },
+          {
+            name: "Contracts Bug Bounty",
+            href: "/",
+          },
+          {
+            name: "Discord",
+            href: "https://discord.com/invite/dT4DfDvE",
+          },
+        ],
+      },
+      {
+        title: "Community",
+        items: [
+          {
+            name: "Twitter",
+            href: "https://twitter.com/RoochNetwork",
+          },
+          {
+            name: "Youtube",
+            href: "https://www.youtube.com/channel/UC2WeEQQsK_PDiARYrSAPaPQ",
+          },
+          { name: "Discord", href: "https://discord.com/invite/dT4DfDvE" },
+          { name: "Telegram", href: "https://t.me/roochnetwork" },
+        ],
+      },
+      {
+        title: "Legal",
+        items: [
+          { name: "Terms of Use", href: "/" },
+          { name: "Privacy Policy", href: "/" },
+          { name: "Cookie Policy", href: "/" },
+        ],
+      },
+      {
+        title: "General",
+        items: [
+          { name: "About", href: "/" },
+          { name: "Blog", href: "/" },
+          { name: "Material", href: "/" },
+        ],
+      },
+    ],
+  ],
+]);
 
 export function FooterContent() {
-  const { locale } = useRouter()
-  const nav = navigation.get(locale)
+  const { locale } = useRouter();
+  const nav = navigation.get(locale);
 
   return (
     <div className="w-full" aria-labelledby="footer-heading">
@@ -170,9 +172,9 @@ export function FooterContent() {
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="grid grid-cols-1 gap-8 xl:col-span-2">
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 md:gap-8">
-              {
-                nav.map((v) => {
-                  return <div className="mt-12 md:!mt-0">
+              {nav.map((v) => {
+                return (
+                  <div className="mt-12 md:!mt-0">
                     <FooterHeader>{v.title}</FooterHeader>
                     <ul role="list" className="mt-4 space-y-1.5 list-none ml-0">
                       {v.items.map((item) => (
@@ -182,8 +184,8 @@ export function FooterContent() {
                       ))}
                     </ul>
                   </div>
-                })
-              }
+                );
+              })}
             </div>
           </div>
           <div className="mt-12 xl:!mt-0">
@@ -199,8 +201,7 @@ export function FooterContent() {
         <div className="pt-8 mt-8 sm:flex sm:items-center sm:justify-between">
           <div>
             <p className="mt-4 text-xs text-gray-500 dark:text-[#888888]">
-              &copy; {new Date().getFullYear()} Rooch, Inc. All rights
-              reserved.
+              &copy; {new Date().getFullYear()} Rooch, Inc. All rights reserved.
             </p>
           </div>
         </div>
@@ -257,7 +258,7 @@ function SubmitForm() {
 }
 
 export function Footer({ menu }: { menu?: boolean }): ReactElement {
-  const config = useConfig()
+  const config = useConfig();
 
   return (
     <footer className="bg-[#FAFAFA] pb-[env(safe-area-inset-bottom)] relative dark:bg-[#111111]">
