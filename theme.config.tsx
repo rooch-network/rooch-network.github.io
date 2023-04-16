@@ -1,5 +1,5 @@
 import { DocsThemeConfig } from "nextra-theme-docs";
-import { Footer } from "./components/footer";
+import { Footer } from "./components/layout/footer";
 
 const theme: DocsThemeConfig = {
   logo: <span>Rooch</span>,
