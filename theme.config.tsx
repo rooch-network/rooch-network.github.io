@@ -1,8 +1,16 @@
 import { DocsThemeConfig } from "nextra-theme-docs";
 import { Footer } from "./components/layout/footer";
+import Image from "next/image";
 
 const theme: DocsThemeConfig = {
-  logo: <span>Rooch</span>,
+  logo: (
+    <Image
+      src="/logo/rooch_black_combine.svg"
+      alt="Rooch Architecture"
+      width={100}
+      height={70}
+    />
+  ),
   useNextSeoProps() {
     return {
       titleTemplate: "%s – Rooch",

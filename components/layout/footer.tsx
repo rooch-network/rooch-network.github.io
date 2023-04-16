@@ -1,23 +1,35 @@
 import { ThemeSwitch, useConfig } from "nextra-theme-docs";
-import { LocaleSwitch } from "./localSwitch";
-import { useRouter } from "next/router";
+import { LocaleSwitch } from "./localeSwitch";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export function Footer() {
   const buttonStyle =
     "inline-flex justify-center items-center w-10 h-10 text-center text-gray-500 hover:bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition dark:text-gray-500 dark:hover:text-gray-200 dark:hover:bg-gray-800";
 
+  const pathname = usePathname();
+
   const config = useConfig();
-  const route = useRouter();
-  console.log(route);
+
+  const [SwitchDisplay, SetSwitchDisplay] = useState(false);
+
+  useEffect(() => {
+    if (pathname == "/" || pathname == "/about") {
+      SetSwitchDisplay(true);
+    } else {
+      SetSwitchDisplay(false);
+    }
+  }, [pathname]);
+
   return (
     <footer className="mt-auto w-full max-w-[85rem] py-10 px-4 sm:px-6 lg:px-8 mx-auto">
-      {route.asPath == "/" || route.asPath == "/about" ? (
+      {SwitchDisplay ? (
         <div className="text-left pb-4">
           <LocaleSwitch options={config.i18n} />
           <ThemeSwitch />
         </div>
       ) : null}
-      <hr></hr>
+      <hr />
       <div className="text-center grid grid-cols-2">
         <div className="mt-3 text-left">
           <p className="text-gray-500">
