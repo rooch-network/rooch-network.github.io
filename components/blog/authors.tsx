@@ -1,12 +1,12 @@
 import { Avatar } from "./avatar";
 import cn from "classnames";
-import ROOCH_TEAM from "../data/team";
-import type { Author } from "../data/team";
+import ROOCH_TEAM from "../../data/team";
+import type { Author } from "../../data/team";
 
 export function Authors({ authors }: { authors: Array<Author> }) {
-  console.log(authors)
+  console.log(authors);
   const validAuthors = authors.filter((author) => ROOCH_TEAM[author]);
-  console.log(validAuthors)
+  console.log(validAuthors);
   return (
     <div className="w-full border-b border-gray-400 authors border-opacity-20">
       <div
@@ -17,8 +17,7 @@ export function Authors({ authors }: { authors: Array<Author> }) {
       >
         {validAuthors.map((username) => (
           <Avatar key={username} {...ROOCH_TEAM[username]} />
-        ))
-        }
+        ))}
       </div>
     </div>
   );

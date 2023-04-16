@@ -1,6 +1,6 @@
-import { Avatar } from "./avatar"
-import Head from "next/head"
-import { useConfig } from "nextra-theme-docs"
+import { Avatar } from "./avatar";
+import Head from "next/head";
+import { useConfig } from "nextra-theme-docs";
 import { Authors } from "./authors";
 
 export type BlogPostMeta = {
@@ -50,12 +50,18 @@ function BlogDate({ data }: { data: BlogPostMeta }) {
   if (!date) {
     return null;
   }
-  const options: Intl.DateTimeFormatOptions = {year: 'numeric', month: 'long', day: 'numeric' };
+  const options: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
   let dateObject = new Date(date);
   let formattedDate = dateObject.toLocaleDateString("en-US", options);
-  return <div className="text-center">
-    <p className="opacity-50 text-sm">{formattedDate}</p>
-  </div>
+  return (
+    <div className="text-center">
+      <p className="opacity-50 text-sm">{formattedDate}</p>
+    </div>
+  );
 }
 
 export function BlogHeader() {
@@ -76,7 +82,7 @@ export function BlogHeader() {
       </Head>
       <BlogTitle data={meta} />
       <BlogDate data={meta} />
-      <Authors authors={meta.authors}/>
+      <Authors authors={meta.authors} />
     </>
   );
 }
