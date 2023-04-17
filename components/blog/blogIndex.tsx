@@ -1,17 +1,16 @@
 import { getPagesUnderRoute } from "nextra/context";
 import Link from "next/link";
 import { useState } from "react";
-import { TagsFilter } from "./tagFilter";
-import { AuthorsFilter } from "./authorsFilter";
-import { BlogPostMeta } from "./blogHeader";
-import { Page } from "nextra";
+import { FilterButton } from "./filterButton";
+import ROOCH_TEAM from "../../data/team";
 
-export type PageX = Page & {
-  blog: BlogPostMeta;
-};
-
-export default function BlogIndex({ more = "Read more" }) {
-  const [pages, _] = useState<Array<PageX>>(
+export default function BlogIndex({
+  textAllCategories = "All Categories",
+  textAllAuthors = "All Authors",
+  textMore = "Read more",
+}) {
+  // get all the pages
+  const [pages, _] = useState(
     getPagesUnderRoute("/blog").map((page: any) => {
       let blog = { ...page.frontMatter };
       const options: Intl.DateTimeFormatOptions = {
@@ -31,93 +30,79 @@ export default function BlogIndex({ more = "Read more" }) {
   );
 
   const [pagesFiltered, setBlogsFiltered] = useState(pages);
-  const [selectedAuthor, setSelectedAuthor] = useState("all");
-  const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
+  const [selectedCategory, setSelectedCategory] = useState(textAllCategories);
+  const [selectedAuthor, setSelectedAuthor] = useState(textAllAuthors);
+
+  // get all the authors
   const [authors, __] = useState(() => {
-    let _authors = [];
+    let _authors = [textAllAuthors];
 
     pages.forEach((page) => {
-      _authors = _authors.concat(page.blog.authors);
+      _authors = _authors.concat(page.blog.author);
     });
 
     return Array.from(new Set(_authors));
   });
 
-  const [tags, ___] = useState(() => {
-    let _tags = [];
+  // get all the categories
+  const [categories, ___] = useState(() => {
+    let _categories = [textAllCategories];
 
     pages.forEach((page) => {
-      if (page.blog.tags) {
-        _tags = _tags.concat(page.blog.tags);
+      if (page.blog.category) {
+        _categories = _categories.concat(page.blog.category);
       }
     });
 
-    return Array.from(new Set(_tags));
+    return Array.from(new Set(_categories));
   });
 
-  const filter = (author: string, tags: Set<string>) => {
-    let _pages: Array<PageX> = [];
+  // filter posts based on author and category
+  const filter = (author: string, category: string) => {
+    let _pages = [];
 
-    if (author === "all") {
-      _pages = _pages.concat(pages);
+    if (author === textAllAuthors && category == textAllCategories) {
+      _pages = pages;
     } else {
-      _pages = _pages.concat(
-        pages.filter(
-          (page) => page.blog.authors && page.blog.authors.includes(author)
-        )
-      );
-    }
-
-    let _filteredTagBlogs = [];
-    if (tags.size > 0) {
-      _pages.forEach((page) => {
-        if (page.blog.tags) {
-          for (let i in page.blog.tags) {
-            if (tags.has(page.blog.tags[i])) {
-              _filteredTagBlogs = _filteredTagBlogs.concat(page);
-              break;
-            }
-          }
-        }
+      _pages = pages.filter((page) => {
+        const _author = String(page.blog.author);
+        const _category = String(page.blog.category);
+        return (
+          (_author == author && _category == category) ||
+          (_author == author && category == textAllCategories) ||
+          (author == textAllAuthors && _category == category)
+        );
       });
-    } else {
-      _filteredTagBlogs = _pages;
     }
-    setBlogsFiltered(_filteredTagBlogs);
+    setBlogsFiltered(_pages);
   };
 
   return (
-    <div>
-      <AuthorsFilter
-        authors={authors}
-        selected={selectedAuthor}
-        onClick={(author) => {
-          if (author === selectedAuthor) {
-            setSelectedAuthor("all");
-            filter("all", selectedTags);
-            return;
-          }
-
-          setSelectedAuthor(author);
-          filter(author, selectedTags);
-        }}
-      />
-
-      <TagsFilter
-        tags={tags}
-        selected={selectedTags}
-        onClick={(tag) => {
-          if (selectedTags.has(tag)) {
-            selectedTags.delete(tag);
-            setSelectedTags(new Set(selectedTags));
-            filter(selectedAuthor, selectedTags);
-            return;
-          }
-          selectedTags.add(tag);
-          setSelectedTags(new Set(selectedTags));
-          filter(selectedAuthor, selectedTags);
-        }}
-      />
+    <div className="mt-10">
+      <div className="flex gap-4 pb-2">
+        <FilterButton
+          options={categories.map((category) => ({
+            id: category,
+            text: category,
+            avatar: undefined,
+          }))}
+          onClick={(tag) => {
+            setSelectedCategory(tag);
+            filter(selectedAuthor, tag);
+          }}
+        />
+        <FilterButton
+          options={authors.map((author) => ({
+            id: author,
+            text: ROOCH_TEAM[author] ? ROOCH_TEAM[author].name : author,
+            avatar: ROOCH_TEAM[author] ? ROOCH_TEAM[author].avatar : undefined,
+          }))}
+          onClick={(author) => {
+            setSelectedAuthor(author);
+            filter(author, selectedCategory);
+          }}
+        />
+      </div>
 
       {pagesFiltered.map((page) => {
         return (
@@ -138,7 +123,7 @@ export default function BlogIndex({ more = "Read more" }) {
                   href={page.blog.title}
                   className="text-[color:black] underline underline-offset-2 decoration-from-font"
                 >
-                  {more + " →"}
+                  {textMore + " →"}
                 </Link>
               </span>
             </p>
