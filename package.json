@@ -19,12 +19,14 @@
     "clsx": "^1.2.1",
     "cobe": "0.4.2",
     "next": "^13.2.4",
+    "nextjs-google-analytics": "^2.3.3",
     "nextra": "^2.2.20",
     "nextra-theme-docs": "^2.2.20",
     "preline": "^1.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-spring": "^9.4.4"
+    "react-spring": "^9.4.4",
+    "sharp": "^0.32.0"
   },
   "devDependencies": {
     "@types/node": "18.15.11",
