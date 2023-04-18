@@ -99,7 +99,7 @@ export default function BlogIndex({
 
   return (
     <div className="mt-10">
-      <div className="flex gap-4 pb-2">
+      <div className="flex gap-4 pb-2 mb-6">
         <FilterButton
           options={categories.map((category) => ({
             id: category,
