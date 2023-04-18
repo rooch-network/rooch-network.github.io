@@ -24,7 +24,8 @@
     "preline": "^1.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-spring": "^9.4.4"
+    "react-spring": "^9.4.4",
+    "sharp": "^0.32.0"
   },
   "devDependencies": {
     "@types/node": "18.15.11",
