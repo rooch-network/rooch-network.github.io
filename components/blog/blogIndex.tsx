@@ -23,7 +23,7 @@ export default function BlogIndex({
   const [authors, __] = useState(() => {
     let _authors = [textAllAuthors];
 
-    pages.forEach((page) => {
+    pages.forEach((page: any) => {
       _authors = _authors.concat(page.frontMatter.author);
     });
 
@@ -34,7 +34,7 @@ export default function BlogIndex({
   const [categories, ___] = useState(() => {
     let _categories = [textAllCategories];
 
-    pages.forEach((page) => {
+    pages.forEach((page: any) => {
       if (page.frontMatter.category) {
         _categories = _categories.concat(page.frontMatter.category);
       }
