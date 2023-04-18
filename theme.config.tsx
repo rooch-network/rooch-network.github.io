@@ -6,12 +6,22 @@ const theme: DocsThemeConfig = {
   docsRepositoryBase:
     "https://github.com/rooch-network/rooch-network.github.io",
   logo: (
-    <Image
-      src="/logo/rooch_black_combine.svg"
-      alt="Rooch Architecture"
-      width={100}
-      height={70}
-    />
+    <div>
+      <Image
+        src="/logo/rooch_black_combine.svg"
+        alt="Rooch Architecture"
+        width={100}
+        height={70}
+        className="dark:hidden"
+      />
+      <Image
+        src="/logo/rooch_white_combine.svg"
+        alt="Rooch Architecture"
+        width={100}
+        height={70}
+        className="hidden dark:block"
+      />
+    </div>
   ),
   useNextSeoProps() {
     return {
