@@ -12,7 +12,7 @@ export default function BlogIndex({
   // get all the pages
   const [pages, _] = useState(
     getPagesUnderRoute("/blog").map((page: any) => {
-      let blog = { ...page.frontMatter };
+      let _page = page;
       const options: Intl.DateTimeFormatOptions = {
         year: "numeric",
         month: "long",
@@ -20,12 +20,12 @@ export default function BlogIndex({
       };
       let dateObject = new Date(page.frontMatter?.date);
 
-      blog.date = dateObject.toLocaleDateString(page.locale, options);
+      _page.frontMatter.date = dateObject.toLocaleDateString(
+        page.locale,
+        options
+      );
 
-      return {
-        ...page,
-        blog: blog,
-      };
+      return _page;
     })
   );
 
@@ -38,7 +38,7 @@ export default function BlogIndex({
     let _authors = [textAllAuthors];
 
     pages.forEach((page) => {
-      _authors = _authors.concat(page.blog.author);
+      _authors = _authors.concat(page.frontMatter.author);
     });
 
     return Array.from(new Set(_authors));
@@ -49,8 +49,8 @@ export default function BlogIndex({
     let _categories = [textAllCategories];
 
     pages.forEach((page) => {
-      if (page.blog.category) {
-        _categories = _categories.concat(page.blog.category);
+      if (page.frontMatter.category) {
+        _categories = _categories.concat(page.frontMatter.category);
       }
     });
 
@@ -65,8 +65,8 @@ export default function BlogIndex({
       _pages = pages;
     } else {
       _pages = pages.filter((page) => {
-        const _author = String(page.blog.author);
-        const _category = String(page.blog.category);
+        const _author = String(page.frontMatter.author);
+        const _category = String(page.frontMatter.category);
         return (
           (_author == author && _category == category) ||
           (_author == author && category == textAllCategories) ||
@@ -105,34 +105,26 @@ export default function BlogIndex({
       </div>
 
       {pagesFiltered.map((page) => {
+        console.log(page);
         return (
-          <div key={page.route} className="mb-10">
-            <h3>
-              <Link
-                href={page.route}
-                style={{ color: "inherit", textDecoration: "none" }}
-                className="block font-semibold mt-8 text-2xl "
-              >
-                {page.meta?.title || page.blog.title || page.name}
-              </Link>
-            </h3>
-            <p className="opacity-80 mt-6 leading-7">
-              {page.blog.description}{" "}
-              <span className="inline-block">
-                <Link
-                  href={page.blog.title}
-                  className="text-[color:black] underline underline-offset-2 decoration-from-font"
-                >
-                  {textMore + " →"}
-                </Link>
-              </span>
-            </p>
-            {<div></div>}
-            {page.blog.date ? (
-              <p className="opacity-50 text-sm mt-6 leading-7">
-                {page.blog.date}
-              </p>
-            ) : null}
+          <div key={page.route}>
+            <Link href={page.route}>
+              <button className="mb-10 text-left hover:shadow-2xl focus:bg-gray-50 p-3 rounded-2xl transition-shadow">
+                <h3>
+                  <p className="block font-semibold mt-8 text-2xl ">
+                    {page.meta?.title || page.frontMatter.title || page.name}
+                  </p>
+                </h3>
+                <p className="opacity-80 mt-6 leading-7">
+                  {page.frontMatter.description}
+                </p>
+                {page.frontMatter.date ? (
+                  <p className="opacity-50 text-sm mt-6 leading-7">
+                    {page.frontMatter.date}
+                  </p>
+                ) : null}
+              </button>
+            </Link>
           </div>
         );
       })}
