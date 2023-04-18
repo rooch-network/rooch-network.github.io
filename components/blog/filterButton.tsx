@@ -18,7 +18,7 @@ export function FilterButton({ options, onClick }: FilterButtonInterface) {
       <button
         id="hs-dropdown-auto-close-outside"
         type="button"
-        className="hs-dropdown-toggle py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-gray-300 text-gray-700 border-gray-300 shadow-sm align-middle hover:bg-gray-50  transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-300 dark:text-gray-200 dark:hover:text-white "
+        className="hs-dropdown-toggle py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-gray-300 text-gray-700 border-gray-300 shadow-sm align-middle hover:bg-gray-50  transition-all text-sm dark:bg-black dark:hover:bg-gray-900 dark:border-gray-300 dark:text-gray-200 dark:hover:text-white "
       >
         {buttonDefault.avatar ? (
           <Image
