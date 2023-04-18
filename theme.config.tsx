@@ -3,6 +3,8 @@ import { Footer } from "./components/layout/footer";
 import Image from "next/image";
 
 const theme: DocsThemeConfig = {
+  docsRepositoryBase:
+    "https://github.com/rooch-network/rooch-network.github.io",
   logo: (
     <Image
       src="/logo/rooch_black_combine.svg"
@@ -17,7 +19,7 @@ const theme: DocsThemeConfig = {
     };
   },
   project: {
-    link: "https://github.com/rooch-network/rooch-network.github.io",
+    link: "https://github.com/rooch-network",
   },
   chat: {
     link: "https://discord.gg/rooch",
