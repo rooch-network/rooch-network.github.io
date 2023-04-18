@@ -1,6 +1,7 @@
 import { getPagesUnderRoute } from "nextra/context";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import { FilterButton } from "./filterButton";
 import ROOCH_TEAM from "../../data/team";
 import Image from "next/image";
@@ -10,31 +11,13 @@ export default function BlogIndex({
   textAllAuthors = "All Authors",
   textMore = "Read more",
 }) {
-  // get all the pages
-  const [pages, _] = useState(
-    getPagesUnderRoute("/blog").map((page: any) => {
-      let _page = page;
-
-      const options: Intl.DateTimeFormatOptions = {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      };
-      let dateObject = new Date(page.frontMatter?.date);
-      _page.dateNumber = dateObject.getTime();
-
-      _page.frontMatter.date = dateObject.toLocaleDateString(
-        page.locale,
-        options
-      );
-
-      return _page;
-    })
-  );
-
-  const [pagesFiltered, setBlogsFiltered] = useState(pages);
+  const { locale } = useRouter();
   const [selectedCategory, setSelectedCategory] = useState(textAllCategories);
   const [selectedAuthor, setSelectedAuthor] = useState(textAllAuthors);
+
+  const rawPages = getPagesUnderRoute("/blog");
+  const [pages, SetPages] = useState(rawPages);
+  const [pagesFiltered, setPagesFiltered] = useState(pages);
 
   // get all the authors
   const [authors, __] = useState(() => {
@@ -60,25 +43,59 @@ export default function BlogIndex({
     return Array.from(new Set(_categories));
   });
 
-  // filter posts based on author and category
-  const filter = (author: string, category: string) => {
+  // process date
+  useEffect(() => {
+    let _pages = [];
+    _pages = pages.map((page: any) => {
+      let _page = page;
+
+      const options: Intl.DateTimeFormatOptions = {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      };
+      let dateObject = new Date(page.frontMatter?.date);
+      _page.dateNumber = dateObject.getTime();
+
+      const formmatedDate = dateObject.toLocaleDateString(page.locale, options);
+
+      _page.frontMatter.date =
+        formmatedDate != "Invalid Date"
+          ? formmatedDate
+          : _page.frontMatter.date;
+
+      return _page;
+    });
+    SetPages(_pages);
+  }, []);
+
+  // filter pages
+  useEffect(() => {
     let _pages = [];
 
-    if (author === textAllAuthors && category == textAllCategories) {
-      _pages = pages;
+    // filter based on locale
+    _pages = pages.filter((page: any) => page.locale === locale);
+
+    // filter based on selected author and category
+    if (
+      selectedAuthor === textAllAuthors &&
+      selectedCategory == textAllCategories
+    ) {
+      _pages = _pages;
     } else {
-      _pages = pages.filter((page) => {
+      _pages = _pages.filter((page) => {
         const _author = String(page.frontMatter.author);
         const _category = String(page.frontMatter.category);
         return (
-          (_author == author && _category == category) ||
-          (_author == author && category == textAllCategories) ||
-          (author == textAllAuthors && _category == category)
+          (_author == selectedAuthor && _category == selectedCategory) ||
+          (_author == selectedAuthor &&
+            selectedCategory == textAllCategories) ||
+          (selectedAuthor == textAllAuthors && _category == selectedCategory)
         );
       });
     }
-    setBlogsFiltered(_pages);
-  };
+    setPagesFiltered(_pages);
+  }, [selectedCategory, selectedAuthor]);
 
   return (
     <div className="mt-10">
@@ -91,7 +108,6 @@ export default function BlogIndex({
           }))}
           onClick={(tag) => {
             setSelectedCategory(tag);
-            filter(selectedAuthor, tag);
           }}
         />
         <FilterButton
@@ -102,7 +118,6 @@ export default function BlogIndex({
           }))}
           onClick={(author) => {
             setSelectedAuthor(author);
-            filter(author, selectedCategory);
           }}
         />
       </div>
