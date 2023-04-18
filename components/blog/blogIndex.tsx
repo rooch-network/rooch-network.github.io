@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { FilterButton } from "./filterButton";
 import ROOCH_TEAM from "../../data/team";
+import Image from "next/image";
 
 export default function BlogIndex({
   textAllCategories = "All Categories",
@@ -105,21 +106,48 @@ export default function BlogIndex({
       </div>
 
       {pagesFiltered.map((page) => {
-        console.log(page);
         return (
           <div key={page.route}>
             <Link href={page.route}>
-              <button className="mb-10 text-left hover:shadow-2xl focus:bg-gray-50 p-3 rounded-2xl transition-shadow">
-                <h3>
-                  <p className="block font-semibold mt-8 text-2xl ">
-                    {page.meta?.title || page.frontMatter.title || page.name}
-                  </p>
+              <button className="mb-10 w-full text-left postbox focus:bg-gray-50 px-3 py-6 rounded-2xl ">
+                {/* Post Category */}
+                <p className="-mb-1 text-sm uppercase inline-block text-gray-400">
+                  {page.frontMatter.category}
+                </p>
+
+                {/* Post Title */}
+                <h3 className="block font-semibold text-2xl">
+                  {page.meta?.title || page.frontMatter.title || page.name}
                 </h3>
-                <p className="opacity-80 mt-6 leading-7">
+
+                {/* Post Author */}
+                <p className="inline-flex gap-2 mt-5">
+                  {page.frontMatter.author ? (
+                    <Image
+                      src={String(ROOCH_TEAM[page.frontMatter.author].avatar)}
+                      width={32}
+                      height={32}
+                      alt={page.frontMatter.author}
+                      className="rounded-full"
+                    />
+                  ) : undefined}
+                  {ROOCH_TEAM[page.frontMatter.author] ? (
+                    <span className="font-medium text-xl">
+                      {ROOCH_TEAM[page.frontMatter.author].name}
+                    </span>
+                  ) : (
+                    page.frontMatter.author
+                  )}
+                </p>
+
+                {/* Post Description */}
+                <p className="opacity-80 mt-2 leading-7">
                   {page.frontMatter.description}
                 </p>
+
+                {/* Post Date */}
                 {page.frontMatter.date ? (
-                  <p className="opacity-50 text-sm mt-6 leading-7">
+                  <p className="opacity-50 text-sm leading-7">
                     {page.frontMatter.date}
                   </p>
                 ) : null}
