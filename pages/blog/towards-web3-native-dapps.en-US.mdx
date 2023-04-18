@@ -1,12 +1,14 @@
 ---
 title: Towards Web3 Native DApps
-description: "In this article we share our vision regarding what is Web3 and how do we achieve it"
-authors: [haichao]
-tags: [Web3, Technology]
+description: Web3 applications are supposed to be decentralized. However the Web3 DApps today are usually based on a centralized architecture. In this article we discuss our vision for Web3 Native applications
+author: haichao
+category: Web3
 date: 2023/04/15
 ---
 
-# Towards Web3 Native DApps
+import PostHeader from "/components/blog/postHeader";
+
+<PostHeader />
 
 There are already more than a dozen of great Web3 infrastructures who are constantly breaking the boundary of blockchain technology and trying to take our industry a step further toward the dream of Web3.
 
@@ -27,7 +29,7 @@ import Image from "next/image";
   alt="Hello"
   width={450}
   height={450}
-  class="mx-auto my-8"
+  className="mx-auto my-8"
 />
 
 A Hybrid Web3 App usually adopts the same architecture of a Web2 App where the user send requests from the frontend to the backend server and the server does the computation and storage. The only difference it makes is that, in the backend server, there is a private key which operates tokens on a decentralized blockchain "on behalf of" the users.
@@ -49,7 +51,7 @@ The value of the data comes from the trading of data atrribution and the data vi
 
 In a Hybrid Web3 App, users' data are published and recorded in a centralized server makes them unprovable to have clear attribution. The privacy is also tampered as the backend is a blackbox and you have no idea what's being recorded and what's not, let alone there's no way for you to utilize any cryptographic tools to conceal your key information.
 
-However, with the Web3 Native model, users are identified with a single public key and all data are stored under a Merkle Tree with the public key as key path, forming an explicit attribution to the user. No one will able to change it unless a transaction is signed with the according private key. The backend is a fully transparent environment where every single user can see what user behaviors are recorded. And if a user wish to hide some info they can use tools such as Zero Knowledge proof to do so.
+However, with the Web3 Native model, users are identified with a single public key and all data are stored under a State Tree with the public key as key path, forming an explicit attribution to the user. No one will able to change it unless a transaction is signed with the according private key and use this transaction to trigger predefined contrat logics. The backend is a fully transparent environment where every single user can see what user behaviors are recorded. And if a user wish to hide some info they can use tools such as Zero Knowledge proof to do so.
 
 E.g. Games can have trustless free market for players to trade in-game assets and fabricate unique new assets. When an in-game asset is created, it is directly stored as a piece of data under the user's address. The way how it can be fabricated is a piece of logics predefined by the smart contract. The user can freely trade this asset to others and no one else will be able to steal or destroy it, not even the first builder of the game.
 
@@ -71,7 +73,7 @@ E.g. Players of a game can design and launch their own adventure for other playe
 
 Having ownership for all the data and functions of a DApp is a great first step, but being able to keeping them without trust but verification is also a key feature.
 
-In the Hybrid Web3 model, the ownership of data, functions, and assets are totally in the hands of the server operator (sometimes the cloud server provider). So society consensus based trust is the only security mechanism here.
+In the Hybrid Web3 model, the ownership of data, functions, and assets are totally in the hands of the server operator (sometimes the cloud server provider). So trust the App operator is the only security mechanism here.
 
 In the Web3 Native model, the server runs a provable smart contract environment where every single execution of a operation code as well as every CRUD operation to any data are provable. I.e. a proof can be generated. Anyone can take the proof to verify the integrity and the correctness of everything happened on that server by sending the proof the blockchain. The blockchain will offer the result of verification and act as a court to do arbitration based on the proof. Any malicious behaviors, such as rejecting providing the proof or proving a wrong proof, will make this DApp losing its users once and for all.
 
@@ -134,7 +136,7 @@ In this article we have discussed 6 key questions regarding how do we achieve tr
   alt="Hello"
   width={700}
   height={500}
-  class="mx-auto my-4"
+  className="mx-auto my-4"
 />
 
 Having these features as the final goal, we have also discussed what does it take to build an infrastructure solution for developers to design and build Web3 Native DApps.
