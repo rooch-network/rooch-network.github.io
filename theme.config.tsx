@@ -1,6 +1,7 @@
 import { DocsThemeConfig } from "nextra-theme-docs";
 import { Footer } from "./components/layout/footer";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const theme: DocsThemeConfig = {
   docsRepositoryBase:
@@ -24,9 +25,17 @@ const theme: DocsThemeConfig = {
     </div>
   ),
   useNextSeoProps() {
-    return {
-      titleTemplate: "%s – Rooch",
-    };
+    const { asPath } = useRouter();
+    if (asPath !== "/") {
+      if (asPath.includes("/docs/")) {
+        return {
+          titleTemplate: "%s – Rooch Network Documentation",
+        };
+      }
+      return {
+        titleTemplate: "%s – Rooch Network",
+      };
+    }
   },
   project: {
     link: "https://github.com/rooch-network",
