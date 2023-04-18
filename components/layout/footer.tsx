@@ -14,7 +14,7 @@ export function Footer() {
   const [SwitchDisplay, SetSwitchDisplay] = useState(false);
 
   useEffect(() => {
-    if (pathname == "/" || pathname == "/about" || pathname == "/blog") {
+    if (pathname == "/" || pathname == "/about" || pathname.includes("/blog")) {
       SetSwitchDisplay(true);
     } else {
       SetSwitchDisplay(false);
