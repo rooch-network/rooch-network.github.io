@@ -1,17 +1,17 @@
 {
   "move-language": "Move 语言",
   "fraud-proof": "欺诈证明",
-  "hybrid-security": "Hybrid Security with ZK Proof",
-  "multi-chain-settlement": "Multi-Chain Settlement",
-  "decentralized-validator": "Decentralized Validator",
-  "pipeline-transaction-processing": "Pipeline Transaction Processing",
-  "sequence-proof": "Sequence Proof",
+  "hybrid-security": "基于零知识证明的混合安全机制",
+  "multi-chain-settlement": "多链结算",
+  "decentralized-validator": "去中心化节点",
+  "pipeline-transaction-processing": "基于流水线的并行交易处理",
+  "sequence-proof": "交易排序证明",
   "storage": {
     "title": "Object and KV Storage",
     "display": "hidden"
   },
   "p2p-state-channel": {
-    "title": "P2P Channel",
+    "title": "P2P 通道",
     "display": "hidden"
   }
 }
