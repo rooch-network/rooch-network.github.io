@@ -1,6 +1,6 @@
 # Decentralized Validator
 
-In the current Layer2 solution, it is a challenge how to decentralize the sequencer. If the sequencer cannot be decentralized, on the one hand, there is a single point of risk that the whole network will be unavailable when the sequencer is down, and on the other hand, there is also the risk of sequencer fraud. Before transactions are written in batches to the data availability layer and the consensus layer, the sequencer can fraud by dropping transactions or adjusting the order of transactions.
+In the current Layer2 solution, how to decentralize the sequencer is a prominent challenge. On one hand, If the sequencer cannot be decentralized, there is a single point of risk that the whole network will be unavailable when the sequencer is down, and on the other hand, there is also the risk of sequencer fraud. Before transactions are written in batches to the data availability layer and the consensus layer, the sequencer can fraud by dropping transactions or adjusting the order of transactions.
 
 Rooch was designed at the beginning with this in mind, trying to build a decentralized validator network.
 
@@ -15,7 +15,7 @@ The Sequencer and Verifier are called Validator in Rooch.
 
 Since Layer2 consensus only needs to determine the order of transactions, the correctness of transaction execution can be guaranteed by challenge deterrence. To ensure the order of transactions, it is only necessary to write the transactions (or the transaction hash) to Layer1, which has the role of consensus layer.
 
-Therefore, Layer2 or execution layer does not need to build a PBFT consensus network to decide the transaction order and execution results to achieve decentralization, but only needs to design a rotation mechanism of the sequencer and a data synchronization protocol on the P2P network.
+Therefore, Layer2 or the execution layer does not need to build a PBFT consensus network to decide the transaction order and execution results to achieve decentralization, but only needs to design a rotation mechanism of the sequencer and a data synchronization protocol on the P2P network.
 
 The initial design idea is as follows.
 
