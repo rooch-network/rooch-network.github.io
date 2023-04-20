@@ -1,6 +1,8 @@
 import { DocsThemeConfig } from "nextra-theme-docs";
 import { Footer } from "./components/layout/footer";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { useConfig } from "nextra-theme-docs";
 
 const theme: DocsThemeConfig = {
   docsRepositoryBase:
@@ -24,9 +26,82 @@ const theme: DocsThemeConfig = {
     </div>
   ),
   useNextSeoProps() {
-    return {
-      titleTemplate: "%s – Rooch",
-    };
+    const { asPath } = useRouter();
+    if (asPath !== "/") {
+      if (asPath.includes("/docs/")) {
+        return {
+          titleTemplate: "%s – Rooch Network Documentation",
+        };
+      }
+      return {
+        titleTemplate: "%s – Rooch Network",
+      };
+    }
+  },
+  head: function useHead() {
+    const { title } = useConfig();
+    const socialCard = "/logo/rooch-banner.png";
+
+    return (
+      <>
+        <meta name="msapplication-TileColor" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+          rel="alternate"
+          href="https://rooch.network/"
+          hrefLang="x-default"
+        />
+        <link rel="alternate" href="https://rooch.network/" hrefLang="en-us" />
+        <link rel="alternate" href="https://rooch.network/" hrefLang="en" />
+        <link
+          rel="alternate"
+          href="https://rooch.network/zh-CN"
+          hrefLang="zh-cn"
+        />
+        <link
+          rel="alternate"
+          href="https://rooch.network/zh-CN"
+          hrefLang="zh"
+        />
+        <meta
+          name="description"
+          content="Accelerating World's Transition to Decentralization."
+        />
+        <meta
+          name="og:description"
+          content="Accelerating World's Transition to Decentralization."
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content={socialCard} />
+        <meta name="twitter:site:domain" content="rooch.network" />
+        <meta name="twitter:url" content="https://rooch.network" />
+        <meta
+          name="og:title"
+          content={title ? title + " – Rooch Network" : "Rooch Network"}
+        />
+        <meta name="og:image" content={socialCard} />
+        <meta name="apple-mobile-web-app-title" content="Rooch Network" />
+        <link
+          rel="icon"
+          href="/logo/rooch_black_logo.svg"
+          type="image/svg+xml"
+        />
+        <link rel="icon" href="/logo/rooch_black_logo.png" type="image/png" />
+        <link
+          rel="icon"
+          href="/logo/rooch_white_logo.svg"
+          type="image/svg+xml"
+          media="(prefers-color-scheme: dark)"
+        />
+        <link
+          rel="icon"
+          href="/logo/rooch_white_logo.png"
+          type="image/png"
+          media="(prefers-color-scheme: dark)"
+        />
+      </>
+    );
   },
   project: {
     link: "https://github.com/rooch-network",
