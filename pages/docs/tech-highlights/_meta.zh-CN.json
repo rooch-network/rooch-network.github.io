@@ -5,7 +5,7 @@
   "multi-chain-settlement": "多链结算",
   "decentralized-validator": {
     "title": "去中心化节点",
-    "dispaly": "hidden"
+    "display": "hidden"
   },
   "pipeline-transaction-processing": "基于流水线的并行交易处理",
   "sequence-proof": "交易排序证明",
