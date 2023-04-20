@@ -2,13 +2,22 @@
 
 import Image from "next/image";
 
-<Image
-  src="/logo/rooch_black_combine.svg"
-  alt="Rooch Architecture"
-  width={600}
-  height={600}
-  class="mx-auto my-20"
-/>
+<div>
+  <Image
+    src="/logo/rooch_black_combine.svg"
+    alt="Rooch Architecture"
+    width={600}
+    height={600}
+    className="dark:hidden"
+  />
+  <Image
+    src="/logo/rooch_white_combine.svg"
+    alt="Rooch Architecture"
+    width={600}
+    height={600}
+    className="hidden dark:block"
+  />
+</div>
 
 Rooch（/ruʧ/）是通过结合 Root 和 Branch 来命名的，其中两者都有几个含义：
 
