@@ -7,6 +7,9 @@ import { useConfig } from "nextra-theme-docs";
 const theme: DocsThemeConfig = {
   docsRepositoryBase:
     "https://github.com/rooch-network/rooch-network.github.io",
+  nextThemes: {
+    defaultTheme: "light",
+  },
   logo: (
     <div>
       <Image
