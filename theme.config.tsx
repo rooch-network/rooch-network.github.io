@@ -41,7 +41,7 @@ const theme: DocsThemeConfig = {
   head: function useHead() {
     const { title } = useConfig();
     const socialCard = "/logo/rooch-banner.png";
-
+    const { asPath } = useRouter();
     return (
       <>
         <meta name="msapplication-TileColor" content="#ffffff" />
@@ -49,19 +49,27 @@ const theme: DocsThemeConfig = {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link
           rel="alternate"
-          href="https://rooch.network/"
+          href={"https://rooch.network" + asPath}
           hrefLang="x-default"
         />
-        <link rel="alternate" href="https://rooch.network/" hrefLang="en-us" />
-        <link rel="alternate" href="https://rooch.network/" hrefLang="en" />
         <link
           rel="alternate"
-          href="https://rooch.network/zh-CN"
+          href={"https://rooch.network" + asPath}
+          hrefLang="en-us"
+        />
+        <link
+          rel="alternate"
+          href={"https://rooch.network" + asPath}
+          hrefLang="en"
+        />
+        <link
+          rel="alternate"
+          href={"https://rooch.network/zh-CN" + asPath}
           hrefLang="zh-cn"
         />
         <link
           rel="alternate"
-          href="https://rooch.network/zh-CN"
+          href={"https://rooch.network/zh-CN" + asPath}
           hrefLang="zh"
         />
         <meta
