@@ -39,9 +39,16 @@ const theme: DocsThemeConfig = {
     }
   },
   head: function useHead() {
-    const { title } = useConfig();
-    const socialCard = "/logo/rooch-banner.png";
+    const { title, frontMatter } = useConfig();
     const { asPath } = useRouter();
+    const router = useRouter();
+    const socialCard = "/logo/rooch-banner.png";
+    const currentLang = router.locale;
+    const pageDescription = frontMatter.description
+      ? frontMatter.description
+      : currentLang === "en-US"
+      ? "Accelerating World's Transition to Decentralization"
+      : "加速世界向去中心化的转变";
     return (
       <>
         <meta name="msapplication-TileColor" content="#ffffff" />
@@ -72,14 +79,8 @@ const theme: DocsThemeConfig = {
           href={"https://rooch.network/zh-CN" + asPath}
           hrefLang="zh"
         />
-        <meta
-          name="description"
-          content="Accelerating World's Transition to Decentralization."
-        />
-        <meta
-          name="og:description"
-          content="Accelerating World's Transition to Decentralization."
-        />
+        <meta name="description" content={pageDescription} />
+        <meta name="og:description" content={pageDescription} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content={socialCard} />
         <meta name="twitter:site:domain" content="rooch.network" />
