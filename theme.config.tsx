@@ -7,6 +7,9 @@ import { useConfig } from "nextra-theme-docs";
 const theme: DocsThemeConfig = {
   docsRepositoryBase:
     "https://github.com/rooch-network/rooch-network.github.io",
+  nextThemes: {
+    defaultTheme: "light",
+  },
   logo: (
     <div>
       <Image
@@ -39,9 +42,16 @@ const theme: DocsThemeConfig = {
     }
   },
   head: function useHead() {
-    const { title } = useConfig();
+    const { title, frontMatter } = useConfig();
+    const { asPath } = useRouter();
+    const router = useRouter();
     const socialCard = "/logo/rooch-banner.png";
-
+    const currentLang = router.locale;
+    const pageDescription = frontMatter.description
+      ? frontMatter.description
+      : currentLang === "en-US"
+      ? "Accelerating World's Transition to Decentralization"
+      : "加速世界向去中心化的转变";
     return (
       <>
         <meta name="msapplication-TileColor" content="#ffffff" />
@@ -49,29 +59,31 @@ const theme: DocsThemeConfig = {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link
           rel="alternate"
-          href="https://rooch.network/"
+          href={"https://rooch.network" + asPath}
           hrefLang="x-default"
         />
-        <link rel="alternate" href="https://rooch.network/" hrefLang="en-us" />
-        <link rel="alternate" href="https://rooch.network/" hrefLang="en" />
         <link
           rel="alternate"
-          href="https://rooch.network/zh-CN"
+          href={"https://rooch.network" + asPath}
+          hrefLang="en-us"
+        />
+        <link
+          rel="alternate"
+          href={"https://rooch.network" + asPath}
+          hrefLang="en"
+        />
+        <link
+          rel="alternate"
+          href={"https://rooch.network/zh-CN" + asPath}
           hrefLang="zh-cn"
         />
         <link
           rel="alternate"
-          href="https://rooch.network/zh-CN"
+          href={"https://rooch.network/zh-CN" + asPath}
           hrefLang="zh"
         />
-        <meta
-          name="description"
-          content="Accelerating World's Transition to Decentralization."
-        />
-        <meta
-          name="og:description"
-          content="Accelerating World's Transition to Decentralization."
-        />
+        <meta name="description" content={pageDescription} />
+        <meta name="og:description" content={pageDescription} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content={socialCard} />
         <meta name="twitter:site:domain" content="rooch.network" />
