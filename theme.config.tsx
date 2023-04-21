@@ -39,6 +39,10 @@ const theme: DocsThemeConfig = {
       return {
         titleTemplate: "%s – Rooch Network",
       };
+    } else {
+      return {
+        titleTemplate: "%s",
+      };
     }
   },
   head: function useHead() {
@@ -88,10 +92,6 @@ const theme: DocsThemeConfig = {
         <meta name="twitter:image" content={socialCard} />
         <meta name="twitter:site:domain" content="rooch.network" />
         <meta name="twitter:url" content="https://rooch.network" />
-        <meta
-          name="og:title"
-          content={title ? title + " – Rooch Network" : "Rooch Network"}
-        />
         <meta name="og:image" content={socialCard} />
         <meta name="apple-mobile-web-app-title" content="Rooch Network" />
         <link
