@@ -22,7 +22,7 @@ module.exports = withNextra({
       {
         source: "/docs/why-rooch",
         permanent: false,
-        destination: "/docs/introduction/rooch",
+        destination: "/docs/rooch",
       },
       {
         source: "/contact-us",
