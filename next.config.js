@@ -12,4 +12,28 @@ module.exports = withNextra({
   typescript: {
     ignoreBuildErrors: true,
   },
+  async redirects() {
+    return [
+      {
+        source: "/docs",
+        permanent: false,
+        destination: "/docs/introduction",
+      },
+      {
+        source: "/docs/why-rooch",
+        permanent: false,
+        destination: "/docs/introduction/rooch",
+      },
+      {
+        source: "/contact-us",
+        permanent: false,
+        destination: "/about#contact",
+      },
+      {
+        source: "/docs/technology/move-on-rooch",
+        permanent: false,
+        destination: "/docs/tech-highlights/move-language",
+      },
+    ];
+  },
 });
