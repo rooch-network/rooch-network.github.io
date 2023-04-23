@@ -115,7 +115,7 @@ DA 专用链可以提供更高的存储带宽和更低的存储成本，并且�
 
 Sequence Proof 的工作原理：
 
-![Sequence Proof](/diagram/rooch-sequence-proof.svg)
+![Sequence Proof](/blog/modular/rooch-sequence-proof.svg)
 
 用户或者执行节点提交交易给 Sequencer，Sequencer 将 Sequence Proof 返回给用户，同时同步给其他节点。如果 Sequencer 在提交给 DA 之前丢弃或者篡改了交易的顺序，用户或者其他节点可以提交 Sequence Proof 给仲裁合约，从而惩罚 Sequencer。仲裁合约需要从 State Commitment Chain 合约中读取交易累加器的根，从而校验 Sequence Proof。
 
@@ -130,7 +130,7 @@ Sequence Proof 的工作原理：
 
 将 Sequencer 划分给 DA，只负责交易的验证和排序，带来的另外一个好处是容易实现交易的流水线以及并行执行。
 
-![Transaction Pipeline](/diagram/rooch-txn-pipeline.svg)
+![Transaction Pipeline](/blog/modular/rooch-txn-pipeline.svg)
 
 验证交易时，需要验证签名和是否有足够的 Gas 费，而 Gas 费的校验需要依赖状态。如果我们为了保证验证交易不会被执行交易阻塞，允许 Sequencer 验证交易依赖的状态和最新状态之间有一定的延迟（秒级），会导致 Gas 校验会不太准确，有被 DDoS 攻击的风险。
 
@@ -142,7 +142,7 @@ Proposer 需要定时提交状态树的根，以及累加器的根到链上的 S
 
 于是我们得到了一个低 Gas 费，高 TPS，并且更安全的模块化 Layer2： **Rooch**。
 
-![Rooch Architecture](/diagram/rooch-architecture.svg)
+![Rooch Architecture](/blog/modular/rooch-architecture.svg)
 
 - MoveOS：它包含 MoveVM 以及 StateDB，是系统的执行以及状态存储引擎。StateDB 由两层稀疏默克尔树构建，可以提供状态证明。根据前面的分析可得出，状态树以及状态证明是 Rollup 应用不可或缺的组件。
 - RPC：对外提供查询，提交交易，以及订阅服务。可以通过代理方式兼容其他链的 RPC 接口。
@@ -170,7 +170,7 @@ Optimistic Rollup 方案中，链上的仲裁合约如何判定链下的交易�
 1. 直接在合约语言虚拟机中实现，比如 Arbitrum 的 AVM，Fuel 的 FuelVM。
 2. 基于已有的指令集实现一个模拟器，在模拟器中提供证明能力。如 Optimism 的基于 MIPS 指令的 cannon，Arbitrum 新的基于 WASM 指令的 Nitro，以及 Rooch 的基于 MIPS 指令的 OMO。
 
-![OMO](/diagram/rooch-omo.svg)
+![OMO](/blog/modular/rooch-omo.svg)
 
 OMO 是一个拥有单步状态证明能力的通用字节码模拟器，为多链执行环境设计。有了 OMO 的支持，可以实现仲裁层的模块化。任意支持图灵完备合约的链，都可以在合约中模拟 OMO 的指令，作为仲裁层。
 
@@ -178,7 +178,7 @@ OMO 是一个拥有单步状态证明能力的通用字节码模拟器，为多�
 
 业界一直在争论 Optimistic Rollup 和 ZK Rollup 孰优孰劣，但我们认为将二者结合起来可以兼得两种方案的优点。
 
-![ZK + Optimistic](/diagram/rooch-zk-optimisc.svg)
+![ZK + Optimistic](/blog/modular/rooch-zk-optimisc.svg)
 
 在前面的 Optimistic 方案基础上，我们再引入一个新的角色，ZK Prover。它批量给 Proposer 提交的交易状态生成有效证明，并提交给仲裁合约。仲裁合约验证后，就可以判定该交易在 Layer1 上达到了最终确定性，可以进行 Layer2 到 Layer1 的提款交易的结算。
 
@@ -195,13 +195,13 @@ OMO 是一个拥有单步状态证明能力的通用字节码模拟器，为多�
 
 Layer1 和 Layer2 之间的资产结算主要依赖两个组件，一个是 Bridge，一个是 State Commitment Chain，从 Bridge 结算的时候，需要依赖 State Commitment Chain 校验 Layer2 的状态证明。 Bridge 当然可以部署到多个链，但 State Commitment Chain 只能有一个权威的版本，由仲裁合约保证安全。
 
-![Multi chain Settlement](/diagram/rooch-multi-chain-layer2.svg)
+![Multi chain Settlement](/blog/modular/rooch-multi-chain-layer2.svg)
 
 这个方向还需要深入研究，但有个初步的方案。其他链上的 State Commitment Chain 都是仲裁链（Ethereum）上的镜像。这个镜像并不需要同步全部的 Layer2 State Root 到其他链，而是用户按需通过 Ethereum 的状态证明做映射。
 
 当然，其他链上还需要能校验 Ethereum 上的状态证明，所以需要知道 Ethereum 上的状态根。当前，将 Ethereum 上的状态根同步到其他节点有两个方案：1. 依赖 Oracle。2. 嵌入 Ethereum 轻节点，校验 Ethereum 的区块头。
 
-![Multi chain Settlement](/diagram/rooch-multi-chain-settlement.svg)
+![Multi chain Settlement](/blog/modular/rooch-multi-chain-settlement.svg)
 
 这样我们就可以得到一个支持多链结算，但安全由 Ethereum 保证的 Layer2 方案。
 
