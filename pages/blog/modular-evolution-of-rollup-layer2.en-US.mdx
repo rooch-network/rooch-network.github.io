@@ -115,7 +115,7 @@ If Sequencer generates a Sequence Proof for each transaction, it can solve two p
 
 How Sequence Proof works:
 
-![Sequence Proof](/diagram/rooch-sequence-proof.svg)
+![Sequence Proof](/blog/modular/rooch-sequence-proof.svg)
 
 A user or an execution node submits a transaction to the Sequencer. The Sequencer returns the Sequence Proof to the user and synchronizes it with other nodes. If the Sequencer discards or changes the order of transactions before submitting them to the DA, the user or other nodes can submit the Sequence Proof to the arbitration contract to slash the Sequencer. The arbitration contract needs to read the root of the transaction accumulator from the State Commitment Chain contract to verify the Sequence Proof.
 
@@ -130,7 +130,7 @@ By introducing Sequence Proof, Layer2 protocols become more secure.
 
 By assigning the Sequencer to the DA to solely handle transaction validation and sorting, another benefit is that it is easy to implement a transaction pipeline and parallel execution.
 
-![Transaction Pipeline](/diagram/rooch-txn-pipeline.svg)
+![Transaction Pipeline](/blog/modular/rooch-txn-pipeline.svg)
 
 When validating a transaction, it is necessary to verify the signature and whether there is sufficient gas fee, and gas fee verification relies on the state. If we allow the Sequencer to verify transactions with a certain delay (in seconds) between the dependent state and the latest state to ensure that validation transactions are not blocked by executing transactions, then gas verification may be inaccurate and at risk of DDoS attacks.
 
@@ -142,7 +142,7 @@ The Proposer needs to periodically submit the root of the state tree and the roo
 
 So we have a modular Layer2 with low gas fees, high TPS, and greater security, this is **Rooch**.
 
-![Rooch Architecture](/diagram/rooch-architecture.svg)
+![Rooch Architecture](/blog/modular/rooch-architecture.svg)
 
 - MoveOS: It includes MoveVM and StateDB, which are the system's execution and state storage engines. StateDB is built with two layers of Sparse Merkle trees and can provide state proofs. As mentioned earlier, the state tree and state proof are indispensable components of Rollup applications.
 - RPC: Provides query, transaction submission, and subscription services to the outside world. Can be compatible with other chain's RPC API through proxying.
@@ -170,7 +170,7 @@ The remaining question is how to generate the proof, and there are mainly two ap
 1. Implement it directly in the contract language virtual machine, such as Arbitrum's AVM and Fuel's FuelVM.
 2. Implement a simulator based on an existing instruction set, which can provide proof capabilities within the simulator. For example, Optimism's MIPS-based cannon, Arbitrum's new WASM-based Nitro, and Rooch's MIPS-based OMO.
 
-![OMO](/diagram/rooch-omo.svg)
+![OMO](/blog/modular/rooch-omo.svg)
 
 OMO is a general bytecode simulator with single-step state proof capabilities, designed for multi-chain execution environments. With support from OMO, the arbitration layer can be modular. Any chain that supports Turing-complete contracts can simulate OMO's instructions in its contracts and act as an arbitration layer.
 
@@ -178,7 +178,7 @@ OMO is a general bytecode simulator with single-step state proof capabilities, d
 
 The industry has been debating the pros and cons of Optimistic Rollup and ZK Rollup, but we believe that combining the two can achieve the benefits of both solutions.
 
-![ZK + Optimistic](/diagram/rooch-zk-optimisc.svg)
+![ZK + Optimistic](/blog/modular/rooch-zk-optimisc.svg)
 
 Based on the previous Optimistic solution, we introduce a new role, the ZK Prover. It generates valid proofs in bulk for the transaction states submitted by the Proposer, and submits them to the arbitration contract. After verification by the arbitration contract, the transaction can be settled from Layer2 to Layer1 for finality.
 
@@ -195,13 +195,13 @@ If we further consider the trend of modular, it naturally leads to the question 
 
 The asset settlement between Layer1 and Layer2 mainly relies on two components, one is the Bridge, and the other is the State Commitment Chain. When settling through the Bridge, it is necessary to rely on the State Commitment Chain to verify the Layer2's state proof. The Bridge can certainly be deployed on multiple chains, but there can only be one authoritative version of the State Commitment Chain, which is ensured by the arbitration contract.
 
-![Multi chain Settlement](/diagram/rooch-multi-chain-layer2.svg)
+![Multi chain Settlement](/blog/modular/rooch-multi-chain-layer2.svg)
 
 This direction requires further research, but there is a preliminary solution. The State Commitment Chain on other chains is a mirror of the arbitration chain (Ethereum). This mirror does not need to synchronize all Layer2 State Roots to other chains, but users can map them as needed through Ethereum's state proof.
 
 Of course, other chains also need to be able to verify the state proof on Ethereum, so they need to know the state root on Ethereum. Currently, there are two solutions for synchronizing Ethereum's state root to other nodes: 1. relying on an Oracle. 2. embedding an Ethereum light node to verify Ethereum's block header.
 
-![Multi chain Settlement](/diagram/rooch-multi-chain-settlement.svg)
+![Multi chain Settlement](/blog/modular/rooch-multi-chain-settlement.svg)
 
 In this way, we can get a Layer2 solution that supports multi-chain settlement, but whose security is guaranteed by Ethereum.
 
