@@ -13,13 +13,13 @@ import PostHeader from "/components/blog/postHeader";
 
 As a proponent of the Move programming language, every time I promote Move to developers, I always encounter the same question: **What are the advantages of Move? Why Move?**
 
-It's like introducing your new lover to a friend - you always face similar questions. However, this question is not easy to answer. If we list the pros and cons one by one, there will always be people who question them. After all, the ecosystem of a new language is not yet mature, and the choice can only be based on its potential. Let me make a statement: **Move has the most potential programming language to build an ecosystem like Solidity, and even surpass Solidity**.
+Introducing your favorite topic to an outsider, you always face the same kind of questions. However, this question is not easy to answer. If we list the pros and cons one by one, there will always be people who question them. After all, the ecosystem of a new language is not yet mature, and the choice can only be based on its potential. Let me make a statement: **Move has the most potential of any programming language to build an ecosystem like Solidity, and even to surpass Solidity.**
 
-> Target audience: Developers who are interested in the technology of the blockchain field. This article hopes to explain the current challenges faced by smart contracts and some solutions of Move in a simple way, with minimal use of code, so that readers who do not understand programming languages can also roughly understand it. Feedback from readers is appreciated.
+> Target audience: Developers who are interested in the technology of the blockchain field. This article hopes to explain the current challenges faced by smart contracts and provide some solutions of Move in a simple way, with minimal use of code, so that readers who do not understand programming languages can also roughly understand it. Feedback from readers is appreciated.
 
 > This article was written in May 2022, when Move was just emerging and there was no current scale. I translated and reposted it here,[original link](https://jolestar.com/why-move-1).
 
-## Two Paths of Smart Contract
+## Two Paths of Smart Contracts
 
 If we go back a few years, there were mainly two ways to support Turing-complete smart contracts on new public chains.
 
@@ -29,7 +29,7 @@ The other is to create a new smart contract programming language and virtual mac
 
 At that time, many people were actually not optimistic about the Solidity&EVM ecosystem. They thought that Solidity was only useful for token issuance, had poor performance, weak tools, and was like a toy. The goal of many chains was to enable developers to use existing languages for smart contract programming, and the first path was more favored. There were few new public chains that directly copied Solidity&EVM.
 
-However, after several years of development, especially with the rise of DeFi, people suddenly found that the Solidity ecosystem was different. The smart contract ecosystem that took the first path did not grow up. Why? I summarize a few reasons.
+However, after several years of development, especially with the rise of DeFi, people suddenly found that the Solidity ecosystem was different. The smart contract ecosystem that took the first path did not grow up. Why? I will summarize a few reasons.
 
 1. The blockchain's program runtime environment is very different from the operating system's program runtime environment. If we discard the libraries related to system calls, file IO, hardware, network, concurrency, and consider the execution cost on-chain, the amount of libraries that can share with smart contracts is very limited.
 2. The first solution theoretically supports many languages, but in reality, programming languages with a runtime compiled into a virtual machine similar to WASM result in very large files, making it unsuitable for use in blockchain scenarios. The only ones that can be used are mainly C, C++, Rust, etc. without a runtime. The learning curve of these languages is not lower than the cost of smart contract programming languages like Solidity. Supporting multiple languages at the same time may lead to the fragmentation of early ecosystems.
@@ -41,7 +41,7 @@ Now it seems that although Solidity took a seemingly slow path, it actually buil
 
 At this point, a new smart contract programming language needs to prove that it has stronger ecosystem building capabilities to convince people to pay attention to and learn to use it.
 
-So the new question is, how to measure the ecosystem building capabilities of a programming language?
+So the new question is, how does one measure the ecosystem building capabilities of a programming language?
 
 ## Programming language's ecosystem building ability
 
@@ -76,7 +76,7 @@ Method 3 can build cross-language dependency relationships and is generally used
 
 In the history of technology, many programming languages and operating system platforms have spent a lot of effort trying to bridge the gap between remote and local calls, trying to achieve seamless remote calling and composition.
 
-Just mention a few famous technical terms, such as COM (Component Object Model), CORBA, SOAP, REST, etc., all of which are used to solve these problems. Although the dream of seamless call has been shattered, and everyone finally relied on engineers to manually connect interfaces, splicing together the entire Web2 service, the dream is still alive.
+Just to mention a few famous technical terms, such as COM (Component Object Model), CORBA, SOAP, REST, etc., all of which are used to solve these problems. Although the dream of seamless call has been shattered, and everyone finally relied on engineers to manually connect interfaces, splicing together the entire Web2 service, the dream is still alive.
 
 Smart contracts have brought new changes to the dependency methods between applications.
 
@@ -120,18 +120,18 @@ This creates a problem: if the contract is complex and has too many dependencies
 
 Can we use the second solution, loading dynamic libraries? For example, most contracts on Ethereum depend on the `SafeMath.sol` library, and each contract contains its binary. Since the bytecode is on the chain, why can't it be directly shared?
 
-Therefore, Solidity provides the `delegatecall` method, similar to the dynamic linking library solution, which load the bytecode of another contract into the context of the current contract, allowing the other contract to directly read and write the state of the current contract. But this requires two things:
+Therefore, Solidity provides the `delegatecall` method, similar to the dynamic linking library solution, which loads the bytecode of another contract into the context of the current contract, allowing the other contract to directly read and write the state of the current contract. But this requires two things:
 
 1. The calling and called parties must have a completely trusted relationship.
 2. The state of the two contracts must be aligned.
 
-Non-smart contract developers may not understand this issue. If you are a Java developer, you can think of each Solidity contract as a Class. Once deployed, it runs as a singleton Object. If you want to load a method from another Class at runtime to modify the properties of the current Object, the fields defined in these two Classes must be the same, and the newly loaded method is equivalent to an internal method, with full access to the internal properties of the Object.
+Those who aren't smart contract developers may not understand this issue. If you are a Java developer, you can think of each Solidity contract as a Class. Once deployed, it runs as a singleton Object. If you want to load a method from another Class at runtime to modify the properties of the current Object, the fields defined in these two Classes must be the same, and the newly loaded method is equivalent to an internal method, with full access to the internal properties of the Object.
 
 This limits the use case and reuse of dynamic linking, and it is now mainly used for internal contract upgrades.
 
 Because of the above reasons, it is difficult for Solidity to provide a rich standard library (stdlib) like other programming languages, to be deployed on the chain in advance and depended on by other contracts. It can only provide a few limited precompiled methods.
 
-This has also led to the inflation of EVM bytecode. Many data that could have been obtained from the state via system contract code were forced to be implemented through virtual machine instructions. For example, instructions such as `BLOCKHASH`, `BASEFEE`, and `BALANCE`, the programming language itself does not need to know the chain-related information.
+This has also led to the inflation of EVM bytecode. Data that could have been obtained from the state via system contract code was forced to be implemented through virtual machine instructions. For example, instructions such as `BLOCKHASH`, `BASEFEE`, and `BALANCE`, the programming language itself does not need to know the chain-related information.
 
 This problem is encountered by all chains and smart contract programming languages. Traditional programming languages did not consider security issues within the same method call stack, and when moved to the chain, they can only rely on static dependencies and remote dependencies to solve the dependency relationship. Generally, even a delegatecall solution like Solidity is difficult to provide.
 
@@ -144,7 +144,7 @@ This approach brings two security challenges:
 
 ## State Isolation for Smart Contracts
 
-As mentioned earlier, a smart contract actually executes code from different organization in the same process. Therefore, it is necessary to isolate the contract's state (which can be simply understood as the results generated when the contract is executed, which need to be saved for use in the next execution) to avoid security problems caused by allowing one contract to directly read and write the state of another contract.
+As mentioned earlier, a smart contract actually executes code from different organizations in the same process. Therefore, it is necessary to isolate the contract's state (which can be simply understood as the results generated when the contract is executed, which need to be saved for use in the next execution) to avoid security problems caused by allowing one contract to directly read and write the state of another contract.
 
 The isolation solution is actually easy to understand - give each contract an independent state space. When executing a smart contract, the current smart contract's state space is bound to the virtual machine, which means that the smart contract can only read its own state. If another contract needs to be read, it needs to use the contract invocation mentioned earlier, which is actually executed in another virtual machine.
 
@@ -159,7 +159,7 @@ So how can we achieve state isolation in smart contract languages? The idea is a
 3. Provide external storage based on types as keys, limiting the current module to only read external storage using the types it defines as keys.
 4. Provide the ability to declare copy and drop for types in programming languages, ensuring that asset-like variables cannot be copied or discarded.
 
-The Move language uses the above solutions, with points 3 and 4 being unique to Move. This solution is also easy to understand because if we cannot give each smart contract program a separate state space at the virtual machine level, then using types for state isolation is a relatively easy-to-understand way because types have clear ownership and visibility.
+Move language uses the above solutions, with points 3 and 4 being unique to Move. This solution is also easy to understand because if we cannot give each smart contract program a separate state space at the virtual machine level, then using types for state isolation is a relatively easy-to-understand method because types have clear ownership and visibility.
 
 In Move, the smart contract invocation between different organizations and programs is as shown in the following figure:
 
@@ -182,13 +182,13 @@ Of course, Move is still in its early stages, and the capabilities provided by t
 
 It can be imagined that in the future, incentive mechanisms based on dependency relationships will definitely appear, as well as new open source ecosystems built on this incentive model.
 
-Later, we will continue to discuss the issue of "composability".
+Next, we will continue to discuss the issue of "composability".
 
 ## Composability of Smart Contracts
 
 Composability between programming language modules is another important feature of building a programming language ecosystem. It can be said that it is the composability between modules that needs dependencies, and different dependency methods provide different composability.
 
-According to the analysis of dependency methods above, when discussing the composability of smart contracts in the Solidity ecosystem, it actually mainly refers to the combination of `contract`, not the combination of `library`. As mentioned earlier, the dependency between contracts is a type of dependency similar to remote invocation. What is actually passed between them is a message, not a `reference` or `resource`.
+According to the analysis of the dependency methods above, when discussing the composability of smart contracts in the Solidity ecosystem, it actually mainly refers to the combination of `contract`, not the combination of `library`. As mentioned earlier, the dependency between contracts is a type of dependency similar to remote invocation. What is actually passed between them is a message, not a `reference` or `resource`.
 
 Here, the term `resource` is used to emphasize that this type of variable cannot be copied or discarded arbitrarily within the program, which is a feature of linear types that is not yet popular in programming languages.
 
@@ -293,9 +293,9 @@ This section illustrates a new way of combining things in Move based on linear t
 
 ## Expanding the Application Scenarios of Smart Contracts
 
-Move, originally designed as the smart contract programming language for the Libra.
+Move, originally designed as the smart contract programming language Libra.
 
-At the time, we were designing the architecture of Starcoin, and considering that Move's features aligned perfectly with Starcoin's goals, so applied Move to the public chain scenario.
+At the time, we were designing the architecture of Starcoin, and considering that Move's features aligned perfectly with Starcoin's goals, applied Move to the public chain scenario.
 
 Later on, after the Libra project was abandoned, several public chain projects were incubated to explore different directions:
 
@@ -312,11 +312,9 @@ Currently, the Move project has been spun off as a completely community-driven p
 2. How to allow different chains to implement their own specific language extensions.
 3. How to share basic libraries and application ecosystems among multiple chains.
 
-These challenges are also opportunities, and they conflict with each other, requiring trade-offs, and a balancing act to be found in development.
+These challenges are also opportunities, but they conflict with each other, requiring trade-offs and the Move community needs to find a balance in development progress. No language has attempted this kind of endeavor before. This balance can ensure that Move can explore more application scenarios, not just those tied to blockchain.
 
-These challenges are also opportunities, but they conflict with each other, requiring trade-offs and move community need to find a balance in development progresses.No language has attempted this kind of endeavor before. This balance can ensure that Move can explore more application scenarios, not just those tied to blockchain.
-
-In this regard, one problem that Solidity/EVM are entirely tied to the chain, and running EVM requires simulating a chain environment. This limits Solidity from expanding to other scenarios.
+In this regard, one problem that Solidity/EVM has it that they are entirely tied to the chain, and running EVM requires simulating a chain environment. This limits Solidity from expanding to other scenarios.
 
 There are many different views on the future of smart contract programming languages, broadly speaking, there are four types:
 
@@ -327,7 +325,7 @@ There are many different views on the future of smart contract programming langu
 
 The last one can be called the maximalist of smart contract languages, and I personally hold this view.
 
-The reason is simple: in the Web3 world, whether it's a game or other applications, there needs to be a digital dispute arbitration solution if there is a dispute. The key technology points of blockchain and smart contracts are about proof of state and computation, and the arbitration mechanism developed in this field can be used in more general scenarios. When a user installs an application, is concerned about its security, and wants the application to provide proof of state and computation, that is, when the application developer must choose to use smart contracts to implement the core logic of the application.
+The reason is simple: in the Web3 world, whether it's a game or other applications, there needs to be a digital dispute arbitration solution if there is a dispute. The key technology points of blockchain and smart contracts are about proof of state and computation, and the arbitration mechanisms developed in this field can be used in more general scenarios. When a user installs an application, is concerned about its security, and wants the application to provide proof of state and computation, that is when the application developer must choose to use smart contracts to implement the core logic of the application.
 
 ## Summary
 
