@@ -21,6 +21,15 @@
       "typesetting": "article"
     }
   },
+  "brand": {
+    "title": "品牌",
+    "type": "page",
+    "theme": {
+      "sidebar": false,
+      "timestamp": false,
+      "typesetting": "article"
+    }
+  },
   "about": {
     "title": "关于",
     "type": "page",
