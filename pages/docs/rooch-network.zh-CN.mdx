@@ -24,7 +24,7 @@ import Image from "next/image";
 
 ## 网络中间件
 
-Rooch 网络有几个关键的中间件服务，负责处理执行层上所有 Rooch 实例的交易和状态。所有服务都基于相同的核心 Rooch 实现。
+Rooch Network 有几个关键的中间件服务，负责处理执行层上所有 Rooch 实例的交易和状态。所有服务都基于相同的核心 Rooch 实现。
 
 - **Sequencer** - Sequencer 负责验证传入的交易并对其进行排序。排序后的交易将提交给 DA Chain 和 Proposer。
 - **Challenger** - Challenger 是 Rooch Layer2 网络的守护者。它不断监视交易流，并执行交易以计算状态转换。如果计算的状态结果与提议的状态不匹配，则 Challenger 将请求欺诈证明并将其提交仲裁。 （有关更多信息，请参见 Fraud Proof。）
