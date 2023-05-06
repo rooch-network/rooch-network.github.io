@@ -1,6 +1,6 @@
 # Rooch Network
 
-Rooch Network provides robust, all-in-one services for Web3 DApps to easily and flexibly deploy. This allows Web3 developers to focus on building cool stuff without worrying about infrastructure.
+Rooch Network 为 Web3 DApp 提供强大的一体化服务，使其能够轻松灵活地部署。这使得 Web3 开发者在不用顾虑基础设施问题的前提下，可以更专注于构建更个性化的产品。
 
 import Image from "next/image";
 
@@ -12,45 +12,45 @@ import Image from "next/image";
   class="mx-auto my-8"
 />
 
-## Execution Layer
+## 执行层
 
-The Execution Layer consists of all the DApps using Rooch as containers and smart contract execution environment.
+执行层由以 Rooch 作为容器以及智能合约执行环境的 Dapp 组成。
 
-Depending on the scenarios and resource requirements, there are three types of usage of Rooch:
+根据不同的场景和资源需求，Rooch 的使用有三种类型：
 
-- **General Purpose Platform** - We will launch and maintain a Rooch instance that serves as a general purpose smart contract platform. DApps and developers will be able to deploy their smart contracts directly onto an existing platform. The development experience will be just like working on a Layer1 blockchain but with much higher TPS, lower Gas Fee, and larger and more convenient storage.
-- **DApp Specific Platform** - DApps that want to have a customized platform can launch a dedicated Rooch instance, where builders can define customized and other specialized features such as tokenomics.
-- **Sector Specific Platform** - Web3 builders who want to develop and scale their ecosystem with multiple DApps can also launch a Rooch instance where assets and functionalities of different DApps will have seamless interoperability and users can share accounts and profiles across different ecosystem DApps.
+- **通用平台** - 我们将启动并维护一个 Rooch 实例作为通用的智能合约平台。DApp 和开发人员将能够将其智能合约直接部署到现有平台上。开发体验将与在 Layer1 区块链上工作的体验相同，但具有更高的 TPS，更低的 Gas 费用以及更大更方便的存储空间。
+- **DApp 专用平台** - 想要拥有定制平台的 DApp 可以启动一个专用的 Rooch 实例，开发者可以自定个性化的以及特殊的特性，如通证经济模型。
+- **Sector 专用平台** - 想要使用多个 DApp 开发和扩展其生态系统的 Web3 开发者也可以启动 Rooch 实例，不同 DApp 的资产和功能将具有无缝互操作性，用户可以在不同生态系统的 DApp 之间共享帐户和配置文件。
 
-## Network Middleware
+## 网络中间件
 
-The Rooch Network has several essential middleware services that are in charge of processing transactions and states for all the Rooch instances on the execution layer. Each of the services is based on the same core Rooch implementations.
+Rooch Network 有几个关键的中间件服务，负责处理执行层上所有 Rooch 实例的交易和状态。所有服务都基于相同的核心 Rooch 实现。
 
-- **Sequencer** - The Sequencer is in charge of verifying incoming transactions and ordering them. The ordered transactions will be submitted to the DA Chain and Proposer.
-- **Challenger** - The Challenger is the guardian of the Rooch Layer2 network. It constantly monitors the transaction stream and also executes them to calculate state transitions. If the calculated state result does not match with the proposed state to the Arbitration Layer, the Challenger shall request the fraud proofs and submit them for arbitration. (See [Fraud Proof](/docs/tech-highlights/fraud-proof) for more information.)
-- **ZK Prover** - The ZK Prover generates ZK Proofs for state transitions based on the batched transactions. The Proof will be sent to the Arbitration Layer to optimize the challenge period required by the security mechanism. (See [Hybrid Security with ZK Proof](/docs/tech-highlights/hybrid-security) for more information.)
-- **Proposer** - The Proposer is responsible for executing all the ordered transactions and committing the resulting state to the Arbitration Layer.
+- **Sequencer** - Sequencer 负责验证传入的交易并对其进行排序。排序后的交易将提交给 DA Chain 和 Proposer。
+- **Challenger** - Challenger 是 Rooch Layer2 网络的守护者。它不断监视交易流，并执行交易以计算状态转换。如果计算的状态结果与提议的状态不匹配，则 Challenger 将请求欺诈证明并将其提交仲裁。 （有关更多信息，请参见 Fraud Proof。）
+- **ZK Prover** - ZK Prover 根据批处理的交易生成状态转换的 ZK 证明。证明将发送到仲裁层以优化安全机制所需的挑战期。(有关更多信息，请参见使用 [Hybrid Security with ZK Proof](/docs/tech-highlights/hybrid-security)）
+- **Proposer** - Proposer 负责执行所有排序后的交易并将生成的状态提交给仲裁层。
 
-## DA Layer
+## DA 层
 
-The importance of DA (Data Availability) is to ensure anyone can get access to all the transactions that happened in the off-chain environment.
+DA（数据可用性）的重要性在于确保任何人都可以访问发生在离线环境中的所有交易。
 
-Rooch Network will adopt a third-party solution to ensure the availability of the transactions and maintain a high TPS. We are still researching different candidates, which include [Celestia](https://celestia.org/), [Eigenlayer](https://www.eigenlayer.xyz/), [Polygon Avail](https://polygon.technology/blog-tags/polygon-avail), and [Arweave](https://www.arweave.org/).
+Rooch 网络将采用第三方解决方案以确保交易的可用性并保持高 TPS。我们仍在研究不同的选择，这其中包括 [Celestia](https://celestia.org/)，[Eigenlayer](https://www.eigenlayer.xyz/)，[Polygon Avail](https://polygon.technology/blog-tags/polygon-avail)，以及 [Arweave](https://www.arweave.org/)。
 
-## Arbitration Layer
+## 仲裁层
 
-The Arbitration Layer acts as the "court" for arbitrating and verifying all state transitions that happened in different Rooch instances containing different DApps.
+仲裁层作为“法院”，为仲裁和验证包含不同 DApp 的不同 Rooch 实例中发生的所有状态转换。
 
-In the Rooch Network, Ethereum takes the role of the arbitration layer and will be the sole source of security for all DApps in the Rooch Ecosystem. The rationale here is that Ethereum has the highest practical attack cost, measured by its market cap.
+在 Rooch 网络中，以太坊承担了仲裁层的角色，并将是 Rooch 生态系统中所有 DApp 的唯一安全来源，原因是以太坊目前拥有最高的代币市值，而这代表着它拥有最高的攻击成本。
 
-On Ethereum, there are three smart contracts serving different roles:
+在以太坊上，有三个智能合约担任不同的角色：
 
-- **Fraud Proof Arbitration contract** - This contract accepts fraud proofs and emulates the execution of the state transition to make a decision on slashing.
-- **ZK Verifier contract** - This contract is responsible for verifying the ZK Proofs submitted by the ZK Prover.
-- **State Commitment Chain** - This contract keeps a chain of record of all the states committed by the Proposer.
+- **欺诈证明仲裁合约** - 该合约接受欺诈证明，并模拟状态转换的执行以做出削减决策。
+- **ZK Verifier 合约** - 该合约负责验证由 ZK Prover 提交的 ZK 证明。
+- **State Commitment Chain** - 该合约保留由 Proposer 提交的所有状态的记录链。
 
-## Settlement Layer
+## 结算层
 
-The Settlement Layer provides state settlement for all Rooch-based DApps. Every DApp using Rooch as the execution environment will be able to migrate assets (i.e., tokens) between their DApp and different Layer1s.
+结算层为所有基于 Rooch 的 DApp 提供状态结算。使用 Rooch 作为执行环境的每个 DApp 都能够在其 DApp 和不同的 Layer1 之间迁移资产（即 token）。
 
-The Rooch Network supports integrating arbitrary Layer1s to be a part of the Settlement Layer, all using Ethereum as the source of security guarantee. (See [Multi-Chain Settlement](/docs/tech-highlights/multi-chain-settlement) for more information.)
+Rooch Network 支持将任意 Layer1 整合到结算层中，所有使用以太坊作为安全保证源的内容。(有关更多信息，请参见 [Multi-Chain Settlement](/docs/tech-highlights/multi-chain-settlement)）
