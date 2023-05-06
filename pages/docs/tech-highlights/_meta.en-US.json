@@ -3,7 +3,10 @@
   "fraud-proof": "Fraud Proof",
   "hybrid-security": "Hybrid Security with ZK Proof",
   "multi-chain-settlement": "Multi-Chain Settlement",
-  "decentralized-validator": "Decentralized Validator",
+  "decentralized-validator": {
+    "title": "Decentralized Validator",
+    "display": "hidden"
+  },
   "pipeline-transaction-processing": "Pipeline Transaction Processing",
   "sequence-proof": "Sequence Proof",
   "storage": {
