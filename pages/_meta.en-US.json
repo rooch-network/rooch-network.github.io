@@ -21,15 +21,6 @@
       "typesetting": "article"
     }
   },
-  "brand": {
-    "title": "Brand",
-    "type": "page",
-    "theme": {
-      "sidebar": false,
-      "timestamp": false,
-      "typesetting": "article"
-    }
-  },
   "about": {
     "title": "About",
     "type": "page",
