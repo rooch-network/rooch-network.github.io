@@ -15,6 +15,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.14",
     "@popperjs/core": "^2.11.7",
+    "archiver": "^5.3.1",
     "classnames": "2.3.2",
     "clsx": "^1.2.1",
     "cobe": "0.4.2",
