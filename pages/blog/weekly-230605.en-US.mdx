@@ -1,0 +1,24 @@
+---
+title: Rooch 周报
+author: geometryolife
+category: Rooch Weekly
+date: 2023/06/05
+---
+
+## Rooch 的开发进展
+
+### Rooch 系统架构
+
+在 [#11](https://github.com/rooch-network/rooch/issues/11)、[#49](https://github.com/rooch-network/rooch/pull/49)、[#60](https://github.com/rooch-network/rooch/pull/60) 这三个 PR 中，实现了 Rooch 的 RPC 服务功能、Actor 异步计算以及为基本的 CLI 命令提供服务，引入了相关组件并实现了组件之间的通信功能，这几个 PR 完成了 Rooch 系统架构的基本实现。
+
+### 反序列化与 Any
+
+在 [#23](https://github.com/rooch-network/rooch/pull/23) 中， 引入了 `bcd` 模块和 `from_bytes` 函数用于实现 `bcs` 的序列化/反序列化功能，为 [`Any` 类型的引入（#18）](https://github.com/rooch-network/rooch/issues/18)提供基础。在 [#24](https://github.com/rooch-network/rooch/pull/24) 引入 `any` 和 `any_copyable` 模块，使得可以用 `Any` 类型来表示任意值。
+
+## Rooch 的融资进展
+
+## Rooch 的市场进展
+
+## Rooch 的组织情况
+
+## Rooch 的近期计划
