@@ -36,6 +36,15 @@
       "typesetting": "article"
     }
   },
+  "brand": {
+    "type": "page",
+    "display": "hidden",
+    "theme": {
+      "sidebar": false,
+      "timestamp": false,
+      "typesetting": "article"
+    }
+  },
   "blog-template": {
     "type": "page",
     "display": "hidden"
