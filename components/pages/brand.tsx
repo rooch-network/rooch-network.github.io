@@ -113,7 +113,7 @@ const Brand = () => {
                   </button>
                 </div>
               </div>
-              <div className=" basis-1/2 mt-6 mb-6">
+              <div className=" basis-1/2 mt-6 mb-6 bg-white p-3">
                 <img className="mx-auto" src={url} alt="Image" />
               </div>
             </div>
