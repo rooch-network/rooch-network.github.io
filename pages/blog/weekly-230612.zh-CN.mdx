@@ -1,0 +1,19 @@
+---
+title: Rooch 周报 1
+author: geometryolife
+category: Rooch Weekly
+date: 2023/06/12
+---
+
+## Rooch 的开发进展
+
+### 新特性
+
+- 在 [#241](https://github.com/rooch-network/rooch/pull/241) 中，支持 Metamask 的以太坊的交易签名验证。
+
+### 改进和修复
+
+- 在 [#220](https://github.com/rooch-network/rooch/pull/220) 中完成了 `cli`，`server`，`testsuite` 的优化重构，添加客户端配置，添加 `ServerConfig`（默认），将 `WalletContext` 添加到 CLI。
+- 在 [#242](https://github.com/rooch-network/rooch/pull/242) 中完成了 MoveOS VM 和 Session 的重构。
+- 在 [#246](https://github.com/rooch-network/rooch/pull/246) 中将代表交易的变量 `tnx` 统一重命名为 `tx`。
+- 把 `Result` 替换为 `VMResult`、`PartialVMResult` 并重构 `verify_entry_function` 以获取更完整的错误信息。
