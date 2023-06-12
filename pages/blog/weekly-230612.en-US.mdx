@@ -1,0 +1,19 @@
+---
+title: Rooch Weekly 1
+author: geometryolife
+category: Rooch Weekly
+date: 2023/06/12
+---
+
+## Rooch's Development Progress
+
+### New characteristic
+
+- Support for transaction signature verification for Ethereum with Metamask in #241(opens in a new tab).
+
+### Improvements and fixes
+
+- In [#220](https://github.com/rooch-network/rooch/pull/220) completed optimization refactoring of `cli`, `server`, `testsuite`, added client config, added `ServerConfig` (default), added `WalletContext` to CLI.
+- Completed MoveOS VM and Session refactoring in [#242](https://github.com/rooch-network/rooch/pull/242).
+- In [#246](https://github.com/rooch-network/rooch/pull/246), the variable `tnx` representing the transaction is uniformly renamed to `tx`.
+- Replace `Result` with `VMResult`, `PartialVMResult` and refactor `verify_entry_function` for more complete error information.
