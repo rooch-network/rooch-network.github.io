@@ -17,9 +17,9 @@ export default function BlogIndex({
 
   const rawPages = getCurrentLevelPages();
 
-  console.log(rawPages);
-  console.log(getPagesUnderRoute("/blog"));
-  console.log(getAllPages());
+  // console.log(rawPages);
+  // console.log(getPagesUnderRoute("/blog"));
+  // console.log(getAllPages());
   
   const [pages, SetPages] = useState(rawPages);
   const [pagesFiltered, setPagesFiltered] = useState(pages);
