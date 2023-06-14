@@ -1,4 +1,4 @@
-import { getPagesUnderRoute, getCurrentLevelPages } from "nextra/context";
+import { getPagesUnderRoute, getCurrentLevelPages, getAllPages } from "nextra/context";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
@@ -16,6 +16,10 @@ export default function BlogIndex({
   const [selectedAuthor, setSelectedAuthor] = useState(textAllAuthors);
 
   const rawPages = getCurrentLevelPages();
+
+  console.log(rawPages);
+  console.log(getPagesUnderRoute("/blog"));
+  console.log(getAllPages());
   
   const [pages, SetPages] = useState(rawPages);
   const [pagesFiltered, setPagesFiltered] = useState(pages);
