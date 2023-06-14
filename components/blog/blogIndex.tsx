@@ -1,4 +1,4 @@
-import { getPagesUnderRoute, getCurrentLevelPages, getAllPages } from "nextra/context";
+import { getPagesUnderRoute,} from "nextra/context";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
@@ -15,12 +15,7 @@ export default function BlogIndex({
   const [selectedCategory, setSelectedCategory] = useState(textAllCategories);
   const [selectedAuthor, setSelectedAuthor] = useState(textAllAuthors);
 
-  const rawPages = getCurrentLevelPages();
-
-  console.log(rawPages);
-  console.log(getPagesUnderRoute("/blog"));
-  console.log(getAllPages());
-  
+  const rawPages = getPagesUnderRoute("/blog");
   const [pages, SetPages] = useState(rawPages);
   const [pagesFiltered, setPagesFiltered] = useState(pages);
 
@@ -132,8 +127,8 @@ export default function BlogIndex({
           p1.dateNumber < p2.dateNumber
             ? 1
             : p1.dateNumber > p2.dateNumber
-            ? -1
-            : 0
+              ? -1
+              : 0
         )
         .map((page) => {
           return (
@@ -171,9 +166,12 @@ export default function BlogIndex({
                   </p>
 
                   {/* Post Description */}
-                  <p className="opacity-80 mt-2 leading-7">
-                    {page.frontMatter.description}
-                  </p>
+                  {page.frontMatter.description ? (
+                    <p className="opacity-80 mt-2 leading-7">
+                      {page.frontMatter.description}
+                    </p>
+                  ) : null
+                  }
 
                   {/* Post Date */}
                   {page.frontMatter.date ? (
