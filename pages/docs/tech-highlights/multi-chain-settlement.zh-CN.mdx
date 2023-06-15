@@ -1,42 +1,42 @@
 # 多链结算
 
-Multi-chain Settlement is one of the most important feature of Rooch Network. This chapter details the protocols and challenges to be solved.
+多链结算是 Rooch Network 最重要的功能之一。本章详细介绍了协议和要解决的挑战。
 
-## How it works
+## 它如何工作
 
 import Image from "next/image";
 
 <Image
-  src="/docs/multi-chain-settlement.svg"
+  src="/docs/multi-chain-settlement.png"
   alt="Rooch Architecture"
   width={600}
   height={600}
   class="mx-auto my-4"
 />
 
-The responsibility of the settlement layer is to perform state migration and asset settlement between Layer1 and the execution layer.
+结算层的职责是在 Layer1 和执行层之间进行状态迁移和资产结算。
 
-We use Ethereum as an example to explain how the settlement layer works.
+我们以以太坊为例来说明结算层是如何工作的。
 
-Rooch deploys the settlement smart contract(`State Commitment Chain` & `Bridge`) on Ethereum, which maintains an off-chain state tree, with only the root of the state tree recorded on the chain, through which users migrate state between Layer1 and Rooch.
+Rooch 在以太坊上部署了结算智能合约（`状态承诺链（State Commitment Chain）`和`桥（Bridge）`），维护着一棵链下状态树，链上只记录状态树的根，用户通过它在 Layer1 和 Rooch 之间迁移状态。
 
-1. When a user migrates state from Layer1 to Rooch, the state appears in the state tree of Rooch after the transactions in Layer1 are finalized.
-2. When a user migrates state from Rooch to Layer1, the state is first locked and waits for the Layer2 are finalized (Challenge period to pass or zkProver provide valid proof) before being moved out of the state tree for settlement.
-3. When the `State Commitment Chain` receives a notification from the arbitration contract that fraud has occurred, it rolls back the root of the off-chain state tree to before the fraud occurred, discarding any state tree changes made during that period.
+1. 当用户将状态从 Layer1 迁移到 Rooch 时，该状态会在 Layer1 中的交易完成后出现在 Rooch 的状态树中。
+2. 当用户从 Rooch 迁移状态到 Layer1 时，状态首先被锁定，等待 Layer2 完成（挑战期结束或 **zkProver** 提供有效证明），然后移出状态树进行结算。
+3. 当`状态承诺链`从仲裁合约收到欺诈发生的通知时，它会将链下状态树的根回滚到欺诈发生之前，并丢弃在此期间所做的任何状态树更改。
 
-Now, if we want to expand the settlement layer to multiple chains, we will encounter some challenges.
+现在，如果我们要把结算层扩展到多条链上，我们会遇到一些挑战。
 
-How to maintain the `State Commitment Chain` on other chains? 
+如何在其他链上维护`状态承诺链`？
 
-Our solution is mirror the `State Commitment Chain` from Ethereum to other chains by Ethereum state proof.
+我们的解决方案是通过以太坊状态证明将`状态承诺链`从以太坊镜像到其他链。
 
-Then, another challenge is how to verify the state proof of Ethereum on other chains?
+那么，另一个挑战是如何在其他链上验证以太坊的状态证明？
 
-We depend on the solution of sync Ethereum state root to other chains. This is a challenge that all cross-chain solutions face. There are some solutions to this problem, such as Ethereum light nodes, Oracles, etc. We can explore this together.
+我们依赖于将以太坊状态根同步到其他链的解决方案。这是所有跨链解决方案都面临的挑战。这个问题有一些解决方案，比如以太坊轻节点、预言机等，大家可以一起探讨。
 
-## Features
+## 特性
 
-Here are why Rooch's Multi-Chain Settlement solution is more advanced.
+这就是为什么 Rooch 的多链结算解决方案更先进的原因。
 
-- Multi-chain settlement is more secure. The security of the cross-layer bridge in a multi-chain settlement solution is protected by the arbitration layer (i.e. Ethereum), and the execution layer inherit the security of the arbitration layer.
-- More generic cross-layer solution. In Rooch's multi-chain settlement solution, cross-layer is achieved through a generic state migration pattern where states can be used to represent Token, NFT, digital contracts, and other future application states, without the need to design specialized protocols for new state types.
+- 多链结算更安全。多链结算方案中跨层桥（cross-layer bridge）的安全性由仲裁层（即以太坊）保护，执行层继承仲裁层的安全性。
+- 更通用的跨层解决方案。在 Rooch 的多链结算方案中，跨层是通过一种通用的状态迁移模式实现的，状态可以用来表示 Token、NFT、数字合约等未来的应用状态，而无需为新的状态类型设计专门的协议。
