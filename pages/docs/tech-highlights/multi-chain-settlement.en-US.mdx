@@ -21,7 +21,7 @@ We use Ethereum as an example to explain how the settlement layer works.
 Rooch deploys the settlement smart contract(`State Commitment Chain` & `Bridge`) on Ethereum, which maintains an off-chain state tree, with only the root of the state tree recorded on the chain, through which users migrate state between Layer1 and Rooch.
 
 1. When a user migrates state from Layer1 to Rooch, the state appears in the state tree of Rooch after the transactions in Layer1 are finalized.
-2. When a user migrates state from Rooch to Layer1, the state is first locked and waits for the Layer2 (Challenge period to pass or zkProver provides valid proof) before being moved out of the state tree for settlement.
+2. When a user migrates state from Rooch to Layer1, the state is first locked and waits for the Layer2 (Challenge period to pass or **zkProver** provides valid proof) before being moved out of the state tree for settlement.
 3. When the `State Commitment Chain` receives a notification from the arbitration contract that fraud has occurred, it rolls back the root of the off-chain state tree to before the fraud occurred, discarding any state tree changes made during that period.
 
 Now, if we want to expand the settlement layer to multiple chains, we will encounter some challenges.
