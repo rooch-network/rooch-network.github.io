@@ -14,12 +14,36 @@ import PostHeader from "/components/blog/postHeader";
 
 ### New features
 
-- Testing
+- In [#315](https://github.com/rooch-network/rooch/pull/315), implement the relevant interface of transaction information and transaction sequence information, support pagination query of cursor, and support mapping of `Sequencer order` and `Transaction Hash`. Newly supported query transaction scenarios:
+  - Scenario 1: First query the mapping relationship between `Sequencer order` and `Transaction Hash`, turn the page according to `Sequencer order` to obtain `Transaction Hash`, and then query `Transaction Info` in batches;
+  - Scenario 2: Query `Transaction Info` in batches directly through `Transaction Hash`.
+- Add mapping to `TxContext` in [#316](https://github.com/rooch-network/rooch/pull/316) for passing values between `MoveAction`.
+  - Import `SimpleMap` into `moveos_std`.
+  - Add `SimpleMap` field to `TxContext`.
+  - Define `SimpleMap` and `Any` binding types in Rust.
+  - Copy `MoveStructType` from `move_core_types::move_resource::MoveStructType` to auto-implement `MoveType` to `MoveStructType`.
+- Added `rooch move new --address` command in [#310](https://github.com/rooch-network/rooch/pull/310).
+- Implemented checking `private_generics` in test framework in [#327](https://github.com/rooch-network/rooch/pull/327), see PR for details.
 
 ### Major refactoring
 
+- Add `pre_execute` function in [#322](https://github.com/rooch-network/rooch/pull/322) to execute before transaction execution, and rename finalize to `post_execute`, refactor MoveOS to execute `pre_execute_function` before transaction execution, remove `TxContext` from `tx` parameter parser, fix Problems with integration testing.
+- Unify json output of `ObjectID` and `AccountAddress` in [#328](https://github.com/rooch-network/rooch/pull/328), ensure `RoochAddress`, `AccountAddress` and `ObjectID` all output full-length hexadecimal strings with `0x` prefix; Merge `AccountAddressView` and `StrView`, `AccountAddressView = StrView`; Remove `rooch_serde.rs`, use `moveos_types::serde.rs`, see [#284](https://github.com/rooch-network/rooch/issues/284).
+- In [#341](https://github.com/rooch-network/rooch/pull/341), unify `this` in function parameters to `self`.
 
 ### Improvements and fixes
 
+- Generate documentation for the `framework` at [#317](https://github.com/rooch-network/rooch/pull/317).
+- Added documentation for **transaction flow** in [#325](https://github.com/rooch-network/rooch/pull/325).
+- Add documentation rules in [#334](https://github.com/rooch-network/rooch/pull/334).
+- In [#332](https://github.com/rooch-network/rooch/pull/332), add the path of macOS temporary files, and use constants to be compatible with the path differences between Linux and macOS.
+- Added `object` and `object storage` test cases in [#326](https://github.com/rooch-network/rooch/pull/326).
+- Added unit tests for `rooch_framework::account` at [#333](https://github.com/rooch-network/rooch/pull/333).
+- Added unit tests for `moveos_stdlib::table` and `moveos_stdlib::type_table` in [#319](https://github.com/rooch-network/rooch/pull/319).
+- Fixed error when using short hex strings in `AccessPath` in [#321](https://github.com/rooch-network/rooch/pull/321), see [#284](https://github.com/rooch-network/rooch/pull/284).
+- Fixed rooch move build returning error message in [#337](https://github.com/rooch-network/rooch/pull/337), see [#336](https://github.com/rooch-network/rooch/pull/336), remove failing `private_generics` example in `example/private_generics` directory.
 
 ### Rooch Community Dev Meeting
+
+- Discuss module upgrade strategies.
+- Discuss how to present developer documentation.
