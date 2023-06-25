@@ -17,7 +17,7 @@ import PostHeader from "/components/blog/postHeader";
 - 在 [#315](https://github.com/rooch-network/rooch/pull/315) 实现交易信息和交易序列信息的相关接口，支持光标的分页查询，支持 `Sequencer order` 和 `Transaction Hash` 的映射。新支持的查询事务场景：
   - 场景1：先查询 `Sequencer order` 与 `Transaction Hash` 的映射关系，根据 `Sequencer order` 翻页获取 `Transaction Hash`，然后批量查询 `Transaction Info`；
   - 场景2：直接通过 `Transaction Hash` 批量查询 `Transaction Info`。
-- 在 [#316](https://github.com/rooch-network/rooch/pull/316) 添加映射到 `TxContext`，用于 `MoveAction` 之间传递值
+- 在 [#316](https://github.com/rooch-network/rooch/pull/316) 添加映射到 `TxContext`，用于 `MoveAction` 之间传递值。
   - 将 `SimpleMap` 引入 `moveos_std`。
   - 将 `SimpleMap` 字段添加到 `TxContext`。
   - 在 Rust 中定义 `SimpleMap` 和 `Any` 绑定类型。
@@ -40,10 +40,10 @@ import PostHeader from "/components/blog/postHeader";
 - 在 [#326](https://github.com/rooch-network/rooch/pull/326) 添加 `object` 和 `object storage` 测试用例。
 - 在 [#333](https://github.com/rooch-network/rooch/pull/333) 给 `rooch_framework::account` 增加单元测试。
 - 在 [#319](https://github.com/rooch-network/rooch/pull/319) 中为 `moveos_stdlib::table` 和 `moveos_stdlib::type_table` 添加单元测试。
-- [#321](https://github.com/rooch-network/rooch/pull/321) 修复了在 `AccessPath` 中使用短十六进制字符串时出错，参见 [#284](https://github.com/rooch-network/rooch/pull/284)。
-- 在 [#337](https://github.com/rooch-network/rooch/pull/337) 中修复了 `rooch move build` 返回错误消息的问题，参见 `#336`，删除 `example/private_generics` 目录中失败的 `private_generics` 示例。
+- 在 [#321](https://github.com/rooch-network/rooch/pull/321) 中修复了在 `AccessPath` 中使用短十六进制字符串时出错，参见 [#284](https://github.com/rooch-network/rooch/pull/284)。
+- 在 [#337](https://github.com/rooch-network/rooch/pull/337) 中修复了 `rooch move build` 返回错误消息的问题，参见 [#336](https://github.com/rooch-network/rooch/pull/336)，删除 `example/private_generics` 目录中失败的 `private_generics` 示例。
 
 ### Rooch 社区开发会议
 
 - 讨论模块升级策略。
-- 讨论显示开发者文档。
+- 讨论用什么样的方式展示开发者文档。
