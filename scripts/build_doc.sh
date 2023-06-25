@@ -2,6 +2,7 @@
 # Copyright (c) RoochNetwork
 # SPDX-License-Identifier: Apache-2.0
 
+# tools check
 if ! command -v jq &>/dev/null; then
   echo "jq not found, installing..."
   if [[ "$(uname)" == "Darwin" ]]; then
@@ -19,12 +20,41 @@ if ! command -v jq &>/dev/null; then
   fi
 fi
 
-# rm -rf /tmp/rooch
-# rm -rf ../pages/docs/dev
+while getopts "hp:" opt; do
+  case $opt in
+  h)
+    cat <<EOF
+Usage:
+    build rooch doc <flags>
+Flags:
+    -h   Print this help
+    -p   Rooch dir
+EOF
+    exit 1
+    ;;
+  p)
+    ROOCH_DIR=$OPTARG
+    ;;
+  \?)
+    echo "Invalid option: -$OPTARG" >&2
+    exit 1
+    ;;
+  :)
+    echo "Option -$OPTARG requires an argument." >&2
+    exit 1
+    ;;
+  esac
+done
 
-# git clone --depth=1 git@github.com:rooch-network/rooch.git /tmp/rooch
+rm -rf ../pages/docs/dev/
 
-# cp -r  /tmp/rooch/docs/ ../pages/docs/dev/
+if [ ! -z "$ROOCH_DIR" ]; then
+  cp -r "$ROOCH_DIR/docs/" ../pages/docs/dev/
+else
+  rm -rf /tmp/rooch
+  git clone --depth=1 git@github.com:rooch-network/rooch.git /tmp/rooch
+  cp -r /tmp/rooch/docs/ ../pages/docs/dev/
+fi
 
 BASE=$(git rev-parse --show-toplevel)
 
