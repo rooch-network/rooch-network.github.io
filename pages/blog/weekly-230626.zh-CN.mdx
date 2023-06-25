@@ -1,0 +1,49 @@
+---
+title: Rooch 周报 2023-06-26
+description: "Rooch 的第三篇周报"
+author: geometryolife
+category: Rooch Weekly
+date: 2023/06/26
+---
+
+import PostHeader from "/components/blog/postHeader";
+
+<PostHeader />
+
+## Rooch 的开发进展
+
+### 新特性
+
+- 在 [#315](https://github.com/rooch-network/rooch/pull/315) 实现交易信息和交易序列信息的相关接口，支持光标的分页查询，支持 `Sequencer order` 和 `Transaction Hash` 的映射。新支持的查询事务场景：
+  - 场景1：先查询 `Sequencer order` 与 `Transaction Hash` 的映射关系，根据 `Sequencer order` 翻页获取 `Transaction Hash`，然后批量查询 `Transaction Info`；
+  - 场景2：直接通过 `Transaction Hash` 批量查询 `Transaction Info`。
+- 在 [#316](https://github.com/rooch-network/rooch/pull/316) 添加映射到 `TxContext`，用于 `MoveAction` 之间传递值。
+  - 将 `SimpleMap` 引入 `moveos_std`。
+  - 将 `SimpleMap` 字段添加到 `TxContext`。
+  - 在 Rust 中定义 `SimpleMap` 和 `Any` 绑定类型。
+  - 将 `MoveStructType` 从 `move_core_types::move_resource::MoveStructType` 复制到自动实现 `MoveType` 到 `MoveStructType`。
+- 在 [#310](https://github.com/rooch-network/rooch/pull/310) 中添加 `rooch move new --address` 命令。
+- 在 [#327](https://github.com/rooch-network/rooch/pull/327) 中实现在测试框架中检查 `private_generics`，具体描述请参阅 PR.
+
+### 重大重构
+
+- 在 [#322](https://github.com/rooch-network/rooch/pull/322) 中添加 `pre_execute` 函数用于在交易执行之前执行，并将 `finalize` 重命名为 `post_execute`，重构 MoveOS 让交易执行之前执行 `pre_execute_function`，从 `tx` 参数解析器中删除 `TxContext`，修复集成测试的问题。
+- 在 [#328](https://github.com/rooch-network/rooch/pull/328) 中统一 `ObjectID` 和 `AccountAddress` 的 json 输出，确保 `RoochAddress`、`AccountAddress` 和 `ObjectID` 均输出带有 `0x` 前缀的全长十六进制字符串；合并 `AccountAddressView` 和 `StrView`，`AccountAddressView = StrView`；删除 `rooch_serde.rs`，使用 `moveos_types::serde.rs`，参见 [#284](https://github.com/rooch-network/rooch/issues/284)。
+- 在 [#341](https://github.com/rooch-network/rooch/pull/341) 中将函数参数中的 `this` 统一为 `self`。
+
+### 改进和修复
+
+- 在 [#317](https://github.com/rooch-network/rooch/pull/317) 生成 `framework` 的相关文档。
+- 在 [#325](https://github.com/rooch-network/rooch/pull/325) 中添加**交易流**的文档。
+- 在 [#334](https://github.com/rooch-network/rooch/pull/334) 中添加文档规则。
+- 在 [#332](https://github.com/rooch-network/rooch/pull/332) 增加 macOS 临时文件的路径，通过常量来兼容 Linux 和 macOS 的路径差异。
+- 在 [#326](https://github.com/rooch-network/rooch/pull/326) 添加 `object` 和 `object storage` 测试用例。
+- 在 [#333](https://github.com/rooch-network/rooch/pull/333) 给 `rooch_framework::account` 增加单元测试。
+- 在 [#319](https://github.com/rooch-network/rooch/pull/319) 中为 `moveos_stdlib::table` 和 `moveos_stdlib::type_table` 添加单元测试。
+- 在 [#321](https://github.com/rooch-network/rooch/pull/321) 中修复了在 `AccessPath` 中使用短十六进制字符串时出错，参见 [#284](https://github.com/rooch-network/rooch/pull/284)。
+- 在 [#337](https://github.com/rooch-network/rooch/pull/337) 中修复了 `rooch move build` 返回错误消息的问题，参见 [#336](https://github.com/rooch-network/rooch/pull/336)，删除 `example/private_generics` 目录中失败的 `private_generics` 示例。
+
+### Rooch 社区开发会议
+
+- 讨论模块升级策略。
+- 讨论用什么样的方式展示开发者文档。
