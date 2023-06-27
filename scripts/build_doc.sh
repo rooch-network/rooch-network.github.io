@@ -20,6 +20,21 @@ if ! command -v jq &>/dev/null; then
   fi
 fi
 
+function rm_file() {
+  if [[ -e $1 ]]; then
+    rm -rf $1
+  fi
+}
+
+BASE=$(git rev-parse --show-toplevel)
+OUTPUT=$BASE/pages/docs/dev/
+OLD_EXT="md"
+NEW_EXT="mdx"
+DIR_PATH="$BASE/pages/docs/dev"
+LOCALES=("en-US" "zh-CN")
+IGNORE_LIST=("template" "README.md")
+CLEAR_ITEMS=("_meta.json" "rooch-design.drawio")
+
 while getopts "hp:" opt; do
   case $opt in
   h)
@@ -46,50 +61,39 @@ EOF
   esac
 done
 
-rm -rf ../pages/docs/dev/
+rm_file $OUTPUT
 
 if [ ! -z "$ROOCH_DIR" ]; then
-  cp -r "$ROOCH_DIR/docs/" ../pages/docs/dev/
+  cp -r "$ROOCH_DIR/docs/" $OUTPUT
 else
   rm -rf /tmp/rooch
   git clone --depth=1 git@github.com:rooch-network/rooch.git /tmp/rooch
-  cp -r /tmp/rooch/docs/ ../pages/docs/dev/
+  cp -r /tmp/rooch/docs/ $OUTPUT
 fi
-
-BASE=$(git rev-parse --show-toplevel)
-
-old_ext="md"
-new_ext="mdx"
-dir_path="$BASE/pages/docs/dev"
-locales=("en-US" "zh-CN")
 
 # ignore
-if [[ -d "$dir_path/template" ]]; then
-  rm -rf "$dir_path/template" 2>/dev/null
-fi
+for item in "${IGNORE_LIST[@]}"; do
+  rm_file "$DIR_PATH/$item"
+done
 
-if [[ -f "$dir_path/README.md" ]]; then
-  rm $dir_path/README.md
-fi
-
-find "$dir_path" -follow -type d -print0 | while IFS= read -r -d '' dir; do
+find "$DIR_PATH" -follow -type d -print0 | while IFS= read -r -d '' dir; do
 
   # change ext, loacle
-  find "$dir" -type f -name "*.$old_ext" | while read file; do
-    for locale in "${locales[@]}"; do
-      if [[ $file == *".${locale}.$old_ext" ]]; then
-        mv "$file" "${file%.$old_ext}.$new_ext"
+  find "$dir" -type f -name "*.$OLD_EXT" | while read file; do
+    for locale in "${LOCALES[@]}"; do
+      if [[ $file == *".${locale}.$OLD_EXT" ]]; then
+        mv "$file" "${file%.$OLD_EXT}.$NEW_EXT"
       fi
     done
   done
 
-  find "$dir" -type f -name "*.$old_ext" | while read file; do
-    new_file="${file%.$old_ext}.en-US.$new_ext"
+  find "$dir" -type f -name "*.$OLD_EXT" | while read file; do
+    new_file="${file%.$OLD_EXT}.en-US.$NEW_EXT"
     mv "$file" "$new_file"
   done
 
   #gen meta
-  for locale in "${locales[@]}"; do
+  for locale in "${LOCALES[@]}"; do
     if [ -f "$dir/_meta.json" ]; then
       cp ${dir}/_meta.json ${dir}/_meta.${locale}.json
       meta=$(cat "$dir/_meta.${locale}.json")
@@ -108,11 +112,11 @@ find "$dir_path" -follow -type d -print0 | while IFS= read -r -d '' dir; do
     fi
   done
   # clear
-  if [[ -f "$dir/_meta.json" ]]; then
-    rm $dir/_meta.json
-  fi
+  for item in "${CLEAR_ITEMS[@]}"; do
+    rm_file "$dir/$item"
+  done
 
-  for locale in "${locales[@]}"; do
+  for locale in "${LOCALES[@]}"; do
     if [[ -f "$dir/_meta.${locale}.json" && $(jq 'length' "$dir/_meta.${locale}.json") -eq 0 ]]; then
       rm "$dir/_meta.${locale}.json"
     fi
